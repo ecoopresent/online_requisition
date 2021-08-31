@@ -1,0 +1,13 @@
+logo.png
+logo.png (tcpdf)
+all tcpdf files
+all php files
+
+
+meta titles approvalPettyHead,approvalPettyFinal
+
+
+
+link in new approved Petty and pR must change.
+
+Logistic Manager must change

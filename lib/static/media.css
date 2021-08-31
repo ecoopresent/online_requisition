@@ -1,0 +1,270 @@
+@media only screen and (max-width: 800px) {
+    * {
+        box-sizing: border-box !important;
+        -webkit-box-sizing: border-box !important;
+    }
+
+    .company-name{
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		width: 100%;
+	}
+	.c-icon{
+		padding-left: 4rem;
+		width: 100%;
+	}
+
+	.c-name{
+		padding-left: 0rem;
+		padding-top: 0.4rem;
+		width: 65%;
+	}
+
+    .login-form{
+		position: fixed;
+		height: 100%;
+		background-color: #004d66;
+		padding-top: 10%;
+		width: 100%;
+	}
+
+    .sidebar{
+    	display: none;
+    	z-index: 4;
+    	margin-top: 9%;
+    	padding-bottom: 0%;
+		height: auto;
+		width: 100%;
+	}
+
+	.content-header{
+		position: fixed;
+		background: #ff4d4d;
+		width: 100%;
+		margin-left: 0%;
+		z-index: 5;
+	}
+
+	.content{
+		padding-top: 25%;
+		width: 100%;
+		padding-left: 0%;
+		padding-bottom: 5%;
+	}
+
+	.system-name{
+		width: 85%;
+	}
+	.drawer-btn{
+		width: 15%;
+		display: block;
+		margin-top: 1rem; 
+	}
+
+	.dashboard_tabs{
+		margin-top: 25%;
+		margin-left: 0%;
+	}
+
+	.card_tabs{
+		padding: 1.2rem;
+		width: 100%;
+		float: none;
+		margin-left: 0rem;
+		margin-top: 1rem;
+		border-radius: 10px;
+	}
+
+
+	.card_tabs_content{
+		background-color: transparent;
+		border-left: 20px solid #004d66;
+		border-top: 1px solid whitesmoke;
+		border-bottom: 2px solid whitesmoke;
+		border-right: 1px solid whitesmoke;
+		color: black;
+		border-radius: 0px;
+		text-align: center;
+	}
+
+	.card_tabs_name{
+		font-size: 18px;
+		letter-spacing: 0.3rem;
+	}
+
+	.card_tabs_subname{
+		font-size: 14px;
+		letter-spacing: 0.8rem;
+		margin-bottom: 3rem;
+	}
+
+	.dashboard_content{
+		padding-top: 1%;
+		padding-left: 0%;
+		padding: 2rem;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		height: 100%;
+	}
+
+	.tab_container{
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+	.rowx {
+	  display: -ms-flexbox;
+	  display: inline;
+	  -ms-flex-wrap: wrap;
+	  flex-wrap: wrap;
+	  margin-right: 0px;
+	  margin-left: 0px;
+	}
+
+	.footer {
+	   position: relative;
+	   left: 0;
+	   bottom: 0;
+	   width: 100%;
+	   color: white;
+	   text-align: left;
+	   padding-left: 3rem;
+	   background-color: #00334d;
+	   padding-top: 1rem;
+	   padding-bottom: 0.1rem;
+	}
+    
+}
+
+
+@media only screen and (min-width: 1500px) {
+
+	.login-form{
+		position: fixed;
+		height: 100%;
+		background-color: #004d66;
+		padding-top: 0%;
+		width: 16%;
+	}
+
+	.sidebar{
+		position: fixed;
+		height: 100%;
+		background-color: #004d66;
+		padding-top: 1rem;
+		width: 16%;
+	}
+
+	.dashboard_content{
+		padding-top: 5%;
+		padding-left: 16%;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		height: 100%;
+	}
+	.content-login{
+		background-image: url("../../bground.jpg");
+		height: 100%;
+		width: 84%;
+		margin-left: 16%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	.content-header{
+		position: fixed;
+		background: #ff4d4d;
+		width: 100%;
+		margin-left: 16%;
+		z-index: 5;
+	}
+
+	.company-name{
+		padding-top: 3rem;
+		padding-bottom: 8rem;
+		width: 100%;
+	}
+	.c-icon{
+		padding-left: 2.4rem;
+		width: 100%;
+	}
+
+	.c-name{
+		padding-left: 0rem;
+		padding-top: 0.4rem;
+		width: 70%;
+	}
+
+	.content{
+		padding-top: 7%;
+		margin-left: -1%;
+		width: 100%;
+		height: 100%;
+	}
+
+	.tab_container{
+		margin-left: 9rem;
+		margin-right: 10rem;
+	}
+
+	.dashboard_tabs{
+		margin-top: 10%;
+		margin-left: 10%;
+	}
+
+	.card_tabs{
+		padding: 1.2rem;
+		width: 40%;
+		float: left;
+		margin-left: 0rem;
+		margin-top: 1rem;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+
+	.card_tabs_content{
+		background-color: transparent;
+		border-left: 20px solid #004d66;
+		border-top: 1px solid whitesmoke;
+		border-bottom: 2px solid whitesmoke;
+		border-right: 1px solid whitesmoke;
+		color: black;
+		border-radius: 0px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.card_tabs_name{
+		font-size: 20px;
+		letter-spacing: 0.3rem;
+		cursor: pointer;
+	}
+
+	.card_tabs_subname{
+		font-size: 16px;
+		letter-spacing: 0.8rem;
+		cursor: pointer;
+		margin-bottom: 6rem;
+	}
+
+	.footer {
+	   position: fixed;
+	   left: 0;
+	   bottom: 0;
+	   width: 16%;
+	   color: white;
+	   text-align: left;
+	   padding-left: 3rem;
+	   background-color: #00334d;
+	   padding-top: 1rem;
+	   padding-bottom: 0rem;
+	}
+
+
+
+	
+}
