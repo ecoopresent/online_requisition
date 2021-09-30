@@ -19,11 +19,11 @@ class Rca extends DBHandler {
     public function getRCAListdone($user_dept,$status)
     {
         if($status=="Finished"){
-            $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting, cash_status,approver_type FROM cashcheck WHERE department = '$user_dept' AND pr_id = 0 AND cash_status = '$status' OR department = '$user_dept' AND pr_id = 0 AND cash_status = 'Checked'";
+            $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting, cash_status,approver_type FROM cashcheck WHERE department = '$user_dept' AND cash_status = '$status' OR department = '$user_dept' AND pr_id = 0 AND cash_status = 'Checked'";
             $stmt = $this->prepareQuery($this->conn, $query);
             return $this->fetchAssoc($stmt);
         }else{
-            $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting, cash_status,approver_type FROM cashcheck WHERE department = '$user_dept' AND pr_id = 0 AND cash_status = '$status'";
+            $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting, cash_status,approver_type FROM cashcheck WHERE department = '$user_dept' AND cash_status = '$status'";
             $stmt = $this->prepareQuery($this->conn, $query);
             return $this->fetchAssoc($stmt);
         }
@@ -85,12 +85,12 @@ class Rca extends DBHandler {
     public function countPurchase($user_dept,$cash_status)
     {
         if($cash_status=="Finished"){
-            $query = "SELECT COUNT(id) FROM cashcheck WHERE department = '$user_dept' AND pr_id = 0 AND cash_status = '$cash_status' OR department = '$user_dept' AND pr_id = 0 AND cash_status = 'Checked'";
+            $query = "SELECT COUNT(id) FROM cashcheck WHERE department = '$user_dept' AND cash_status = '$cash_status' OR department = '$user_dept' AND pr_id = 0 AND cash_status = 'Checked'";
             $stmt = $this->prepareQuery($this->conn, $query);
             $row = $this->fetchRow($stmt);
             return $row[0];
         }else{
-            $query = "SELECT COUNT(id) FROM cashcheck WHERE department = '$user_dept' AND pr_id = 0 AND cash_status = '$cash_status'";
+            $query = "SELECT COUNT(id) FROM cashcheck WHERE department = '$user_dept' AND cash_status = '$cash_status'";
             $stmt = $this->prepareQuery($this->conn, $query);
             $row = $this->fetchRow($stmt);
             return $row[0];
