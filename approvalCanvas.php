@@ -13,6 +13,7 @@ $approver = $_GET['approver'];
 $status = $pr->checkCStatusOperation($id);
 $pr_details = $pr->getPRInfo($id);
 $pr_status = $pr_details[8];
+$deptReq = $pr_details[1];
 $alert_color = "success";
 if($pr_status=="Approved" || $pr_status=="Canvassed" || $pr_status=="PreFinished" || $pr_status=="Finished"){
     $pr_status = "approved";
@@ -116,12 +117,24 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected" || $pr_status=="Rejected1
                             <span class="float-end text-secondary">Signed</span>
                             <p class="text-secondary">Purchaser</p>
                         </li>
+                    <?php if ($deptReq == "IT"): ?>
+
+                        <li>
+                            <span class="fw-bold">Neil De Guzman</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Department Head</p>
+                        </li>
+                    
+                    <?php else: ?>
 
                         <li>
                             <span class="fw-bold">Jerome T. Chua</span>
                             <span class="float-end text-secondary">Pending</span>
                             <p class="text-secondary">Operation Incharge</p>
                         </li>
+                    
+                    <?php endif ?>
+                        
 
                         <li>
                             <span class="fw-bold">Homer C. Lim</span>
@@ -167,7 +180,13 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected" || $pr_status=="Rejected1
 
         </div>
     </div>
-    <script src="services/pr_approval/pr_approval.js"></script>
+    <!-- <script src="services/pr_approval/pr_approval.js"></script> -->
 </body>
+
+<script type="text/javascript">
+<?php 
+    include 'services/pr_approval/pr_approval.js';
+?>
+</script>
 
 </html>

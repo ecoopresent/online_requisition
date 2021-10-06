@@ -167,7 +167,11 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected" || $pr_status=="Rejected1
 
         </div>
     </div>
-    <script src="services/pr_approval/pr_approval.js"></script>
+    <!-- <script src="services/pr_approval/pr_approval.js"></script> -->
 </body>
-
+<script type="text/javascript">
+<?php 
+    include 'services/pr_approval/pr_approval.js';
+?>
+</script>
 </html>

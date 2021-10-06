@@ -534,16 +534,29 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;">
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%; margin: auto">
-                                                <tbody>
-                                               
-                                                    <tr>
+                                                <tbody>';
+
+                                    if($pr_info['department']=="IT"){
+
+                                    	$badie .= '<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Neil De Guzman</b>
+                                                        </td>
+                                                    </tr>';
+
+                                    }else{
+
+                                    	$badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Jerome T. Chua</b>
                                                         </td>
-                                                    </tr>
+                                                    </tr>';
 
-                                                    <tr>
+                                    }
+                                               
+                                       	 $badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim

@@ -174,5 +174,12 @@ require_once "component/header.php";
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/department/department.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/department/department.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+<?php 
+    include 'services/department/department.js';
+    include 'services/index/index.js';
+?>
+</script>

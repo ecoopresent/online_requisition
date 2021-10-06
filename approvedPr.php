@@ -231,5 +231,12 @@ if($notifval_side2 > 0){
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/approvedpr/approvedpr.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/approvedpr/approvedpr.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+<?php 
+    include 'services/approvedpr/approvedpr.js';
+    include 'services/index/index.js';
+?>
+</script>

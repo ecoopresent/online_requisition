@@ -21,11 +21,18 @@ $purchasing = new Purchasing();
 $pr_id = $_GET['id'];
 $pr_details = $purchasing->getPRDetails($pr_id);
 $pr_info = $purchasing->getPRInfo($pr_id);
+
 $canvas_info = $canvasing->getCanvasInfo($pr_id);
 $canvas_id = $canvas_info['canvas_id'];
 $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
 $name_Approver = "Jerome T. Chua";
+
+if($pr_info['department']=="IT"){
+	$e_address = "jericopresentacion8@gmail.com";
+// $e_address = "ndguzman@pmcgroup.com";
+	$name_Approver = "Neil De Guzman";
+}
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
 $button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
@@ -535,16 +542,29 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;">
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%; margin: auto">
-                                                <tbody>
-                                               
-                                                    <tr>
+                                                <tbody>';
+
+                                    if($pr_info['department']=="IT"){
+
+                                    	$badie .= '<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Neil De Guzman
+                                                        </td>
+                                                    </tr>';
+
+                                    }else{
+
+                                    	$badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Jerome T. Chua
                                                         </td>
-                                                    </tr>
+                                                    </tr>';
 
-                                                    <tr>
+                                    }
+
+                                       	$badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim

@@ -1,28 +1,27 @@
 <?php 
 
 date_default_timezone_set("Asia/Manila");
-$meta_title = 'Cash/Check Advance Request';
+$meta_title = 'Canvas Approval';
 
 require_once "component/approvalheader.php";
-
 require_once "controller/controller.db.php";
-require_once "model/model.approvedpr.php";
+require_once "model/model.pr.php";
 
-$approvedpr = new Approvedpr();
+$pr = new Pr();
 $id = $_GET['id'];
 $approver = $_GET['approver'];
-$status = $approvedpr->checkStatusbyPres($id);
-$rca_info = $approvedpr->getCashcheckinfo($id);
-$rca_status = $rca_info[0];
+$status = $pr->checkCStatus($id);
+$pr_details = $pr->getPRInfo($id);
+$pr_status = $pr_details[8];
+$deptReq = $pr_details[1];
 $alert_color = "success";
-if($rca_status=="Approved" || $rca_status=="Finished"){
-    $rca_status = "approved";
+if($pr_status=="Approved" || $pr_status=="Canvassed" || $pr_status=="PreFinished" || $pr_status=="Finished"){
+    $pr_status = "approved";
 }
-if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
-    $rca_status = "disapproved";
+if($pr_status=="Disapproved" || $pr_status=="Rejected" || $pr_status=="Rejected1"){
+    $pr_status = "disapproved";
     $alert_color = "danger";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -106,8 +105,8 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
             <div class="row">
                 <div class="col col-12">
                     <h5 class="text-start fw-bold">
-                        <span class="fw-bold">Cash/Check Advance Request</span>
-                        <span class="float-end fw-normal text-secondary"><small>RCAPR<?php echo date('Y').'-'.$id ?></small></span>
+                        <span class="fw-bold">Canvass Request</span>
+                        <span class="float-end fw-normal text-secondary"><small>#<?php echo $pr_details[4] ?></small></span>
                     </h5>
                     <?php if ($status=="") { ?>
                     <!-- -->
@@ -119,11 +118,23 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
                             <p class="text-secondary">Purchaser</p>
                         </li>
 
+                    <?php if ($deptReq == "IT"): ?>
+
+                        <li class="done">
+                            <span class="fw-bold">Neil De Guzman</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Department Head</p>
+                        </li>
+                    
+                    <?php else: ?>
+
                         <li class="done">
                             <span class="fw-bold">Jerome T. Chua</span>
-                            <span class="float-end text-secondary">Signed</span>
-                            <p class="text-secondary">Logistic Manager</p>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Operation Incharge</p>
                         </li>
+                    
+                    <?php endif ?>
 
                         <li>
                             <span class="fw-bold">Homer C. Lim</span>
@@ -145,8 +156,8 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
                     <div class="my-3 text-end">
 
                         <input type="hidden" id="approver" value="<?= $approver ?>" name />
-                        <button type="submit" class="btn btn-success mb-3" onclick="finalapprove_CashCheck(<?= $id ?>)">Approve</button>
-                        <button type="submit" class="btn btn-danger mb-3" onclick="finaldisapprove_CashCheck(<?= $id ?>)">Disapprove</button>
+                        <button type="submit" class="btn btn-success mb-3" onclick="approve_CanvasPres(<?= $id ?>)">Approve</button>
+                        <button type="submit" class="btn btn-danger mb-3" onclick="disapprove_CanvasPres(<?= $id ?>)">Disapprove</button>
                     </div>
                 </div>
 
@@ -156,7 +167,7 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
                 <div class="col col-12">
                     <div class="my-3 text-start">
                         <div class="alert alert-<?= $alert_color ?>" role="alert">
-                            This request was <?= $rca_status ?>. Thank You.
+                            This request was <?= $pr_status ?>. Thank You.
                         </div>
                     </div>
                 </div>
@@ -169,11 +180,11 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
 
         </div>
     </div>
-    <!-- <script src="services/approvedpr/approvedpr.js"></script> -->
+    <!-- <script src="services/pr_approval/pr_approval.js"></script> -->
 </body>
 <script type="text/javascript">
-<?php 
-    include 'services/approvedpr/approvedpr.js';
-?>
+    <?php 
+        include 'services/pr_approval/pr_approval.js';
+    ?>
 </script>
 </html>

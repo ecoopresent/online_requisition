@@ -169,7 +169,11 @@ if($v_status=="Disapproved" || $v_status=="Disapproved1"){
 
         </div>
     </div>
-    <script src="services/petty_approval/petty_approval.js"></script>
+    <!-- <script src="services/petty_approval/petty_approval.js"></script> -->
 </body>
-
+<script type="text/javascript">
+<?php 
+    include 'services/petty_approval/petty_approval.js';
+?>
+</script>
 </html>

@@ -61,5 +61,12 @@ require_once "component/header.php";
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/reports/reports.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/reports/reports.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+<?php 
+    include 'services/reports/reports.js';
+    include 'services/index/index.js';
+?>
+</script>
