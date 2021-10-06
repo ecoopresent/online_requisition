@@ -18,12 +18,22 @@ require_once "model/model.approvedpr.php";
 
 $approvedpr = new Approvedpr();
 $notifval_sidee = $approvedpr->countCanvasrejected();
+$notifval_sideePre = $approvedpr->countCanvasprefinished();
+
 if($notifval_sidee > 0){
     $border_sidee = "background-color: seagreen;color: white;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 50px";
 }else{
     $border_sidee = "";
     $notifval_sidee = "";
 }
+
+if($notifval_sideePre > 0){
+    $border_sideepre = "background-color: seagreen;color: white;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 50px";
+}else{
+    $border_sideepre = "";
+    $notifval_sideePre = "";
+}
+
  ?>
         <?php include 'component/sidenavPr.php'; ?>
 
@@ -45,7 +55,8 @@ if($notifval_sidee > 0){
                                     <option value="Approved"> Pre-Approved RCA </option>
                             </select>
 
-                            <button class="btn btn-sm btn-warning" type="button" id="btn_rejected"> <label class="text-dark">Rejected Canvas</label> <span style="<?php echo $border_sidee; ?>"><?php echo $notifval_sidee; ?></span></button>
+                            <button class="btn btn-sm btn-warning" type="button" id="btn_pre_apps"> <label class="text-dark">Pre-Approved Canvas</label> <span style="<?php echo $border_sideepre; ?>"><?php echo $notifval_sideePre; ?></span></button>
+                            <button class="btn btn-sm btn-warning" type="button" id="btn_rejecteds"> <label class="text-dark">Rejected Canvas</label> <span style="<?php echo $border_sidee; ?>"><?php echo $notifval_sidee; ?></span></button>
                         <table id="Prequest_table" class="table">
                             <thead>
                                 <th class="bg-header"></th>

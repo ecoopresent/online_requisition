@@ -1,4 +1,17 @@
 <?php 
+
+// error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';
+// $mail = new PHPMailer();$mail->Host = "smtp.pmc.ph";$mail->IsHTML(true);$mail->Username = "no-reply@pmc.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@pmc.ph", "");
+
+$e_address = "jericopresentacion08@gmail.com";
+// $e_address = "homer.lim@pmc.ph";
+
+require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
+$mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
+
+
+
+
 require_once('tcpdf_include.php');
 require_once "../../controller/controller.db.php";
 require_once "../../model/model.purchasing.php";
@@ -10,7 +23,17 @@ $pr_id = $_GET['id'];
 $pr_details = $purchasing->getPRDetails($pr_id);
 $pr_info = $purchasing->getPRInfo($pr_id);
 $canvas_info = $canvasing->getCanvasInfo($pr_id);
-$canvas_details = $canvasing->getCanvasDetails($canvas_info['canvas_id']);
+$canvas_id = $canvas_info['canvas_id'];
+$canvas_details = $canvasing->getCanvasDetails($canvas_id);
+$depts = $pr_info['department'];
+$name_Approver = "Homer C. Lim";
+
+// $button_link = "https://pmc.ph/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
+$newFolder = "CANVAS".date('Y')."(".$pr_id.")";
+$canvas_attachments = $canvasing->getAttachments($pr_id);
+$pr_number = $pr_info['pr_no'];
+$mail->Subject = "Dept: ".$depts."- Canvass Requisition ( ".$pr_number." )";
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -50,7 +73,7 @@ $pdf->setBarcode(date('Y-m-d H:i:s'));
 // set font
 $pdf->SetFont('dejavusans', '', 11);
 // add a page
-$pdf->AddPage('P','Legal');
+$pdf->AddPage('P','A4');
 $pdf->setJPEGQuality(75);
 // Image example with resizing
 $pdf->Image('logo.png', 7, 7,63, 15, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
@@ -130,9 +153,9 @@ for($x=0;$x<$rows;$x++){
 
  	  $html .= '<tr>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>REQUESTED BY:</b></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">'.$pr_info['requested_by'].'<br> Signed '.$pr_info['date_prepared'].'</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">'.$pr_info['requested_by'].'<br>Signed '.$pr_info['date_prepared'].'</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>APPROVED BY:</b></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br> Signed '.$pr_info['date_approve'].'</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br>Signed '.$pr_info['date_approve'].'</td>
 				</tr>
 				<tr>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
@@ -280,27 +303,27 @@ foreach ($canvas_details as $kk => $vv) {
 				if($totalprice1==0){
 					$totalprice1 = "";
 				}else{
-					$totalprice1 = number_format($totalprice1, 2);
+					$totalprice1 = number_format($totalprice1,2);
 				}
 				if($totalprice2==0){
 					$totalprice2 = "";
 				}else{
-					$totalprice2 = number_format($totalprice2, 2);
+					$totalprice2 = number_format($totalprice2,2);
 				}
 				if($totalprice3==0){
 					$totalprice3 = "";
 				}else{
-					$totalprice3 = number_format($totalprice3, 2);
+					$totalprice3 = number_format($totalprice3,2);
 				}
 				if($totalprice4==0){
 					$totalprice4 = "";
 				}else{
-					$totalprice4 = number_format($totalprice4, 2);
+					$totalprice4 = number_format($totalprice4,2);
 				}
 				if($totalprice5==0){
 					$totalprice5 = "";
 				}else{
-					$totalprice5 = number_format($totalprice5, 2);
+					$totalprice5 = number_format($totalprice5,2);
 				}
 
 				$html .= '<tr>
@@ -333,17 +356,6 @@ for($x=0;$x<$rows;$x++){
 }
 
 
-
-$approvedby = "";
-$preapprovedby = "";
-if($canvas_info['operation_incharge'] != "" || $canvas_info['operation_incharge'] != null){
-
-	$preapprovedby = $canvas_info['operation_incharge'].'<br> Signed '.$canvas_info['oi_date_approved'];
-}
-
-if($canvas_info['approved_by'] != "" || $canvas_info['approved_by'] != null){
-	$approvedby = $canvas_info['approved_by'].'<br> Signed '.$canvas_info['date_approved'];
-}
 	$html .= '<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="left"><b>REMARKS:</b></td>
 					<td style="width: 40%" align="center">'.$canvas_info['remarks'].'</td>
@@ -353,8 +365,8 @@ if($canvas_info['approved_by'] != "" || $canvas_info['approved_by'] != null){
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center">'.$preapprovedby.'</td>
-					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center">'.$approvedby.'</td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center">'.$canvas_info['operation_incharge'].'<br>Signed '.$canvas_info['oi_date_approved'].'</td>
+					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center"></td>
 				</tr>
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
@@ -376,6 +388,223 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Ln();
 
 //Close and output PDF document
-$pdf->Output('PR.pdf', 'I');
+$pdfname = 'Purchase Request.pdf';
+// $pdffile = $pdf->Output('PR.pdf', 'I');
+// exit();
+$pdffile = $pdf->Output('PR.pdf', 'S');
+
+	// $badie = "<br><a href='http://192.168.101.89/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Approve&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: green;color: white;border-radius: 5px;'>Approve</a> <a href='http://192.168.101.89/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Disapprove&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: red;color: white;border-radius: 5px;'>Disapprove</a><br>";
+
+	$badie = '<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ Email Subject }}</title>
+        <style>
+            html,
+            body,
+            table,
+            tbody,
+            tr,
+            td,
+            div,
+            p,
+            ul,
+            ol,
+            li,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                font-size: 0;
+                line-height: 0;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+            table {
+                border-spacing: 0;
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+            }
+            table td {
+                border-collapse: collapse;
+            }
+            .ExternalClass {
+                width: 100%;
+            }
+            .ExternalClass,
+            .ExternalClass p,
+            .ExternalClass span,
+            .ExternalClass font,
+            .ExternalClass td,
+            .ExternalClass div {
+                line-height: 100%;
+            }
+
+            .ReadMsgBody {
+                width: 100%;
+            }
+            img {
+                -ms-interpolation-mode: bicubic;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: Arial;
+            }
+            h1 {
+                font-size: 28px;
+                line-height: 32px;
+                padding-top: 10px;
+                padding-bottom: 24px;
+            }
+            h2 {
+                font-size: 24px;
+                line-height: 28px;
+                padding-top: 10px;
+                padding-bottom: 20px;
+            }
+            h3 {
+                font-size: 20px;
+                line-height: 24px;
+                padding-top: 10px;
+                padding-bottom: 16px;
+            }
+            p {
+                font-size: 16px;
+                line-height: 20px;
+                font-family: Georgia, Arial, sans-serif;
+            }
+            </style>
+            <style>
+                
+            .container600 {
+                width: 600px;
+                max-width: 100%;
+            }
+            @media all and (max-width: 599px) {
+                .container600 {
+                    width: 100% !important;
+                }
+            }
+        </style>
+
+    </head>
+    <body style="background-color:#F4F4F4;">
+        <center>
+    
+          <table class="container600" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:calc(100%);max-width:calc(600px);margin: 0 auto;">
+            <tr>
+              <td width="100%" style="text-align: left;">
+    
+                <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
+                    <tr>
+                        <td style="background-color:#FFFFFF;color:#000000;padding:30px;">
+                            <img src="https://pmc.ph/assets/logo.png" width="160" style="display: block; margin: auto" />
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
+                    <tr>
+                        <td style="padding:80px 50px; background-color:#F8F7F0;">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 18px; font-weight: bold; line-height:30px;text-align:center;">
+                                            Canvass Requisition
+                                        </td>
+                                    </tr>
+                                    <tr><td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;"></td></tr>
+                                    <tr><td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;"></td></tr>
+                                    
+                                    <tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;">
+                                            <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%; margin: auto">
+                                                <tbody>
+                                               
+                                                    <tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Neil De Guzman</b>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Homer C. Lim</b>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+                                    <tr><td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;"></td></tr>
+                                    <tr><td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;"></td></tr>
+                                    
+                                    <tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;">
+                                            For your approval, Please see attached files.
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
+                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #84ad22;">Click Here to Approve or Disapprove</span></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
+                    <tr>
+                        <td width="100%" style="min-width:100%;background-color:#58585A;color:#ffffff;padding:30px;">
+                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Progressive Medical Corporation</p>
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+    
+        </center>
+    </body>
+    </html>';
+ 	$mail->Body = $badie;
+    $mail->addStringAttachment($pdffile,$pdfname);
+    $mail->isHTML(true);
+
+    $mail->AddAddress($e_address);
+
+    foreach($canvas_attachments as $k=>$v) {
+
+    $file_to_attach = '../../attachments/'.$newFolder.'/'.$v['attachment'];
+    $mail->AddAttachment( $file_to_attach , $v['attachment'] );
+
+    }
+   
+    if(!$mail->Send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+    } else {
+    // echo "Email sent";
+    header('location:../../approvedPr.php');
+    }
+
 
  ?>

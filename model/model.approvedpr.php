@@ -17,7 +17,9 @@ class Approvedpr extends DBHandler {
         }else if($canvas_status=="Rejected"){
             $WHERE = "a.pr_status = 'Rejected' ORDER BY c.date_approved ASC";
         }
-        else{
+        else if($canvas_status=="PreFinished"){
+            $WHERE = "a.pr_status = 'PreFinished' ORDER BY c.date_approved ASC";
+        }else{
             $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status' ORDER BY c.date_approved ASC";
         }
         $query = "SELECT b.cash_status,a.id, a.department, a.date_prepared, a.date_needed, a.pr_no, a.purpose, a.requested_by, a.approved_by, a.pr_status,c.date_approved,a.pr_type,b.id AS idRCA FROM pr a
@@ -40,6 +42,13 @@ class Approvedpr extends DBHandler {
 
     public function countCanvasrejected(){
         $query = "SELECT COUNT(id) FROM pr WHERE pr_status = 'Rejected' ";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $row = $this->fetchRow($stmt);
+        return $row[0];
+    }
+
+    public function countCanvasprefinished(){
+        $query = "SELECT COUNT(id) FROM pr WHERE pr_status = 'PreFinished' ";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         return $row[0];

@@ -52,6 +52,10 @@ switch($mode) {
                 $approvedpr[$k]['action'] = "<button class='btn btn-primary btn-sm' disabled=''><i class='fas fa-sm fa-mouse-pointer'></i> Request Cash Advance</button>
                                         <button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
 
+            }else if($v['pr_status'] == 'PreFinished'){
+                $approvedpr[$k]['action'] = "<button class='btn btn-success btn-sm' onclick='resendCanvas(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>
+                                        <button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
+
             }else if($v['pr_status'] == "Finished" && $v['cash_status'] == "Approved"){
                 $approvedpr[$k]['action'] = "<button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR</button> <button class='btn btn-primary btn-sm' onclick='view_RCA(".$v['idRCA'].")'><i class='fas fa-sm fa-eye'></i> View RCA</button> <button class='btn btn-success btn-sm' onclick='resendRCA(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>";
             }else{

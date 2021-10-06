@@ -39,14 +39,24 @@ $(document).ready(function(){
 
     });
 
-    $('#btn_rejected').on('click',function(){
+    $('#btn_rejecteds').on('click',function(){
         var canvas_status = "Rejected";
+        load_Purchasing(canvas_status);
+    });
+
+    $('#btn_pre_apps').on('click',function(){
+        var canvas_status = "PreFinished";
         load_Purchasing(canvas_status);
     });
 
     generateDepartmentSelect();
            
 });
+
+function resendCanvas(pr_id){
+  toggleLoad();
+  window.location.href="tcpdf/examples/pr_list_email_FinalResend.php?id="+pr_id;
+}
 
 function send_cashcheck_callback(){
   var id = $('#cash_id').val();
