@@ -134,9 +134,15 @@ function sendCanvas_callback(){
     var c = post_Data('controller.canvasing.php?mode=updateStatus',{
         id: pr_id
     });
-    // alert("sending.....");
-    toggleLoad();
-    window.location.href="tcpdf/examples/pr_list_email.php?id="+pr_id;
+
+    if(c.department=="IT"){
+        toggleLoad();
+        window.location.href="tcpdf/examples/pr_list_email_IT.php?id="+pr_id;
+    }else{
+        toggleLoad();
+        window.location.href="tcpdf/examples/pr_list_email.php?id="+pr_id;
+    }
+    
 }
 
 function sendCanvaslocal(){

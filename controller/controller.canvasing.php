@@ -84,6 +84,16 @@ switch($mode) {
         $response = array("code"=>1,"message"=>"Canvas Status Updated");
         break;
 
+    case "UpdateCanvasIT";
+        $id = Sanitizer::filter('id', 'post');
+        $canvas_status = Sanitizer::filter('canvas_status', 'post');
+        $remarks = Sanitizer::filter('remarks', 'post');
+        $approver = Sanitizer::filter('approver', 'post');
+        $canvasing->Update_CanvasIT($id,$canvas_status,$remarks,$approver);
+
+        $response = array("code"=>1,"message"=>"Canvas Status Updated");
+        break;
+
     case "UpdateCanvasLocal";
         $id = Sanitizer::filter('id', 'post');
         $canvas_status = "Submitted";
@@ -97,8 +107,8 @@ switch($mode) {
     case "updateStatus";
         $pr_id = Sanitizer::filter('id', 'post');
         $canvas_status = "Submitted";
-        $canvasing->update_Status($pr_id,$canvas_status);
-        $response = array("code"=>1,"message"=>"Canvas Status Updated");
+        $depts = $canvasing->update_Status($pr_id,$canvas_status);
+        $response = array("code"=>1,"message"=>"Canvas Status Updated","department"=>$depts);
         break;
 
     case "updateStatusimport";

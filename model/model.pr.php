@@ -161,4 +161,12 @@ class Pr extends DBHandler {
         return $row[0];
     }
 
+    public function checkCStatusIT($id){
+        
+        $query = "SELECT operation_incharge FROM canvas WHERE pr_id = '$id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $row = $this->fetchRow($stmt);
+        return $row[0];
+    }
+
 }

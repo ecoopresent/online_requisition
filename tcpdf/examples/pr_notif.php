@@ -229,40 +229,40 @@ foreach ($canvas_details as $kk => $vv) {
 		$priceUnit1 = "";
 	}else{
 		$priceUnit1 = $vv['price1'] / $vv['qty'];
-		$priceUnit1 = number_format($priceUnit1);
-		$vv['price1'] = number_format($vv['price1']);
+		$priceUnit1 = number_format($priceUnit1,2);
+		$vv['price1'] = number_format($vv['price1'],2);
 	}
 	if($vv['price2']==0){
 		$vv['price2'] = "";
 		$priceUnit2 = "";
 	}else{
 		$priceUnit2 = $vv['price2'] / $vv['qty'];
-		$priceUnit2 = number_format($priceUnit2);
-		$vv['price2'] = number_format($vv['price2']);
+		$priceUnit2 = number_format($priceUnit2,2);
+		$vv['price2'] = number_format($vv['price2'],2);
 	}
 	if($vv['price3']==0){
 		$vv['price3'] = "";
 		$priceUnit3 = "";
 	}else{
 		$priceUnit3 = $vv['price3'] / $vv['qty'];
-		$priceUnit3 = number_format($priceUnit3);
-		$vv['price3'] = number_format($vv['price3']);
+		$priceUnit3 = number_format($priceUnit3,2);
+		$vv['price3'] = number_format($vv['price3'],2);
 	}
 	if($vv['price4']==0){
 		$vv['price4'] = "";
 		$priceUnit4 = "";
 	}else{
 		$priceUnit4= $vv['price4'] / $vv['qty'];
-		$priceUnit4 = number_format($priceUnit4);
-		$vv['price4'] = number_format($vv['price4']);
+		$priceUnit4 = number_format($priceUnit4,2);
+		$vv['price4'] = number_format($vv['price4'],2);
 	}
 	if($vv['price5']==0){
 		$vv['price5'] = "";
 		$priceUnit5 = "";
 	}else{
 		$priceUnit5 = $vv['price5'] / $vv['qty'];
-		$priceUnit5 = number_format($priceUnit5);
-		$vv['price5'] = number_format($vv['price5']);
+		$priceUnit5 = number_format($priceUnit5,2);
+		$vv['price5'] = number_format($vv['price5'],2);
 	}
 	if($vv['qty']==0){
 		$vv['qty'] = "";
@@ -300,27 +300,27 @@ foreach ($canvas_details as $kk => $vv) {
 				if($totalprice1==0){
 					$totalprice1 = "";
 				}else{
-					$totalprice1 = number_format($totalprice1);
+					$totalprice1 = number_format($totalprice1,2);
 				}
 				if($totalprice2==0){
 					$totalprice2 = "";
 				}else{
-					$totalprice2 = number_format($totalprice2);
+					$totalprice2 = number_format($totalprice2,2);
 				}
 				if($totalprice3==0){
 					$totalprice3 = "";
 				}else{
-					$totalprice3 = number_format($totalprice3);
+					$totalprice3 = number_format($totalprice3,2);
 				}
 				if($totalprice4==0){
 					$totalprice4 = "";
 				}else{
-					$totalprice4 = number_format($totalprice4);
+					$totalprice4 = number_format($totalprice4,2);
 				}
 				if($totalprice5==0){
 					$totalprice5 = "";
 				}else{
-					$totalprice5 = number_format($totalprice5);
+					$totalprice5 = number_format($totalprice5,2);
 				}
 
 				$html .= '<tr>
@@ -351,8 +351,10 @@ for($x=0;$x<$rows;$x++){
 				</tr>';	
 
 }
-
-
+$dept_sign = "";
+if($pr_info['department']=="IT"){
+	$dept_sign = $canvas_info['operation_incharge'].'<br>Signed '.$canvas_info['oi_date_approved'];
+}
 	$html .= '<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="left"><b>REMARKS:</b></td>
 					<td style="width: 40%" align="center">'.$canvas_info['remarks'].'</td>
@@ -362,13 +364,13 @@ for($x=0;$x<$rows;$x++){
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center">'.$dept_sign.'</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center">'.$canvas_info['approved_by'].'<br>Signed '.$canvas_info['date_approved'].'</td>
 				</tr>
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">DEPT. HEAD</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">PRESIDENT</td>
 				</tr>
 				<tr>

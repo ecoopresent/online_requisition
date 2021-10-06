@@ -28,8 +28,8 @@ $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
 $name_Approver = "Homer C. Lim";
 
-// $button_link = "https://pmc.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+// $button_link = "https://pmc.ph/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
@@ -365,13 +365,13 @@ for($x=0;$x<$rows;$x++){
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center">'.$canvas_info['operation_incharge'].'<br>Signed '.$canvas_info['oi_date_approved'].'</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center"></td>
 				</tr>
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">DEPT. HEAD</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">PRESIDENT</td>
 				</tr>
 				<tr>
@@ -537,7 +537,14 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Neil De Guzman</b>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Homer C. Lim</b>
                                                         </td>
                                                     </tr>
 
@@ -596,7 +603,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
     echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
     // echo "Email sent";
-    header('location:../../purchasing.php');
+    header('location:../../approvalCanvasIT.php?id='.$pr_id.'&approver=');
     }
 
 

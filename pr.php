@@ -471,5 +471,12 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/pr/pr.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/pr/pr.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+    <?php 
+        include 'services/pr/pr.js';
+        include 'services/index/index.js';
+    ?>
+</script>

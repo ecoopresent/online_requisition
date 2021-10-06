@@ -563,5 +563,12 @@ $borderapproved = "background-color: #00334d;color: white;padding-left: 5px;padd
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/pettycash/pettycash.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/pettycash/pettycash.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+    <?php 
+        include 'services/pettycash/pettycash.js';
+        include 'services/index/index.js';
+    ?>
+</script>

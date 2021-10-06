@@ -493,5 +493,12 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/rca/rca.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/rca/rca.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+    <?php 
+        include 'services/rca/rca.js';
+        include 'services/index/index.js';
+    ?>
+</script>

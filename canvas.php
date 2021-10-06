@@ -217,5 +217,11 @@ $pr_type = $canvasing->getPrtype($pr_id);
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/canvasing/canvasing.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/canvasing/canvasing.js"></script>
+<script src="services/index/index.js"></script> -->
+<script type="text/javascript">
+    <?php 
+        include 'services/canvasing/canvasing.js';
+        include 'services/index/index.js';
+    ?>
+</script>

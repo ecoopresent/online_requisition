@@ -88,4 +88,6 @@ require_once "component/header.php";
 require_once "component/footer.php";
 ?>               
 
-<script src="services/login/login.js"></script>
+<script type="text/javascript">
+    <?php include 'services/login/login.js'; ?>
+</script>

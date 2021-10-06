@@ -169,7 +169,11 @@ if($rca_status=="Disapproved" || $rca_status=="Disapproved2"){
 
         </div>
     </div>
-    <script src="services/approvedpr/approvedpr.js"></script>
+    <!-- <script src="services/approvedpr/approvedpr.js"></script> -->
 </body>
-
+<script type="text/javascript">
+    <?php 
+        include 'services/approvedpr/approvedpr.js';
+    ?>
+</script>
 </html>

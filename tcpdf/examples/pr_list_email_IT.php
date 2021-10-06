@@ -4,7 +4,7 @@
 // $mail = new PHPMailer();$mail->Host = "smtp.pmc.ph";$mail->IsHTML(true);$mail->Username = "no-reply@pmc.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@pmc.ph", "");
 
 $e_address = "jericopresentacion08@gmail.com";
-// $e_address = "homer.lim@pmc.ph";
+// $e_address = "ndguzman@pmcgroup.com";
 
 require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
 $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
@@ -26,10 +26,10 @@ $canvas_info = $canvasing->getCanvasInfo($pr_id);
 $canvas_id = $canvas_info['canvas_id'];
 $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
-$name_Approver = "Homer C. Lim";
+$name_Approver = "Neil De Guzman";
 
-// $button_link = "https://pmc.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+// $button_link = "https://pmc.ph/online_requisition/approvalCanvasIT.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalCanvasIT.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
@@ -537,7 +537,14 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Neil De Guzman</b>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Homer C. Lim</b>
                                                         </td>
                                                     </tr>
 

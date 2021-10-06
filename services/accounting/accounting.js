@@ -27,7 +27,8 @@ function load_Purchasing(cash_status){
 }
 
 function open_Cash(id){
-  window.open("tcpdf/examples/cashcheck.php?id="+id);
+  // window.open("tcpdf/examples/cashcheck.php?id="+id);
+  alert("w");
 }
 
 function approve_Cash(id){

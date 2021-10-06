@@ -19,7 +19,7 @@ class Canvasing extends DBHandler {
 
     public function getCanvasInfo($pr_id)
     {
-        $query = "SELECT id, pr_id, supplier1, supplier2, supplier3, supplier4, supplier5, remarks, approved_by, canvas_date,date_approved FROM canvas WHERE pr_id = '$pr_id'";
+        $query = "SELECT id, pr_id, supplier1, supplier2, supplier3, supplier4, supplier5, remarks, approved_by, canvas_date,date_approved,operation_incharge, oi_date_approved FROM canvas WHERE pr_id = '$pr_id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         $canvas_id = $row[0];
@@ -33,8 +33,10 @@ class Canvasing extends DBHandler {
         $approved_by = $row[8];
         $canvas_date = $row[9];
         $date_approved = $row[10];
+        $operation_incharge = $row[11];
+        $oi_date_approved = $row[12];
 
-        return array("canvas_id"=>$canvas_id,"supplier1"=>$supplier1,"supplier2"=>$supplier2,"supplier3"=>$supplier3,"supplier4"=>$supplier4,"supplier5"=>$supplier5,"remarks"=>$remarks,"canvas_date"=>$canvas_date,"approved_by"=>$approved_by,"pr_id"=>$pr_id,"date_approved"=>$date_approved);
+        return array("canvas_id"=>$canvas_id,"supplier1"=>$supplier1,"supplier2"=>$supplier2,"supplier3"=>$supplier3,"supplier4"=>$supplier4,"supplier5"=>$supplier5,"remarks"=>$remarks,"canvas_date"=>$canvas_date,"approved_by"=>$approved_by,"pr_id"=>$pr_id,"date_approved"=>$date_approved,"operation_incharge"=>$operation_incharge,"oi_date_approved"=>$oi_date_approved);
     }
 
     public function getPrtype($pr_id)
@@ -54,7 +56,7 @@ class Canvasing extends DBHandler {
 
     public function getCanvasInfos($canvas_id)
     {
-        $query = "SELECT id, pr_id, supplier1, supplier2, supplier3, supplier4, supplier5, remarks, approved_by, canvas_date,date_approved FROM canvas WHERE id = '$canvas_id'";
+        $query = "SELECT id, pr_id, supplier1, supplier2, supplier3, supplier4, supplier5, remarks, approved_by, canvas_date,date_approved,operation_incharge, oi_date_approved FROM canvas WHERE id = '$canvas_id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         $canvas_id = $row[0];
@@ -68,8 +70,10 @@ class Canvasing extends DBHandler {
         $approved_by = $row[8];
         $canvas_date = $row[9];
         $date_approved = $row[10];
+        $operation_incharge = $row[11];
+        $oi_date_approved = $row[12];
 
-        return array("canvas_id"=>$canvas_id,"supplier1"=>$supplier1,"supplier2"=>$supplier2,"supplier3"=>$supplier3,"supplier4"=>$supplier4,"supplier5"=>$supplier5,"remarks"=>$remarks,"canvas_date"=>$canvas_date,"approved_by"=>$approved_by,"pr_id"=>$pr_id,"date_approved"=>$date_approved);
+        return array("canvas_id"=>$canvas_id,"supplier1"=>$supplier1,"supplier2"=>$supplier2,"supplier3"=>$supplier3,"supplier4"=>$supplier4,"supplier5"=>$supplier5,"remarks"=>$remarks,"canvas_date"=>$canvas_date,"approved_by"=>$approved_by,"pr_id"=>$pr_id,"date_approved"=>$date_approved,"operation_incharge"=>$operation_incharge,"oi_date_approved"=>$oi_date_approved);
     }
 
     public function deleteAttche($id,$attachment,$preq_id)
@@ -131,6 +135,19 @@ class Canvasing extends DBHandler {
         return $this->execute($stmt);
     }
 
+    public function Update_CanvasIT($id,$canvas_status,$remarks,$approver)
+    {  
+
+        $date_today = date('Y-m-d');
+        $query = "UPDATE pr SET pr_status = '$canvas_status' WHERE id = '$id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $this->execute($stmt);
+
+        $query = "UPDATE canvas SET operation_incharge = '$approver',remarks = '$remarks',oi_date_approved = '$date_today' WHERE pr_id = '$id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        return $this->execute($stmt);
+    }
+
     public function Update_CanvasLocal($id,$canvas_status,$remarks,$approver)
     {  
 
@@ -155,7 +172,14 @@ class Canvasing extends DBHandler {
     {
         $query = "UPDATE canvas SET canvas_status = '$canvas_status' WHERE pr_id = '$pr_id'";
         $stmt = $this->prepareQuery($this->conn, $query);
-        return $this->execute($stmt);
+        $this->execute($stmt);
+
+        $query = "SELECT department FROM pr WHERE id = '$pr_id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $row = $this->fetchRow($stmt);
+        $department = $row[0];
+
+        return $department;
     }
 
     public function update_Statusimport($pr_id,$canvas_status)

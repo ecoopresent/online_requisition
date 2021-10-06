@@ -96,5 +96,12 @@ require_once "component/header.php";
 <?php
 require_once "component/footer.php";
 ?>  
-<script src="services/petty_accounting/petty_accounting.js"></script>
-<script src="services/index/index.js"></script>
+<!-- <script src="services/petty_accounting/petty_accounting.js"></script>
+<script src="services/index/index.js"></script> -->
+
+<script type="text/javascript">
+    <?php 
+        include 'services/petty_accounting/petty_accounting.js';
+        include 'services/index/index.js';
+    ?>
+</script>

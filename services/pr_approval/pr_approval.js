@@ -78,6 +78,24 @@ function approve_Canvas(id){
   
 }
 
+function approve_CanvasIT(id){
+
+  var r = confirm("Approve Canvas?");
+  if(r==true){
+    var c = post_Data('controller.canvasing.php?mode=UpdateCanvasIT',{
+      id: id,
+      canvas_status: "PreFinished",
+      remarks: $('#remarks').val(),
+      approver: $('#approver').val()
+      
+    });
+    toggleLoad();
+    // window.location.href="tcpdf/examples/pr_notif.php?id="+id; 
+    window.location.href="tcpdf/examples/pr_list_email_Final.php?id="+id;
+  }
+
+}
+
 function approve_CanvasLocal(id){
   var r = confirm("Approve Canvas?");
   if(r==true){
