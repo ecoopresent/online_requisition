@@ -40,6 +40,26 @@ class Pettycash extends DBHandler {
 
     }
 
+
+
+    public function getAllapprover($user_dept)
+    {
+        $query = "SELECT id, department_head FROM department WHERE department = '$user_dept'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        return $this->fetchAssoc($stmt);
+    }
+
+    public function get_Approver($id)
+    {
+        $query = "SELECT id, department, department_head, department_email FROM department WHERE id = '$id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $row = $this->fetchRow($stmt);
+        $department_head = $row[2];
+        $department_email = $row[3];
+        return array("department_head"=>$department_head,"department_email"=>$department_email);
+        
+    }
+
     public function getAllDepartment()
     {
         $query = "SELECT id, department FROM department";
@@ -146,7 +166,14 @@ class Pettycash extends DBHandler {
         $pettycash_status = "Submitted";
         $query = "UPDATE pettycash SET pettycash_status = '$pettycash_status', liquidation = '$LiquiType',actual_amount = '$actual_amount' WHERE id = '$pettycash_id'";
         $stmt = $this->prepareQuery($this->conn, $query);
-        return $this->execute($stmt);
+        $this->execute($stmt);
+
+        $query = "SELECT a.approved_by,b.department_email FROM pettycash a LEFT JOIN department b ON a.approved_by = b.department_head WHERE a.id = '$pettycash_id'";
+        $stmt = $this->prepareQuery($this->conn, $query);
+        $row = $this->fetchRow($stmt);
+        $d_name = $row[0];
+        $d_email = $row[1];
+        return array("d_name"=>$d_name,"d_email"=>$d_email);
     }
 
     public function add_liquidation($pettycash_id,$name,$liquidation_date,$branch,$position,$eparticular,$full_name)

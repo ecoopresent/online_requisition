@@ -30,6 +30,19 @@ switch($mode) {
 
     break;
 
+    case "option";
+        $pettycashs = $pettycash->getAllapprover($user_dept);
+        $html = "";
+        
+        foreach($pettycashs as $k=>$v){
+            $id = $pettycashs[$k]["id"];
+            $name = $pettycashs[$k]["department_head"];
+            $html .= "<option value='$id'>$name</option>";
+        }
+
+        $response = array("code"=>1,"html"=>$html);
+    break;
+
     case "updatePetty";
 
         $PettyID = Sanitizer::filter('PettyID', 'post');
@@ -55,6 +68,12 @@ switch($mode) {
         $response = array("code"=>1, "message"=>"Petty Cash Deleted");
         
     break;
+    case "getApprover";
+
+        $id = Sanitizer::filter('id', 'post');
+        $response = $pettycash->get_Approver($id);
+
+    break;
 
     case "tableList";
         $status = Sanitizer::filter('status', 'get');
@@ -66,12 +85,12 @@ switch($mode) {
                     $pettycashstatus = "Floating";
                     $pettycash[$k]['action'] = "<button class='btn btn-sm btn-success' onclick='editPetty(".$v['id'].",\"".$v['department']."\",\"".$v['voucher_date']."\",\"".$v['voucher_no']."\",\"".$v['particulars']."\",\"".$v['cash_advance']."\",\"".$v['actual_amount']."\",\"".$v['charge_to']."\",\"".$v['liquidated_on']."\",\"".$v['requested_by']."\")'><i class='fas fa-sm fa-edit'></i> Edit</button>
                                             <button class='btn btn-sm btn-danger' onclick='deletePetty(".$v['id'].")'><i class='fas fa-sm fa-trash'></i> Delete</button>
-                                            <button class='btn btn-sm btn-warning' onclick='sendPetty(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Submit</button>";
+                                            <button class='btn btn-sm btn-warning' onclick='sendPetty(".$v['id'].",\"".$v['department']."\")'><i class='fas fa-sm fa-paper-plane'></i> Submit</button>";
                 }else if($pettycashstatus == "Sent"){
                     $pettycashstatus = "Sent";
                     $pettycash[$k]['action'] = "<button class='btn btn-sm btn-success' onclick='editPetty(".$v['id'].",\"".$v['department']."\",\"".$v['voucher_date']."\",\"".$v['voucher_no']."\",\"".$v['particulars']."\",\"".$v['cash_advance']."\",\"".$v['actual_amount']."\",\"".$v['charge_to']."\",\"".$v['liquidated_on']."\",\"".$v['requested_by']."\")'><i class='fas fa-sm fa-edit'></i> Edit</button>
                                             <button class='btn btn-sm btn-danger' onclick='deletePetty(".$v['id'].")'><i class='fas fa-sm fa-trash'></i> Delete</button>
-                                            <button class='btn btn-sm btn-warning' onclick='sendPetty(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Re-send</button>";
+                                            <button class='btn btn-sm btn-warning' onclick='sendPetty(".$v['id'].",\"".$v['department']."\")'><i class='fas fa-sm fa-paper-plane'></i> Re-send</button>";
                 }else if($pettycashstatus == "PreApp"){
                     $pettycash[$k]['action'] = "<button class='btn btn-sm btn-primary' onclick='reSendPC(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Re-send</button>";
                 }else if($pettycashstatus == "Pending"){
@@ -128,8 +147,8 @@ switch($mode) {
        $pettycash_id = Sanitizer::filter('pettycash_id', 'post');
        $actual_amount = Sanitizer::filter('actual_amount', 'post');
 
-       $pettycash->SubmitPetty($LiquiType,$pettycash_id,$actual_amount);
-       $response = array("code"=>1, "message"=>"Petty Cash Updated");
+       $response = $pettycash->SubmitPetty($LiquiType,$pettycash_id,$actual_amount);
+       
     break;
 
     case "addLiqui";

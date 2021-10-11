@@ -361,6 +361,7 @@ $borderapproved = "background-color: #00334d;color: white;padding-left: 5px;padd
                                 <input type="number" id="super_actual_amount" name="">
                                 <input type="text" id="name_ApproverWL" placeholder="Head Name" value="<?php echo $department_head ?>" name="">
                                 <input type="text" id="email_ApproverWL" placeholder="Head Email" value="<?php echo $department_email ?>" name="">
+                                <input type="text" id="pettyID_WL" placeholder="Head Email" value="" name="">
                                 <button class="btn btn-sm btn-success" id="saveTypewithLiqui" type="button" onclick="saveType()" ><i class="fas fa-sm fa-paper-plane"></i> Submit</button>
                             </div>
 
@@ -562,6 +563,28 @@ $borderapproved = "background-color: #00334d;color: white;padding-left: 5px;padd
                     <br><br>
                     Successfully Saved! Voucher no - <span style="color: red" id="pcvv"></span><br><br>
                     <button type="button" onclick="refreshPC()" class="btn btn-sm btn-info">OK</button>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade mt-5" id="sales_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="margin-top: 150px">
+
+            <div class="modal-body">
+                <p style="text-align: center;font-weight: bold;">
+                    <br>
+                    Select Approver
+                    <select required class="form-control mb-2" id="sales_approver" name="sales_approver" data-toggle="tooltip" data-placement="top" title="Approver">
+                        <option value="0" selected="" disabled>Select Approver</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary w-50" type="button" onclick="sendPettysales()">Send</button>
                 </p>
 
             </div>

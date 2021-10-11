@@ -307,10 +307,12 @@ function load_PettyCashDetails(liquidation_id){
     $('#saveTypewithLiqui').show();
     $('#name_ApproverWL').hide();
     $('#email_ApproverWL').hide();
+    $('#pettyID_WL').hide();
   }else{
     $('#saveTypewithLiqui').hide();
     $('#name_ApproverWL').hide();
     $('#email_ApproverWL').hide();
+    $('#pettyID_WL').hide();
     $('#super_actual_amount').val("");
   }
 
@@ -337,20 +339,63 @@ function deletePetty(id){
 function deletePetty_callback(id){
   var c = post_Data('controller.pettycash.php?mode=Delete',{
       id: id
-    });
+  });
   load_PettycashList("");
 }
 
-function sendPetty(id){
+function sendPetty(id,department){
+  
+  // if(department=="Sales"){
 
+
+    generateApproverSelect();
+    $('#sales_modal').modal('show');
+    $('#pettyID_WL').val(id);
+
+  // }else{
+  //   confirmed("save",sendPetty_callback, "Do you really want submit this?", "Yes", "No", id);
+  // }
+
+}
+
+function salesApproverdropdown(){
+  $('#sales_approver').on('change', function(){
+    var sales_id = $('#sales_approver').val();
+    
+    var c = post_Data('controller.pettycash.php?mode=getApprover',{
+        id: sales_id
+    });
+
+    $('#name_ApproverWL').val(c.department_head);
+    $('#email_ApproverWL').val(c.department_email);
+
+  });
+}
+salesApproverdropdown();
+
+function sendPettysales(){
+
+  var id = $('#pettyID_WL').val();
   confirmed("save",sendPetty_callback, "Do you really want submit this?", "Yes", "No", id);
 
+}
+
+function generateApproverSelect(){
+
+  var c = get_Data('controller.pettycash.php?mode=option');
+  $("select[name='sales_approver']").empty();
+  $("select[name='sales_approver']").append("<option value='0' selected='' disabled>Select Approver</option>");
+  $('#sales_approver').append(c.html);
+  
 }
 
 function sendPetty_callback(id){
     var petty_Status = "Sent";
     var email_Approver = $('#email_ApproverWL').val();
     var name_Approver = $('#name_ApproverWL').val();
+    
+    // alert(id+' and '+ email_Approver+ ' and '+ name_Approver);
+
     var c = post_Data('controller.petty_approval.php?mode=UpdateStatcash',{
       id:id,
       pettycash_status:petty_Status,
@@ -454,16 +499,16 @@ function saveType_callback(){
       actual_amount: actual_amount
     });
 
-    var email_Approver = "";
-    var name_Approver = "";
+    var email_Approver = c.d_email;
+    var name_Approver = c.d_name;
 
-    if(LiquiType=="yes"){
-      email_Approver = $('#email_ApproverWL').val();
-      name_Approver = $('#name_ApproverWL').val();
-    }else{
-      email_Approver = $('#email_Approver').val();
-      name_Approver = $('#name_Approver').val();
-    }
+    // if(LiquiType=="yes"){
+    //   email_Approver = $('#email_ApproverWL').val();
+    //   name_Approver = $('#name_ApproverWL').val();
+    // }else{
+    //   email_Approver = $('#email_Approver').val();
+    //   name_Approver = $('#name_Approver').val();
+    // }
 
     toggleLoad();
     window.location.href="tcpdf/examples/pettywliqui_head.php?id="+pettycash_id+"&e="+email_Approver+"&n="+name_Approver;
