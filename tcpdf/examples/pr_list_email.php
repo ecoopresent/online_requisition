@@ -1,12 +1,12 @@
 <?php 
 
-// error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';$mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPOptions = array('ssl' => array('verify_peer' => false,'verify_peer_name' => false,'allow_self_signed' => true));$mail->SMTPAuth = true;$mail->Host = "smtp.panamed.com.ph";$mail->IsHTML(true);$mail->Username = "no-reply@panamed.com.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@panamed.com.ph", "");
+error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';$mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPOptions = array('ssl' => array('verify_peer' => false,'verify_peer_name' => false,'allow_self_signed' => true));$mail->SMTPAuth = true;$mail->Host = "smtp.panamed.com.ph";$mail->IsHTML(true);$mail->Username = "no-reply@panamed.com.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@panamed.com.ph", "");
 
-$e_address = "jericopresentacion08@gmail.com";
-// $e_address = "jtchua@pmcgroup.com";
+// $e_address = "jericopresentacion08@gmail.com";
+$e_address = "jtchua@pmcgroup.com";
 
-require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
-$mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
+// require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
+// $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
 
 
 
@@ -29,13 +29,13 @@ $depts = $pr_info['department'];
 $name_Approver = "Jerome T. Chua";
 
 if($pr_info['department']=="IT"){
-	$e_address = "jericopresentacion8@gmail.com";
-// $e_address = "ndguzman@pmcgroup.com";
+	// $e_address = "jericopresentacion8@gmail.com";
+	$e_address = "ndguzman@pmcgroup.com";
 	$name_Approver = "Neil De Guzman";
 }
 
-// $button_link = "https://panamed.com.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+$button_link = "https://panamed.com.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+// $button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
