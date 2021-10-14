@@ -353,8 +353,8 @@ function approve_RCA(id){
       window.location.href="tcpdf/examples/rca_final.php?id="+id;
     }else if(apprver_type=="twoC"){
       window.location.href="tcpdf/examples/rca_finalC.php?id="+id;
-    }else if(apprver_type=="twoE"){
-      window.location.href="tcpdf/examples/rca_finalE.php?id="+id;
+    }else if(apprver_type=="twoE" || apprver_type=="twoEE"){
+      window.location.href="tcpdf/examples/rca_finalE.php?id="+id+"&at="+apprver_type;
     }else if(apprver_type=="twoF"){
       window.location.href="tcpdf/examples/rca_finalF.php?id="+id;
     }else if(apprver_type=="twoD"){
@@ -383,7 +383,8 @@ function approve_RCAExtrafinal(id){
 }
 
 function approve_RCAExtra(id){
-
+  var $el = $('#btn_appp');
+  var approver_tp = $el.data('approver');
   var r = confirm("Are you sure you want to approve this?");
   if(r==true){
     var c = post_Data('controller.approvedpr.php?mode=extrarespond',{
@@ -396,10 +397,12 @@ function approve_RCAExtra(id){
     toggleLoad();
     var approver = "two";
     var requested_by = "Jasmin Padernal";
+    if(approver_tp=="threeB"){
+      requested_by = "Ma. Angelica Saguiguit";
+    }
     window.location.href="tcpdf/examples/rca_headextra.php?id="+id+"&r="+requested_by+"&at="+approver;
   }
 
-  
 }
 
 function disapprove_RCAExtra(id){

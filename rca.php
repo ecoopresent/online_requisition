@@ -433,8 +433,10 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
                               <option value="twoC">Jovan D. Palma & Jerome T. Chua</option>
                               <option value="twoD">Nancy G. Cortez & Homer C. Lim</option>
                               <option value="twoE">Jasmin Padernal & Jerome T. Chua</option>
+                              <option value="twoEE">Ma. Angelica Saguiguit & Jerome T. Chua</option>
                               <option value="twoF">Jocelyn Lagumbayan & Jerome T. Chua</option>
                               <option value="three">Jasmin Padernal & Jerome T. Chua & Homer C. Lim</option>
+                              <option value="threeB">Ma. Angelica Saguiguit & Jerome T. Chua & Homer C. Lim</option>
                             </optgroup>
                         </select>
 

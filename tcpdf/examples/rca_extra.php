@@ -2,8 +2,7 @@
 
 // error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';$mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPOptions = array('ssl' => array('verify_peer' => false,'verify_peer_name' => false,'allow_self_signed' => true));$mail->SMTPAuth = true;$mail->Host = "smtp.panamed.com.ph";$mail->IsHTML(true);$mail->Username = "no-reply@panamed.com.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@panamed.com.ph", "");
 
-$e_address = "jericopresentacion08@gmail.com";
-// $e_address = "jcpadernal@panamed.com.ph";
+
 
 require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
 $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
@@ -26,10 +25,20 @@ $rca_attachments = $cash_approval->getAttachments($cash_id);
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
+$department_name = "";
+if($approver=="three"){
+    $department_name = "Jasmine Padernal";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "jcpadernal@panamed.com.ph";
+}else{
+    $department_name = "Ma. Angelica Saguiguit";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "agsaguiguit@panamed.com.ph";
+}
 
 
-// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jasmine Padernal&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jasmine Padernal&at=$approver";
+// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=$department_name&at=$approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=$department_name&at=$approver";
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -305,7 +314,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Jasmine Padernal
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$department_name.'
                                                         </td>
                                                     </tr>
                                                     

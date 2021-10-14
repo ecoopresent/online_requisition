@@ -49,6 +49,14 @@ if($approver=="twoE"){
     $e_address = "jericopresentacion08@gmail.com";
     // $e_address = "jcpadernal@panamed.com.ph";
 }
+
+if($approver=="twoEE"){
+    $final_approver = "Jerome T. Chua";
+    $nameApprover = "Ma. Angelica Saguiguit";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "agsaguiguit@panamed.com.ph";
+}
+
 if($approver=="twoF"){
     $final_approver = "Jerome T. Chua";
     $nameApprover = "Jocelyn Lagumbayan";

@@ -142,6 +142,14 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">Department Head</p>
                             </li>
 
+                        <?php elseif($apprver_type=="twoEE"): ?>
+
+                            <li>
+                                <span class="fw-bold">Ma. Angelica Saguiguit</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Department Head</p>
+                            </li>
+
                         <?php elseif($apprver_type=="twoF"): ?>
 
                             <li>
@@ -170,7 +178,7 @@ if($rca_status=="Disapproved"){
 
                         
 
-                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoE" || $apprver_type=="twoF"): ?>
+                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoE" || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
 
                             <li>
                             <span class="fw-bold">Jerome T. Chua</span>

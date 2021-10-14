@@ -17,15 +17,15 @@ class Approvedpr extends DBHandler {
         // }
         $WHERE = "";
         if($canvas_status=="Pending"){
-            $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status' OR a.pr_status = 'Finished' AND b.cash_status IS NULL ORDER BY c.date_approved ASC";
+            $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status' OR a.pr_status = 'Finished' AND b.cash_status IS NULL";
         }else if($canvas_status=="Rejected"){
-            $WHERE = "a.pr_status = 'Rejected' ORDER BY c.date_approved ASC";
+            $WHERE = "a.pr_status = 'Rejected'";
         }else if($canvas_status=="PreFinished"){
-            $WHERE = "a.pr_status = 'PreFinished' ORDER BY c.date_approved ASC";
+            $WHERE = "a.pr_status = 'PreFinished'";
         }else if($canvas_status=="FinalFinished"){
-            $WHERE = "a.pr_status = 'FinalFinished' ORDER BY c.date_approved ASC";
+            $WHERE = "a.pr_status = 'FinalFinished'";
         }else{
-            $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status' ORDER BY c.date_approved ASC";
+            $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status'";
         }
         $query = "SELECT b.cash_status,b.approver_type,a.id, a.department, a.date_prepared, a.date_needed, a.pr_no, a.purpose, a.requested_by, a.approved_by, a.pr_status,c.date_approved,a.pr_type,b.id AS idRCA FROM pr a
                   LEFT JOIN cashcheck b ON a.id = b.pr_id 
