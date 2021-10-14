@@ -27,7 +27,7 @@ class Approvedpr extends DBHandler {
         }else{
             $WHERE = "a.pr_status = 'Finished' AND b.cash_status = '$canvas_status' ORDER BY c.date_approved ASC";
         }
-        $query = "SELECT b.cash_status,a.id, a.department, a.date_prepared, a.date_needed, a.pr_no, a.purpose, a.requested_by, a.approved_by, a.pr_status,c.date_approved,a.pr_type,b.id AS idRCA FROM pr a
+        $query = "SELECT b.cash_status,b.approver_type,a.id, a.department, a.date_prepared, a.date_needed, a.pr_no, a.purpose, a.requested_by, a.approved_by, a.pr_status,c.date_approved,a.pr_type,b.id AS idRCA FROM pr a
                   LEFT JOIN cashcheck b ON a.id = b.pr_id 
                   LEFT JOIN canvas c ON a.id = c.pr_id
                   WHERE ".$WHERE;

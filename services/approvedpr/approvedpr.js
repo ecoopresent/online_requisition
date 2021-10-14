@@ -7,7 +7,7 @@ $(document).ready(function(){
     var canvas_status = $('#canvas_status').val();
     load_Purchasing(canvas_status);
 
-    $('#canvas_status').on('click', function(){
+    $('#canvas_status').on('change', function(){
       var canvas_status = $('#canvas_status').val();
       load_Purchasing(canvas_status);
     });
@@ -35,7 +35,8 @@ $(document).ready(function(){
 
     $('#send_cashcheck').on('click',function(){
 
-      confirmed("save",send_cashcheck_callback, "Do you really want to submit this?", "Yes", "No");
+      // confirmed("save",send_cashcheck_callback, "Do you really want to submit this?", "Yes", "No");
+      $('#approverModal').modal('show');
 
     });
 
@@ -53,29 +54,78 @@ $(document).ready(function(){
            
 });
 
+
+function submitRCA(){
+    $('#approverModal').modal('hide');
+    confirmed("save", submitRCA_callback, "Do you really want to send this?", "Yes", "No");
+
+}
+
+function submitRCA_callback(){
+    var c = post_Data('controller.rca.php?mode=submit',{
+        id: $('#cash_id').val(),
+        approver: $('#approver').val()
+    }); 
+    var approver = $('#approver').val();
+    var requested_by = $('#requested_by').val();
+    var id = $('#cash_id').val();
+    toggleLoad();
+    if(approver=="three"){
+        window.location.href="tcpdf/examples/rca_extra.php?id="+id+"&r="+requested_by+"&at="+approver;
+    }else{
+        window.location.href="tcpdf/examples/rca_head.php?id="+id+"&r="+requested_by+"&at="+approver;
+    }
+    
+}
+
+
 function send_cashcheck_callback(){
   var id = $('#cash_id').val();
   var c = post_Data('controller.approvedpr.php?mode=send',{
     id: $('#cash_id').val()
   })
-  // alert("Cash Request Sent");
+
   toggleLoad();
   window.location.href="tcpdf/examples/cashcheck_emailHead.php?id="+id;
+
+
 }
 
 function view_RCA(id){
   window.open("tcpdf/examples/cashcheck.php?id="+id);
 }
 
-function resendRCA(id){
+function resendRCA(id,approver_type){
 
-  confirmed("save",resendRCA_callback, "Do you really want to resend this?", "Yes", "No", id);
+   var rca = [id,approver_type];
+  confirmed("save",resendRCA_callback, "Do you really want to resend this?", "Yes", "No", rca);
 
 }
 
-function resendRCA_callback(id){
-  toggleLoad();
-  window.location.href="tcpdf/examples/cashcheck_emailFinalResend.php?id="+id;
+function resendRCA_callback(rca){
+    var approver_type = rca[1];
+    var id = rca[0];
+    toggleLoad();
+    if(approver_type=="twoD"){
+        window.location.href="tcpdf/examples/rca_finalDresend.php?id="+id;
+    }
+    if(approver_type=="two"){
+        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id;
+    }
+
+    if(approver_type=="twoC"){
+        window.location.href="tcpdf/examples/rca_finalCresend.php?id="+id;
+    }
+    if(approver_type=="twoE"){
+        window.location.href="tcpdf/examples/rca_finalEresend.php?id="+id;
+    }
+    if(approver_type=="twoF"){
+        window.location.href="tcpdf/examples/rca_finalFresend.php?id="+id;
+    }
+    if(approver_type=="three"){
+        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id;
+    }
+    
 }
 
 function save_cashcheck_callback(){

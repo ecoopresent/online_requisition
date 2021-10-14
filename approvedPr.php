@@ -50,7 +50,7 @@ if($notifval_side2 > 0){
                         <select class="p-1 mt-1 dropdown mb-3" id="canvas_status">
                                     <option value="Pending" selected=""> Pending </option>
                                     <option value="Submitted"> Submitted </option>
-                                    <option value="Approved"> Pre-Approved RCA </option>
+                                    <option value="PreApproved"> Pre-Approved RCA </option>
                                     <option value="FinalFinished"> Finished </option>
                             </select>
 
@@ -220,7 +220,59 @@ if($notifval_side2 > 0){
 
             </div>
 
-        </div>    
+        </div>  
+
+
+
+<div class="modal fade mt-5" id="approverModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style="width: 520px">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Submit Request Cash Advance</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="col col-md-12 mt-2">
+                    <input type="hidden" class="form-control" id="pettyCashId" name="">
+                    <input type="hidden" value="Marjorie Barona" class="form-control" id="requested_by" name="">
+                    <!-- <div class="input-group mb-3"> -->
+                        <!-- <div class="input-group-prepend"> -->
+                            <input type="hidden" id="c_id" name="">
+                            <span class="input-group-text label4group" id="inputGroup-sizing-sm"><b>Select Approver</b></span>
+                        <!-- </div> -->
+                        <select id="approver" class="form-control">
+                            <optgroup label="Admin">
+                              <option value="one" selected="">Jerome T. Chua Only</option>
+                              <option value="oneB">Susan T. Panugayan Only</option>
+                              <option value="two">Jerome T. Chua & Homer C. Lim</option>
+                            </optgroup>
+                            <optgroup label="Others">
+                              <option value="twoC">Jovan D. Palma & Jerome T. Chua</option>
+                              <option value="twoD">Nancy G. Cortez & Homer C. Lim</option>
+                              <option value="twoE">Jasmin Padernal & Jerome T. Chua</option>
+                              <option value="twoF">Jocelyn Lagumbayan & Jerome T. Chua</option>
+                              <option value="three">Jasmin Padernal & Jerome T. Chua & Homer C. Lim</option>
+                            </optgroup>
+                        </select>
+
+                    <!-- </div> -->
+                </div>
+
+                <div class="col col-md-12 mt-2">
+                    <center>
+                        <button type="button" id="btn_liquidate" onclick="submitRCA()" class="btn btn-sm btn-success"><i class="fas fa-sm fa-paper-plane"></i> SUBMIT</button>
+                    </center>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+</div> 
 
 
             
