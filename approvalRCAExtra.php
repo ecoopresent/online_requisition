@@ -116,7 +116,7 @@ if($rca_status=="Disapproved"){
                         <?php if ($apprver_type=="twoC" || $apprver_type=="twoE"  || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
                             <li class="done">
                                 <span class="fw-bold"><?php echo $rca_info[0]; ?></span>
-                                <span class="float-end text-secondary">Singed</span>
+                                <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Requestor</p>
                             </li>
 

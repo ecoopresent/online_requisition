@@ -27,6 +27,12 @@ $(document).ready(function(){
         return false;
       })
 
+      $('input[type=text]').on('paste', function(e){
+        e.preventDefault();
+        alert("Paste is not valid");
+        return false;
+      })
+
 
       $('input[type=text]').on('keyup keypress keydown', function(e) {
         
