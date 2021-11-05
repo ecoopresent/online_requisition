@@ -156,7 +156,7 @@ if($rca_status=="Disapproved"){
 
                             <li class="done">
                                 <span class="fw-bold">Ma. Angelica Saguiguit</span>
-                                <span class="float-end text-secondary">Pending</span>
+                                <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Department Head</p>
                             </li>
 
