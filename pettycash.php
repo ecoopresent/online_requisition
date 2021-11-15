@@ -279,6 +279,7 @@ $borderapproved = "background-color: #00334d;color: white;padding-left: 5px;padd
 
                             <div class="col col-md-12 mb-1">
                                 <input type="hidden" value="" class="form-control" id="pettycash_id" name="">
+                                <input type="hidden" value="" class="form-control" id="pettycash_id_liqui" name="">
                                 <input type="hidden" value="" class="form-control" id="liquidation_id" name="">
                                 <h5 class="modal-title" id="exampleModalLabel">LIQUIDATION DETAILS</h5><br>
                                 <h1 class="text-success" id="labelSubmitted">-- SUBMITTED ALREADY --</h1>
@@ -585,6 +586,29 @@ $borderapproved = "background-color: #00334d;color: white;padding-left: 5px;padd
                         <option value="0" selected="" disabled>Select Approver</option>
                     </select>
                     <button class="btn btn-sm btn-primary w-50" type="button" onclick="sendPettysales()">Send</button>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade mt-5" id="appro_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="margin-top: 150px">
+
+            <div class="modal-body">
+                <p style="text-align: center;font-weight: bold;">
+                    <br>
+                    Select Approver
+                    <select required class="form-control mb-2" id="liqui_approver" name="liqui_approver" data-toggle="tooltip" data-placement="top" title="Approver">
+                        <option value="0" selected="" disabled>Select Approver</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary w-50" type="button" onclick="sendPettyliquidate()">Send</button>
                 </p>
 
             </div>

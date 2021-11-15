@@ -374,9 +374,18 @@ function salesApproverdropdown(){
 salesApproverdropdown();
 
 function sendPettysales(){
+  var sales_approver = $('#sales_approver').val();
+  if(sales_approver=="" || sales_approver==null){
 
-  var id = $('#pettyID_WL').val();
-  confirmed("save",sendPetty_callback, "Do you really want submit this?", "Yes", "No", id);
+    $.Toast("Please select your approver first.", errorToast);
+
+  }else{
+
+    var id = $('#pettyID_WL').val();
+    confirmed("save",sendPetty_callback, "Do you really want submit this?", "Yes", "No", id);
+
+  }
+  
 
 }
 
@@ -386,8 +395,14 @@ function generateApproverSelect(){
   $("select[name='sales_approver']").empty();
   $("select[name='sales_approver']").append("<option value='0' selected='' disabled>Select Approver</option>");
   $('#sales_approver').append(c.html);
-  
+
+  $("select[name='liqui_approver']").empty();
+  $("select[name='liqui_approver']").append("<option value='0' selected='' disabled>Select Approver</option>");
+  $('#liqui_approver').append(c.html);
+
+
 }
+
 
 function sendPetty_callback(id){
     var petty_Status = "Sent";
@@ -484,23 +499,55 @@ function btn_cancelPetty(){
 }
 
 function saveType(){
-  confirmed("save",saveType_callback,"Do you really want to submit this?", "Yes", "No");
+  // confirmed("save",saveType_callback,"Do you really want to submit this?", "Yes", "No");
+  generateApproverSelect();
+  $('#appro_modal').modal('show');
 }
 
-function saveType_callback(){
+function sendPettyliquidate(){
+  var liqui_approver = $('#liqui_approver').val();
+  if(liqui_approver=="" || liqui_approver==null){
+
+    $.Toast("Please Select your approver first", errorToast);
+
+  }else{
+
+    var c = post_Data('controller.pettycash.php?mode=getApprover',{
+        id: liqui_approver
+    });
+    var dept_email = c.department_email;
+    var dept_head = c.department_head;
+
+    saveType_callback(dept_email,dept_head);
+
+
+  }
+  
+}
+
+function saveType_callback(dept_email,dept_head){
 
     var LiquiType = $('#LiquiType').val();
     var pettycash_id = $('#pettycash_id').val();
     var actual_amount = $('#super_actual_amount').val();
 
-    var c = post_Data('controller.pettycash.php?mode=Submit',{
-      LiquiType: LiquiType,
-      pettycash_id: pettycash_id,
-      actual_amount: actual_amount
-    });
+    if(pettycash_id=="" || pettycash_id==null){
 
-    var email_Approver = c.d_email;
-    var name_Approver = c.d_name;
+      pettycash_id = $('#pettycash_id_liqui').val();
+
+    }else{
+
+      var c = post_Data('controller.pettycash.php?mode=Submit',{
+        LiquiType: LiquiType,
+        pettycash_id: pettycash_id,
+        actual_amount: actual_amount
+      });
+
+    }
+    
+
+    // var email_Approver = c.d_email;
+    // var name_Approver = c.d_name;
 
     // if(LiquiType=="yes"){
     //   email_Approver = $('#email_ApproverWL').val();
@@ -511,13 +558,18 @@ function saveType_callback(){
     // }
 
     toggleLoad();
-    window.location.href="tcpdf/examples/pettywliqui_head.php?id="+pettycash_id+"&e="+email_Approver+"&n="+name_Approver;
+    window.location.href="tcpdf/examples/pettywliqui_head.php?id="+pettycash_id+"&e="+dept_email+"&n="+dept_head;
 
 }
 
 
 function resendLiquidation(pettycash_id){
-  confirmed("save",resendLiquidation_callback,"Do you really want to resend this?", "Yes", "No", pettycash_id);
+
+  generateApproverSelect();
+  $('#appro_modal').modal('show');
+  $('#pettycash_id_liqui').val(pettycash_id);
+
+  // confirmed("save",resendLiquidation_callback,"Do you really want to resend this?", "Yes", "No", pettycash_id);
   
 }
 
