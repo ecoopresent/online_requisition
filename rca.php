@@ -427,9 +427,12 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
                             <optgroup label="Admin">
                               <option value="one" selected="">Susan T. Panugayan Only</option>
                               <option value="two">Susan T. Panugayan & Homer Lim</option>
+                              <option value="twoA">Susan T. Panugayan & Mary Ann Miranda</option>
+                              <option value="three">Susan T. Panugayan & Mary Ann Miranda & Homer Lim</option>
                             </optgroup>
                             <optgroup label="Others">
                               <option value="twoB">Nancy G. Cortez & Homer Lim</option>
+                              <option value="twoC">Mary Ann Miranda & Homer Lim</option>
                             </optgroup>
                         </select>
 

@@ -36,7 +36,7 @@ class Cash_approval extends DBHandler {
 
     public function getCashadvance($id){
 
-        $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting,cash_status,date_preapproved,date_approved FROM cashcheck WHERE pr_id = '$id'";
+        $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting,cash_status,date_preapproved,date_approved,head_approver, date_headapproved FROM cashcheck WHERE pr_id = '$id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         $id = $row[0];
@@ -59,9 +59,12 @@ class Cash_approval extends DBHandler {
         $cash_status = $row[17];
         $date_preapproved = $row[18];
         $date_approved = $row[19];
+        $head_approver = $row[20];
+        $date_headapproved = $row[21];
 
 
-        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head,"pr_id"=>$pr_id,"date_preapproved"=>$date_preapproved,"date_approved"=>$date_approved);
+
+        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head,"pr_id"=>$pr_id,"date_preapproved"=>$date_preapproved,"date_approved"=>$date_approved,"head_approver"=>$head_approver,"date_headapproved"=>$date_headapproved);
 
         
 
@@ -69,7 +72,7 @@ class Cash_approval extends DBHandler {
 
     public function getCashadvanceById($id){
 
-        $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting,cash_status,date_preapproved,date_approved FROM cashcheck WHERE id = '$id'";
+        $query = "SELECT id, pr_id, department, payee, date_prepared, date_needed, particulars, amount, purpose, remarks, charge_to, budget, liquidated_on, prepared_by, department_head, president, accounting,cash_status,date_preapproved,date_approved,head_approver, date_headapproved FROM cashcheck WHERE id = '$id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         $id = $row[0];
@@ -92,10 +95,12 @@ class Cash_approval extends DBHandler {
         $cash_status = $row[17];
         $date_preapproved = $row[18];
         $date_approved = $row[19];
+        $head_approver = $row[20];
+        $date_headapproved = $row[21];
         
 
 
-        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head,"pr_id"=>$pr_id,"date_preapproved"=>$date_preapproved,"date_approved"=>$date_approved);
+        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head,"pr_id"=>$pr_id,"date_preapproved"=>$date_preapproved,"date_approved"=>$date_approved,"head_approver"=>$head_approver,"date_headapproved"=>$date_headapproved);
 
         
 

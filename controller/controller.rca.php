@@ -44,8 +44,14 @@ switch($mode) {
             $approvers = "";
             if($v['approver_type']=="one"){
                 $approvers = "STP";
+            }else if($v['approver_type']=="twoA"){
+                $approvers = "STP & MPM";
             }else if($v['approver_type']=="twoB"){
                 $approvers = "NGC & HCL";
+            }else if($v['approver_type']=="twoC"){
+                $approvers = "MPM & HCL";
+            }else if($v['approver_type']=="three"){
+                $approvers = "STP & MPM & HCL";
             }else{
                 $approvers = "STP & HCL";
             }

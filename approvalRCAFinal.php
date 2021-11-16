@@ -12,6 +12,12 @@ $approvedpr = new Approvedpr();
 $id = $_GET['id'];
 $approver = $_GET['approver'];
 $approver_type = $_GET['at'];
+if($approver_type=="twoA"){
+    $approver = "Mary Ann Miranda";
+}
+if($approver_type=="three"){
+    $approver = "Mary Ann Miranda";
+}
 $status = $approvedpr->checkStatusRCAfinal($id);
 $rca_info = $approvedpr->getRCAinfo($id);
 $rca_status = $rca_info[1];
@@ -125,6 +131,12 @@ if($rca_status=="Disapproved"){
                                 <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Department Head</p>
                             </li>
+                        <?php elseif($approver_type=="twoC"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
                         <?php else: ?>
                             <li class="done">
                                 <span class="fw-bold">Susan T. Panugayan</span>
@@ -132,13 +144,49 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">General Manager</p>
                             </li>
                         <?php endif ?>
+
+                        <?php if ($approver_type=="three"): ?>
+
+                            <li>
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
+                            
+                        <?php endif ?>
+
+                        <?php if ($approver_type=="triple"): ?>
+
+                            <li class="done">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
+                            
+                        <?php endif ?>
                         
 
-                        <li>
-                            <span class="fw-bold">Homer C. Lim</span>
-                            <span class="float-end text-secondary">Pending</span>
-                            <p class="text-secondary">Chief Product Developer</p>
-                        </li>
+                        <?php if ($approver_type=="twoA"): ?>
+
+                            <li>
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
+                        <?php else: ?>
+
+                            <li>
+                                <span class="fw-bold">Homer C. Lim</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Chief Product Developer</p>
+                            </li>
+
+                            
+                        <?php endif ?>
+                        
                     </ul>
                     <?php } ?>
                 </div>
@@ -154,7 +202,7 @@ if($rca_status=="Disapproved"){
                     <div class="my-3 text-end">
 
                         <input type="hidden" id="approver" value="<?php echo $approver ?>" name="">
-                        <input type="hidden" id="apprver_type" value="<?php echo $apprver_type ?>" name="">
+                        <input type="hidden" id="apprver_type" value="<?php echo $approver_type ?>" name="">
                         <button type="submit" class="btn btn-success mb-3" onclick="F_approve_RCA(<?= $id ?>)">Approve</button>
                         <button type="submit" class="btn btn-danger mb-3" onclick="F_disapprove_RCA(<?= $id ?>)">Disapprove</button>
                     </div>

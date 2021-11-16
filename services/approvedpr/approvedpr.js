@@ -250,6 +250,8 @@ function approve_RCA(id){
     var cash_status = "";
     if(apprver_type=="one"){
         cash_status = "Finished";
+    }else if(apprver_type=="three"){
+        cash_status = "Submitted";
     }else{
         cash_status = "PreApproved";
     }
@@ -264,10 +266,10 @@ function approve_RCA(id){
     toggleLoad();
     if(apprver_type=="one"){
       window.location.href="tcpdf/examples/accounting_notifyhead.php?id="+id;
-    }else if(apprver_type=="twoB"){
-      window.location.href="tcpdf/examples/rca_finalB.php?id="+id;
+    }else if(apprver_type=="twoB" || apprver_type=="twoC" || apprver_type=="three"){
+      window.location.href="tcpdf/examples/rca_finalB.php?id="+id+"&at="+apprver_type;
     }else{
-      window.location.href="tcpdf/examples/rca_final.php?id="+id;
+      window.location.href="tcpdf/examples/rca_final.php?id="+id+"&at="+apprver_type;
     }
 
   }
@@ -276,18 +278,42 @@ function approve_RCA(id){
 
 function F_approve_RCA(id){
 
-  var r = confirm("Are you sure you want to approve this?");
-  if(r==true){
-    var c = post_Data('controller.approvedpr.php?mode=finalrespond',{
-        id: id,
-        remarks: $('#remarks').val(),
-        approver: $('#approver').val(),
-        cash_status: "Finished"
-    });
+  var apprver_type = $('#apprver_type').val();
+  
+  if(apprver_type=="three"){
 
-     toggleLoad();
-    window.location.href="tcpdf/examples/accounting_notifyfinal.php?id="+id;
+    var r = confirm("Are you sure you want to approve this?");
+    if(r==true){
+      var c = post_Data('controller.approvedpr.php?mode=finalrespond',{
+          id: id,
+          remarks: $('#remarks').val(),
+          approver: $('#approver').val(),
+          cash_status: "PreApproveds"
+      });
+
+       toggleLoad();
+       window.location.href="tcpdf/examples/rca_final.php?id="+id+"&at="+apprver_type;
+    }
+
+  }else{
+
+    var r = confirm("Are you sure you want to approve this?");
+    if(r==true){
+      var c = post_Data('controller.approvedpr.php?mode=finalrespond',{
+          id: id,
+          remarks: $('#remarks').val(),
+          approver: $('#approver').val(),
+          cash_status: "Finished"
+      });
+
+       toggleLoad();
+      window.location.href="tcpdf/examples/accounting_notifyfinal.php?id="+id;
+    }
+
   }
+
+
+  
   
 
 }

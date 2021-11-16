@@ -34,6 +34,16 @@ if($approver=="twoB"){
     // $e_address = "ngcortez@pmcgroup.com";
 }
 
+if($approver=="twoC"){
+    $nameApprover = "Mary Ann Miranda";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "npmiranda@pmcgroup.com";
+}
+$finalapprover = "Homer C. Lim";
+if($approver=="twoA"){
+    $finalapprover = "Mary Ann Miranda";
+}
+
 // $button_link = "https://pmc.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 $button_link = "http://192.168.101.89/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 
@@ -321,13 +331,24 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                             <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$nameApprover.'
                                                         </td>
                                                     </tr>';
+                                    if($approver =="three"){
+
+
+                                        $badie .=    '<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Mary Ann Miranda
+                                                        </td>
+                                                    </tr>';
+                                    }
+
                                     if($approver !="one"){
 
 
                                         $badie .=    '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$finalapprover.'
                                                         </td>
                                                     </tr>';
                                     }

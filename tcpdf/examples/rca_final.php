@@ -21,14 +21,27 @@ require_once "../../model/model.cash_approval.php";
 
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
+$approver = $_GET['at'];
 
-// $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=two";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=two";
+
+if($approver=="three"){
+    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+}else{
+    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+}
+
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
+
+$finalapprover = "Homer C. Lim";
+if($approver=="twoA"){
+    $finalapprover = "Mary Ann Miranda";
+}
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -134,12 +147,26 @@ $html .= '<table width="100%" border="0" style="font-size: 11px">
 				<tr>
 					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px">PREPARED BY:</td>
 					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px">APPROVED BY: </td>
-				</tr>
-				<tr>
-					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px"></td>
-					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px"></td>
-				</tr>
-				<tr>
+				</tr>';
+
+        if($approver=="three"){
+
+            $html .='<tr>
+                    <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
+                    <td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['head_approver'].'<br> Signed '.$cash_info['date_headapproved'].'</td>
+                    <td style="width: 25%;font-size: 10px;text-align:center"></td>
+                    <td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
+                </tr>';
+
+        }else{
+
+            $html .='<tr>
+                    <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px"></td>
+                    <td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px"></td>
+                </tr>';
+        }
+
+		$html .='<tr>
 					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>
 					<td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['department_head'].'<br> Signed '.$cash_info['date_preapproved'].'</td>
 					<td style="width: 25%;font-size: 10px;text-align:center">'.$cash_info['president'].'</td>
@@ -313,12 +340,24 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Susan T. Panugayan</b>
                                                         </td>
-                                                    </tr>
-                                                
-                                                    <tr>
+                                                    </tr>';
+
+                                    if($approver=="three"){
+
+                                        $badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Mary Ann Miranda</b>
+                                                        </td>
+                                                    </tr>';
+
+                                    }
+
+                                                
+                                        $badie .= '<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$finalapprover.'
                                                         </td>
                                                     </tr>
 

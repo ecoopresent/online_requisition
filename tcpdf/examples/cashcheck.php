@@ -72,6 +72,9 @@ if($cash_info['date_approved']=="0000-00-00"){
 }else{
 	$cash_info['date_approved'] = "Signed ".$cash_info['date_approved'];
 }
+if($cash_info['date_headapproved']=="0000-00-00"){
+	$cash_info['date_headapproved'] = "";
+}
 $html .= '<table width="100%" border="0" style="font-size: 11px">
 
 				<tr>
@@ -122,8 +125,10 @@ $html .= '<table width="100%" border="0" style="font-size: 11px">
 					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px">APPROVED BY: </td>
 				</tr>
 				<tr>
-					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px"></td>
-					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px"></td>
+					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
+					<td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['head_approver'].'<br> '.$cash_info['date_headapproved'].'</td>
+					<td style="width: 25%;font-size: 10px;text-align:center"></td>
+					<td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>

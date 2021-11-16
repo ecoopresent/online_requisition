@@ -208,10 +208,35 @@ class Approvedpr extends DBHandler {
 
     public function finalrespondTo($id,$remarks,$approver,$cash_status)
     {   
-        $date_today = date('Y-m-d');
-        $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '$approver', remarks = '$remarks', date_approved = '$date_today' WHERE id = '$id'";
-        $stmt = $this->prepareQuery($this->conn, $query);
-        return $this->execute($stmt);
+        if($approver=="Mary Ann Miranda"){
+
+            if($cash_status=="PreApproveds"){
+
+                $date_today = date('Y-m-d');
+                $query = "UPDATE cashcheck SET cash_status = 'PreApproved', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
+                $stmt = $this->prepareQuery($this->conn, $query);
+                return $this->execute($stmt);
+
+            }else{
+
+                $date_today = date('Y-m-d');
+                $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '-', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
+                $stmt = $this->prepareQuery($this->conn, $query);
+                return $this->execute($stmt);
+
+            }
+
+            
+
+        }else{
+
+            $date_today = date('Y-m-d');
+            $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '$approver', remarks = '$remarks', date_approved = '$date_today' WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
+
+        }
+        
     }
  
 

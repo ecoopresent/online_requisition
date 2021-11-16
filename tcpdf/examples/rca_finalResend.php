@@ -27,13 +27,29 @@ if($approver_type=="twoB"){
     $nameApprover = "Nancy G. Cortez";
 }
 
-// $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
+if($approver_type=="twoC"){
+    $nameApprover = "Mary Ann Miranda";
+}
+
+
+if($approver_type=="three"){
+    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+}else{
+    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
+    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
+}
+
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
+
+$finalapprover = "Homer C. Lim";
+if($approver_type=="twoA"){
+    $finalapprover = "Mary Ann Miranda";
+}
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -318,12 +334,24 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$nameApprover.'</b>
                                                         </td>
-                                                    </tr>
-                                                
-                                                    <tr>
+                                                    </tr>';
+
+                                    if($approver_type=="three"){
+
+                                        $badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Mary Ann Miranda</b>
+                                                        </td>
+                                                    </tr>';
+
+                                    }
+
+                                                
+                                        $badie .= '<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$finalapprover.'
                                                         </td>
                                                     </tr>
 

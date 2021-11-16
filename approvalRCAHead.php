@@ -127,6 +127,14 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">Department Head</p>
                             </li>
 
+                        <?php elseif($apprver_type=="twoC"): ?>
+
+                            <li>
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
                         <?php else: ?>
 
                             <li>
@@ -136,15 +144,32 @@ if($rca_status=="Disapproved"){
                             </li>
                             
                         <?php endif ?>
+
+                        <?php if ($apprver_type =="three"): ?>
+                                <li>
+                                    <span class="fw-bold">Mary Ann Miranda</span>
+                                    <span class="float-end text-secondary">Pending</span>
+                                    <p class="text-secondary">Product Sourcing Specialist</p>
+                                </li>
+                        <?php endif ?>
                         
 
-                        <?php if ($apprver_type !="one"): ?>
+                        <?php if ($apprver_type !="one" && $apprver_type != "twoA"): ?>
                                 <li>
                                     <span class="fw-bold">Homer C. Lim</span>
                                     <span class="float-end text-secondary">Pending</span>
                                     <p class="text-secondary">Chief Product Developer</p>
                                 </li>
                         <?php endif ?>
+
+                        <?php if ($apprver_type =="twoA"): ?>
+                                <li>
+                                    <span class="fw-bold">Mary Ann Miranda</span>
+                                    <span class="float-end text-secondary">Pending</span>
+                                    <p class="text-secondary">Product Sourcing Specialist</p>
+                                </li>
+                        <?php endif ?>
+
                     </ul>
                     <?php } ?>
                 </div>
