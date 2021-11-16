@@ -69,6 +69,12 @@ if($approver=="twoD"){
     // $e_address = "ngcortez@pmcgroup.com";
 }
 
+if($approver=="twoD2"){
+    $nameApprover = "Mary Ann Miranda";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "mpmiranda@pmcgroup.com";
+}
+
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 $button_link = "http://192.168.101.89/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 

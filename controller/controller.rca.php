@@ -56,6 +56,8 @@ switch($mode) {
                 $approvers = "JAL & JTC";
             }else if($v['approver_type']=="twoD"){
                 $approvers = "NGC & HCL";
+            }else if($v['approver_type']=="twoD2"){
+                $approvers = "MPM & HCL";
             }else{
                 $approvers = "JCP & JTC & HCL";
             }

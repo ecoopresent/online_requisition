@@ -134,6 +134,14 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">Department Head</p>
                             </li>
 
+                        <?php elseif($apprver_type=="twoD2"): ?>
+
+                            <li>
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
                         <?php elseif($apprver_type=="twoE"): ?>
 
                             <li>

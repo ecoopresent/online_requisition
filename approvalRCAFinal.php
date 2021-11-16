@@ -125,6 +125,12 @@ if($rca_status=="Disapproved"){
                                 <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Department Head</p>
                             </li>
+                        <?php elseif($approver_type=="twoD2"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
                         <?php else: ?>
                             <li class="done">
                                 <span class="fw-bold">Jerome T. Chua</span>

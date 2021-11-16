@@ -357,8 +357,8 @@ function approve_RCA(id){
       window.location.href="tcpdf/examples/rca_finalE.php?id="+id+"&at="+apprver_type;
     }else if(apprver_type=="twoF"){
       window.location.href="tcpdf/examples/rca_finalF.php?id="+id;
-    }else if(apprver_type=="twoD"){
-      window.location.href="tcpdf/examples/rca_finalD.php?id="+id;
+    }else if(apprver_type=="twoD" || apprver_type=="twoD2"){
+      window.location.href="tcpdf/examples/rca_finalD.php?id="+id+"&at="+apprver_type;
     }else{
       window.location.href="tcpdf/examples/rca_final.php?id="+id;
     }

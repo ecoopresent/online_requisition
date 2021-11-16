@@ -18,14 +18,21 @@ require_once "../../model/model.cash_approval.php";
 
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
+$approver = $_GET['at'];
 
-// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=twoD";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=twoD";
+// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
+
+
+$nameofapprover = "Nancy G. Cortez";
+if($approver=="twoD2"){
+    $nameofapprover = "Mary Ann Miranda";
+}
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -312,7 +319,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Nancy G. Cortez</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$nameofapprover.'</b>
                                                         </td>
                                                     </tr>
                                                 
