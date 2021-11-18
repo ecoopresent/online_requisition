@@ -112,12 +112,32 @@ if($rca_status=="Disapproved"){
                     <?php if ($status=="") { ?>
                     <!-- -->
                     <ul class="timeline mt-5">
-
-                        <li class="done">
-                            <span class="fw-bold"><?php echo $rca_info[0]; ?></span>
-                            <span class="float-end text-secondary">Signed</span>
-                            <p class="text-secondary">Requestor</p>
-                        </li>
+                        <?php if ($approver_type=="threeC"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Jerome T. Chua</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Operation Incharge</p>
+                            </li>
+                        <?php elseif($approver_type=="three"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Jasmine Padernal</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Department Head</p>
+                            </li>
+                        <?php elseif($approver_type=="threeB"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Ma. Angelica Saguiguit</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Department Head</p>
+                            </li>
+                        <?php else: ?>
+                            <li class="done">
+                                <span class="fw-bold"><?php echo $rca_info[0]; ?></span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Requestor</p>
+                            </li>
+                        <?php endif ?>
+                        
 
                         <?php if ($approver_type=="twoD"): ?>
                             <li class="done">
@@ -131,11 +151,17 @@ if($rca_status=="Disapproved"){
                                 <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Product Sourcing Specialist</p>
                             </li>
+                        <?php elseif($approver_type=="threeC"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
                         <?php else: ?>
                             <li class="done">
                                 <span class="fw-bold">Jerome T. Chua</span>
                                 <span class="float-end text-secondary">Signed</span>
-                                <p class="text-secondary">Logistic Manager</p>
+                                <p class="text-secondary">Operation Incharge</p>
                             </li>
                         <?php endif ?>
                         

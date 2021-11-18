@@ -58,6 +58,10 @@ switch($mode) {
                 $approvers = "NGC & HCL";
             }else if($v['approver_type']=="twoD2"){
                 $approvers = "MPM & HCL";
+            }else if($v['approver_type']=="threeB"){
+                $approvers = "AGS & JTC & HCL";
+            }else if($v['approver_type']=="threeC"){
+                $approvers = "JTC & MPM & HCL";
             }else{
                 $approvers = "JCP & JTC & HCL";
             }

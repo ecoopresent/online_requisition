@@ -228,7 +228,15 @@ function resendRCA_callback(rca){
         window.location.href="tcpdf/examples/rca_finalFresend.php?id="+id;
     }
     if(approver_type=="three"){
-        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id;
+        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id+"&at="+approver_type;
+    }
+
+    if(approver_type=="threeB"){
+        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id+"&at="+approver_type;
+    }
+
+    if(approver_type=="threeC"){
+        window.location.href="tcpdf/examples/rca_finalResend.php?id="+id+"&at="+approver_type;
     }
     
 }
@@ -264,7 +272,7 @@ function submitRCA_callback(){
     var requested_by = $('#requested_by').val();
     var id = $('#c_id').val();
     toggleLoad();
-    if(approver=="three" || approver=="threeB"){
+    if(approver=="three" || approver=="threeB" || approver=="threeC"){
         window.location.href="tcpdf/examples/rca_extra.php?id="+id+"&r="+requested_by+"&at="+approver;
     }else{
         window.location.href="tcpdf/examples/rca_head.php?id="+id+"&r="+requested_by+"&at="+approver;

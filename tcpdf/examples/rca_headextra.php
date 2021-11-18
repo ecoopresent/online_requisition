@@ -31,6 +31,25 @@ $final_approver = "Homer C. Lim";
 if($approver=="twoB"){
     $final_approver = "Aida D. Sion";
 }
+$department_name = "";
+$second_approver = "";
+if($approver=="three"){
+    $department_name = "Jasmine Padernal";
+    $second_approver = "Jerome T. Chua";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "jcpadernal@panamed.com.ph";
+}else if($approver=="threeB"){
+    $department_name = "Ma. Angelica Saguiguit";
+    $second_approver = "Jerome T. Chua";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "agsaguiguit@panamed.com.ph";
+}else{
+    $department_name = "Jerome T. Chua";
+    $second_approver = "Mary Ann Miranda";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "mpmiranda@pmcgroup.com";
+}
+
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=Jerome T. Chua&at=$approver";
 $button_link = "http://192.168.101.89/online_requisition/approvalRCAHead.php?id=$cash_id&approver=Jerome T. Chua&at=$approver";
 
@@ -311,14 +330,14 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$requested_by.'</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$department_name.'</b>
                                                         </td>
                                                     </tr>
                                                     
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Jerome T. Chua
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$second_approver.'
                                                         </td>
                                                     </tr>
                                                 

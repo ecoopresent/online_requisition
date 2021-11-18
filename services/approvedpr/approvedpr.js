@@ -360,7 +360,7 @@ function approve_RCA(id){
     }else if(apprver_type=="twoD" || apprver_type=="twoD2"){
       window.location.href="tcpdf/examples/rca_finalD.php?id="+id+"&at="+apprver_type;
     }else{
-      window.location.href="tcpdf/examples/rca_final.php?id="+id;
+      window.location.href="tcpdf/examples/rca_final.php?id="+id+"&at="+apprver_type;
     }
     
   }
@@ -395,12 +395,15 @@ function approve_RCAExtra(id){
     });
 
     toggleLoad();
-    var approver = "two";
+    // var approver = "two";
     var requested_by = "Jasmin Padernal";
     if(approver_tp=="threeB"){
       requested_by = "Ma. Angelica Saguiguit";
     }
-    window.location.href="tcpdf/examples/rca_headextra.php?id="+id+"&r="+requested_by+"&at="+approver;
+    if(approver_tp=="threeC"){
+      requested_by = "Mary Ann Miranda";
+    }
+    window.location.href="tcpdf/examples/rca_headextra.php?id="+id+"&r="+requested_by+"&at="+approver_tp;
   }
 
 }

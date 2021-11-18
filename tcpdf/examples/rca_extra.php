@@ -26,14 +26,22 @@ $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 $department_name = "";
+$second_approver = "";
 if($approver=="three"){
     $department_name = "Jasmine Padernal";
+    $second_approver = "Jerome T. Chua";
     $e_address = "jericopresentacion08@gmail.com";
     // $e_address = "jcpadernal@panamed.com.ph";
-}else{
+}else if($approver=="threeB"){
     $department_name = "Ma. Angelica Saguiguit";
+    $second_approver = "Jerome T. Chua";
     $e_address = "jericopresentacion08@gmail.com";
     // $e_address = "agsaguiguit@panamed.com.ph";
+}else{
+    $department_name = "Jerome T. Chua";
+    $second_approver = "Mary Ann Miranda";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "mpmiranda@pmcgroup.com";
 }
 
 
@@ -321,7 +329,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Jerome T. Chua
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$second_approver.'
                                                         </td>
                                                     </tr>
                                                 

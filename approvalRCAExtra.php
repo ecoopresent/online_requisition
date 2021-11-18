@@ -122,17 +122,25 @@ if($rca_status=="Disapproved"){
 
                         <?php elseif($apprver_type=="threeB"): ?>
 
-                            <li>
+                            <li class="done">
                                 <span class="fw-bold">Ma. Angelica Saguiguit</span>
-                                <span class="float-end text-secondary">Pending</span>
+                                <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Department Head</p>
+                            </li>
+
+                        <?php elseif($apprver_type=="threeC"): ?>
+
+                            <li class="done">
+                                <span class="fw-bold">Jerome T. Chua</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Operation Incharge</p>
                             </li>
 
                         <?php else: ?>
 
-                            <li>
+                            <li class="done">
                                 <span class="fw-bold">Jasmin Padernal</span>
-                                <span class="float-end text-secondary">Pending</span>
+                                <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Department Head</p>
                             </li>
                         <?php endif ?>
@@ -142,6 +150,14 @@ if($rca_status=="Disapproved"){
                                 <span class="fw-bold">Jerome T. Chua</span>
                                 <span class="float-end text-secondary">Pending</span>
                                 <p class="text-secondary">Operation Incharge</p>
+                            </li>
+
+                        <?php elseif($apprver_type=="threeC"): ?>
+
+                            <li class="">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
                             </li>
 
                         <?php elseif($apprver_type=="twoE"): ?>

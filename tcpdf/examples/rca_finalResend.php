@@ -19,9 +19,33 @@ require_once "../../model/model.cash_approval.php";
 
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
+$approver = $_GET['at'];
+$department_name = "";
+$second_approver = "";
 
-// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=two";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=two";
+if($approver=="three"){
+
+    $department_name = "Jasmine Padernal";
+    $second_approver = "Jerome T. Chua";
+
+}else if($approver=="threeB"){
+
+    $department_name = "Ma. Angelica Saguiguit";
+    $second_approver = "Jerome T. Chua";
+
+}else if($approver=="threeC"){
+
+    $department_name = "Jerome T. Chua";
+    $second_approver = "Mary Ann Miranda";
+
+}else{
+
+    $department_name = $cash_info['prepared_by'];
+    $second_approver = "Jerome T. Chua";
+}
+
+// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
@@ -83,6 +107,10 @@ $pdf->SetY(1);
 $pdf->setCellPadding(1);
 // -----------------------------------------------------------------------------
 $html = '';
+$extra_approver = $cash_info['head_approver'].'<br> Signed '.$cash_info['date_headapproved'].'<br>';
+if($cash_info['head_approver']=="" || $cash_info['date_headapproved']=="0000-00-00"){
+    $extra_approver = "";
+}
 
 $html .= '<table width="100%" border="0" style="font-size: 11px">
 
@@ -138,11 +166,11 @@ $html .= '<table width="100%" border="0" style="font-size: 11px">
 					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px"></td>
 				</tr>
 				<tr>
-					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>
-					<td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['department_head'].'<br> Signed '.$cash_info['date_preapproved'].'</td>
-					<td style="width: 25%;font-size: 10px;text-align:center">'.$cash_info['president'].'</td>
-					<td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['accounting'].'</td>
-				</tr>
+                    <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>
+                    <td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$extra_approver.''.$cash_info['department_head'].'<br> Signed '.$cash_info['date_preapproved'].'</td>
+                    <td style="width: 25%;font-size: 10px;text-align:center">'.$cash_info['president'].'</td>
+                    <td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['accounting'].'</td>
+                </tr>
 				<tr>
 					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">PRINT NAME & SIGN</td>
 					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">DEPARTMENT HEAD</td>
@@ -302,14 +330,14 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$cash_info['prepared_by'].'</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$department_name.'</b>
                                                         </td>
                                                     </tr>
                                                     
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Jerome T. Chua</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$second_approver.'</b>
                                                         </td>
                                                     </tr>
                                                 
