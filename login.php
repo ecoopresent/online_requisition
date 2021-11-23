@@ -23,7 +23,7 @@ require_once "component/header.php";
             <div class="company-name">
                 <div class="row">
                     <div class="c-icon">
-                        <img src="https://pmc.ph/app/static/image/logo.png" class="company-icon">
+                        <img src="https://inmed.com.ph/static/inmed_logo.png" class="company-icon">
                     </div>
                 </div>
                 
