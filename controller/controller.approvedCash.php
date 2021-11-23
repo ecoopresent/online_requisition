@@ -31,6 +31,7 @@ switch($mode) {
             }
 
             $approvedcash[$k]['cashstatus'] = $cashstatus;
+            $approvedcash[$k]['rca_id'] = $v['id'];
             
         }
         $response = array("data" => $approvedcash);

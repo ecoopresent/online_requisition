@@ -16,6 +16,7 @@ function load_Purchasing(cash_status){
     $('#Cashrequest_table').DataTable().destroy();
     dataTable_load('#Cashrequest_table','controller.approvedCash.php?mode=table&cash_status='+cash_status,[
        {"data":"action"},
+       {"data":"rca_id"},
        {"data":"department"},
        {"data":"payee"},
        {"data":"date_prepared"},

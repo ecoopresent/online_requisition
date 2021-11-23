@@ -58,9 +58,7 @@ class ApprovedCash extends DBHandler {
         $cash_status = $row[17];
 
 
-        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head);
-
-        
+        return array("id"=>$id,"department"=>$department,"payee"=>$payee,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"particulars"=>$particulars,"amount"=>$amount,"purpose"=>$purpose,"remarks"=>$remarks,"charge_to"=>$charge_to,"budget"=>$budget,"liquidated_on"=>$liquidated_on,"prepared_by"=>$prepared_by,"cash_status"=>$cash_status,"president"=>$president,"accounting"=>$accounting,"department_head"=>$department_head);        
 
     }
 
