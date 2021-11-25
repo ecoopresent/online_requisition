@@ -129,10 +129,19 @@ class Canvasing extends DBHandler {
         $query = "UPDATE pr SET pr_status = '$canvas_status' WHERE id = '$id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $this->execute($stmt);
+        if($canvas_status=="PreFinished"){
 
-        $query = "UPDATE canvas SET approved_by = '$approver',remarks = '$remarks',date_approved = '$date_today' WHERE pr_id = '$id'";
-        $stmt = $this->prepareQuery($this->conn, $query);
-        return $this->execute($stmt);
+            $query = "UPDATE canvas SET approved_by = '-', remarks = '$remarks', operation_incharge = '$approver', oi_date_approved = '$date_today' WHERE pr_id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
+
+        }else{
+
+            $query = "UPDATE canvas SET approved_by = '$approver',remarks = '$remarks',date_approved = '$date_today' WHERE pr_id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);    
+        }
+        
     }
 
     public function Update_CanvasIT($id,$canvas_status,$remarks,$approver)

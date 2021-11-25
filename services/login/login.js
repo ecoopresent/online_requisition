@@ -27,7 +27,7 @@ $(document).ready(function(){
         var usertype = $('#usertype').val();
 
         if(usertype=="Administrator"){
-            window.location.href="index.php";
+            window.location.href="users.php";
         }else{
             if(system_type=="petty"){
 

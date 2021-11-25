@@ -32,7 +32,7 @@ if($rca_status=="Disapproved"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="x-apple-disable-message-reformatting">
     <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
-    <title>Progressive Medical Corporation</title>
+    <title>Inmed Corporation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -98,7 +98,7 @@ if($rca_status=="Disapproved"){
     <div class="wrapper d-block position-relative w-100 mx-auto p-5 my-5">
         <div class="row">
             <div class="col col-12">
-                <img src="https://pmc.ph/assets/logo.png" alt="Progressive Medical Corporation's Logo" width="180" class="d-block mx-auto mb-5" />
+                <img src="https://inmed.com.ph/static/inmed_logo.png" alt="Progressive Medical Corporation's Logo" width="180" class="d-block mx-auto mb-5" />
             </div>
 
             <!-- start timeline -->
@@ -119,56 +119,32 @@ if($rca_status=="Disapproved"){
                             <p class="text-secondary">Requestor</p>
                         </li>
 
-                        <?php if ($apprver_type=="twoB"): ?>
 
-                            <li>
-                                <span class="fw-bold">Nancy G. Cortez</span>
-                                <span class="float-end text-secondary">Pending</span>
-                                <p class="text-secondary">Department Head</p>
-                            </li>
-
-                        <?php elseif($apprver_type=="twoC"): ?>
-
-                            <li>
-                                <span class="fw-bold">Mary Ann Miranda</span>
-                                <span class="float-end text-secondary">Pending</span>
-                                <p class="text-secondary">Product Sourcing Specialist</p>
-                            </li>
-
-                        <?php else: ?>
-
-                            <li>
-                                <span class="fw-bold">Susan T. Panugayan</span>
-                                <span class="float-end text-secondary">Pending</span>
-                                <p class="text-secondary">General Manager</p>
-                            </li>
+                        <li>
+                            <span class="fw-bold">Suzanne C. Abilay</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
                             
-                        <?php endif ?>
 
                         <?php if ($apprver_type =="three"): ?>
                                 <li>
-                                    <span class="fw-bold">Mary Ann Miranda</span>
+                                    <span class="fw-bold">Homer C. Lim</span>
                                     <span class="float-end text-secondary">Pending</span>
-                                    <p class="text-secondary">Product Sourcing Specialist</p>
+                                    <p class="text-secondary">Approver</p>
                                 </li>
                         <?php endif ?>
                         
 
-                        <?php if ($apprver_type !="one" && $apprver_type != "twoA"): ?>
-                                <li>
-                                    <span class="fw-bold">Homer C. Lim</span>
-                                    <span class="float-end text-secondary">Pending</span>
-                                    <p class="text-secondary">Chief Product Developer</p>
-                                </li>
-                        <?php endif ?>
 
-                        <?php if ($apprver_type =="twoA"): ?>
-                                <li>
-                                    <span class="fw-bold">Mary Ann Miranda</span>
-                                    <span class="float-end text-secondary">Pending</span>
-                                    <p class="text-secondary">Product Sourcing Specialist</p>
-                                </li>
-                        <?php endif ?>
+                        <li>
+                            <span class="fw-bold">Jerry F. Lim</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+
+
+
 
                     </ul>
                     <?php } ?>

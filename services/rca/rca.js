@@ -244,6 +244,7 @@ function submitRCA_callback(){
     var approver = $('#approver').val();
     var requested_by = $('#requested_by').val();
     var id = $('#c_id').val();
+    // alert(id+" and "+approver+" and "+requested_by);
     toggleLoad();
     window.location.href="tcpdf/examples/rca_head.php?id="+id+"&r="+requested_by+"&at="+approver;
 }

@@ -35,7 +35,7 @@ class Purchasing extends DBHandler {
 
     public function getPRInfo($pr_id)
     {
-        $query = "SELECT id, department, date_prepared, date_needed, pr_no, purpose, requested_by, approved_by, pr_status, date_approve FROM pr WHERE id = '$pr_id'";
+        $query = "SELECT id, department, date_prepared, date_needed, pr_no, purpose, requested_by, approved_by, pr_status, date_approve, f_approved_by, f_date_approved FROM pr WHERE id = '$pr_id'";
         $stmt = $this->prepareQuery($this->conn, $query);
         $row = $this->fetchRow($stmt);
         $department = $row[1];
@@ -46,8 +46,10 @@ class Purchasing extends DBHandler {
         $requested_by = $row[6];
         $approved_by = $row[7];
         $date_approve = $row[9];
+        $f_approved_by = $row[10];
+        $f_date_approved = $row[11];
 
-        return array("department"=>$department,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"pr_no"=>$pr_no,"purpose"=>$purpose,"requested_by"=>$requested_by,"approved_by"=>$approved_by, "date_approve"=>$date_approve);
+        return array("department"=>$department,"date_prepared"=>$date_prepared,"date_needed"=>$date_needed,"pr_no"=>$pr_no,"purpose"=>$purpose,"requested_by"=>$requested_by,"approved_by"=>$approved_by, "date_approve"=>$date_approve, "f_approved_by"=>$f_approved_by,"f_date_approved"=>$f_date_approved);
     }
 
     public function check_Canvas($id){

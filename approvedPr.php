@@ -49,19 +49,20 @@ if($notifval_sideePre > 0){
 
                         <h4><i class="fas fa-md fa-thumbs-up"></i> APPROVED CANVASSED</h4><br>
 
-                        <select class="p-1 mt-1 dropdown mb-3" id="canvas_status">
+                        <select class="p-1 mt-1 dropdown mb-3" id="canvas_status" style="display: none;">
                                     <option value="Pending" selected=""> Pending </option>
                                     <option value="Submitted"> Submitted </option>
                                     <option value="Approved"> Pre-Approved RCA </option>
                             </select>
+                            <button class="btn btn-sm btn-warning" type="button" id="btn_reload"> <label class="text-dark">Approved Canvas</label></button>
 
                             <button class="btn btn-sm btn-warning" type="button" id="btn_pre_apps"> <label class="text-dark">Pre-Approved Canvas</label> <span style="<?php echo $border_sideepre; ?>"><?php echo $notifval_sideePre; ?></span></button>
                             <button class="btn btn-sm btn-warning" type="button" id="btn_rejecteds"> <label class="text-dark">Rejected Canvas</label> <span style="<?php echo $border_sidee; ?>"><?php echo $notifval_sidee; ?></span></button>
                         <table id="Prequest_table" class="table">
                             <thead>
                                 <th class="bg-header"></th>
-                                <th class="bg-header">Date Approved</th>
-                                <th class="bg-header">Status</th>
+<!--                                 <th class="bg-header">Date Approved</th>
+                                <th class="bg-header">Status</th> -->
                                 <th class="bg-header">Department</th>
                                 <th class="bg-header">Date Prepared</th>
                                 <th class="bg-header">Date Needed</th>

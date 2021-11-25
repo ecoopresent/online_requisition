@@ -1,12 +1,37 @@
 <?php 
 
-// error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';
-// $mail = new PHPMailer();$mail->Host = "smtp.pmc.ph";$mail->IsHTML(true);$mail->Username = "no-reply@pmc.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@pmc.ph", "");
+// error_reporting();
+// require 'Exception.php';
+// require 'PHPMailer.php';
+// require 'SMTP.php';
+// require 'PHPMailerAutoload.php';
 
-$e_address = "jericopresentacion08@gmail.com";
-$e_address2 = "jericopresentacion8@gmail.com";
-// $e_address = "homer.lim@pmc.ph";
-// $e_address2 = "ntngo@pmcgroup.com";
+// $mail = new PHPMailer();
+// $mail->IsSMTP();
+// $mail->SMTPDebug = 0;
+// $mail->SMTPAuth = true;
+// $mail->SMTPSecure = 'ssl';
+// $mail->Host = "mail.inmed.com.ph";
+// $mail->Port = 465;
+
+// $mail->SMTPOptions = array(
+//     'ssl' => array(
+//         'verify_peer' => false,
+//         'verify_peer_name' => false,
+//         'allow_self_signed' => true
+//     )
+// );
+
+// $mail->IsHTML(true);
+// $mail->Username = "no-reply@inmed.com.ph";
+// $mail->Password = "Aybkg9p5qclscbqsl";
+// $mail->SetFrom("no-reply@inmed.com.ph", "");
+            
+// $mail->isHTML(true);
+
+$e_address = "kainankayalingnene@gmail.com";
+// $e_address = "jfl@inmed.com.ph";
+
 
 require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
 $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
@@ -22,14 +47,15 @@ require_once "../../model/model.cash_approval.php";
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
 $approver = $_GET['at'];
+$finalapprover = "Jerry F. Lim";
 
 
 if($approver=="three"){
-    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
-    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+    $button_link = "http://192.168.0.100/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=triple";
+    // $button_link = "https://inmed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=triple";
 }else{
-    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
-    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+    $button_link = "http://192.168.0.100/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver";
+    // $button_link = "https://inmed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver";
 }
 
 $newFolder = "RCA".date('Y')."-".$cash_id;
@@ -38,10 +64,8 @@ $rca_attachments = $cash_approval->getAttachments($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 
-$finalapprover = "Homer C. Lim";
-if($approver=="twoA"){
-    $finalapprover = "Mary Ann Miranda";
-}
+
+
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -76,8 +100,8 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
+    require_once(dirname(__FILE__).'/lang/eng.php');
+    $pdf->setLanguageArray($l);
 }
 // ---------------------------------------------------------
 // set a barcode on the page footer
@@ -101,59 +125,62 @@ $html = '';
 
 $html .= '<table width="100%" border="0" style="font-size: 11px">
 
-				<tr>
-					<td colspan="4"></td>
-				</tr>
-				<tr>
-					<td colspan="4"></td>
-				</tr>
-				<tr>
-					<td style="width:40%;"></td>
-					<td colspan="3" style="border: 1px solid black;text-align:center;font-size: 14px;background-color: dimgray;color:white;width:60%;"><b>REQUEST FOR CASH ADVANCE/CHECK ISSUANCE</b></td>
-				</tr>
-				<tr>
-					<td colspan="4"></td>
-				</tr>
-				<tr>
-					<td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DEPARTMENT DIVISION</td>
-					<td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">PAYEE</td>
-					<td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DATE PREPARED</td>
-					<td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DATE NEEDED</td>
-				</tr>
-				<tr>
-					<td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['department'].'</td>
-					<td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['payee'].'</td>
-					<td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['date_prepared'].'</td>
-					<td style="border-left: 1px solid black;border-right: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['date_needed'].'</td>
-				</tr>
-				<tr>
-					<td colspan="3" style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px">PARTICULARS</td>
-					<td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px">AMOUNT</td>
-				</tr>
-				<tr>
-					<td colspan="3" style="border-left: 1px solid black;text-align:center;font-size: 10px;height: 100px">'.$cash_info['particulars'].'</td>
-					<td style="border-left: 1px solid black;border-right: 1px solid black;text-align:center;font-size: 10px;height: 100px">'.$cash_info['amount'].'</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="border-top: 1px solid black;border-left: 1px solid black;width: 50%;font-size: 10px">PURPOSE: '.$cash_info['purpose'].'</td>
-					<td colspan="2" style="border-top: 1px solid black;width: 50%;font-size: 10px;border-right: 1px solid black;border-left: 1px solid black">REMARKS/INSTRUCTION: '.$cash_info['remarks'].'</td>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td style="width:40%;"></td>
+                    <td colspan="3" style="border: 1px solid black;text-align:center;font-size: 14px;background-color: dimgray;color:white;width:60%;"><b>REQUEST FOR CASH ADVANCE/CHECK ISSUANCE</b></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DEPARTMENT DIVISION</td>
+                    <td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">PAYEE</td>
+                    <td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DATE PREPARED</td>
+                    <td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px;width: 25%">DATE NEEDED</td>
+                </tr>
+                <tr>
+                    <td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['department'].'</td>
+                    <td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['payee'].'</td>
+                    <td style="border-left: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['date_prepared'].'</td>
+                    <td style="border-left: 1px solid black;border-right: 1px solid black;text-align:center;font-size: 10px">'.$cash_info['date_needed'].'</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px">PARTICULARS</td>
+                    <td style="border: 1px solid black;text-align:center;font-size: 12px;background-color: dimgray;color:white;font-size: 10px">AMOUNT</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="border-left: 1px solid black;text-align:center;font-size: 10px;height: 100px">'.$cash_info['particulars'].'</td>
+                    <td style="border-left: 1px solid black;border-right: 1px solid black;text-align:center;font-size: 10px;height: 100px">'.$cash_info['amount'].'</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-top: 1px solid black;border-left: 1px solid black;width: 50%;font-size: 10px">PURPOSE: '.$cash_info['purpose'].'</td>
+                    <td colspan="2" style="border-top: 1px solid black;width: 50%;font-size: 10px;border-right: 1px solid black;border-left: 1px solid black">REMARKS/INSTRUCTION: '.$cash_info['remarks'].'</td>
 
-				</tr>
-				<tr>
-					<td colspan="2" style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 34%;font-size: 9px;text-align:left">CHARGE TO: '.$cash_info['charge_to'].'</td>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 33%;font-size: 9px;text-align:left">BUDGET: '.$cash_info['budget'].'</td>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;border-right: 1px solid black;width: 33%;font-size: 9px;text-align:left">TO BE LIQUIDATED ON: '.$cash_info['liquidated_on'].'</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px">PREPARED BY:</td>
-					<td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px">APPROVED BY: </td>
-				</tr>';
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 34%;font-size: 9px;text-align:left">CHARGE TO: '.$cash_info['charge_to'].'</td>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 33%;font-size: 9px;text-align:left">BUDGET: '.$cash_info['budget'].'</td>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;border-right: 1px solid black;width: 33%;font-size: 9px;text-align:left">TO BE LIQUIDATED ON: '.$cash_info['liquidated_on'].'</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px">PREPARED BY:</td>
+                    <td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px">APPROVED BY: </td>
+                </tr>';
 
         if($approver=="three"){
-
+            $head_signature = $cash_info['head_approver'].'<br> Signed '.$cash_info['date_headapproved'];
+            if($cash_info['date_headapproved']=="" || $cash_info['date_headapproved']==null){
+                $head_signature = "";
+            }
             $html .='<tr>
                     <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
-                    <td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['head_approver'].'<br> Signed '.$cash_info['date_headapproved'].'</td>
+                    <td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$head_signature.'</td>
                     <td style="width: 25%;font-size: 10px;text-align:center"></td>
                     <td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center"></td>
                 </tr>';
@@ -165,19 +192,26 @@ $html .= '<table width="100%" border="0" style="font-size: 11px">
                     <td colspan="2" style="border-left: 1px solid black;border-right: 1px solid black;width: 75%;font-size: 10px"></td>
                 </tr>';
         }
-
-		$html .='<tr>
-					<td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>
-					<td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['department_head'].'<br> Signed '.$cash_info['date_preapproved'].'</td>
-					<td style="width: 25%;font-size: 10px;text-align:center">'.$cash_info['president'].'</td>
-					<td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['accounting'].'</td>
-				</tr>
-				<tr>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">PRINT NAME & SIGN</td>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">DEPARTMENT HEAD</td>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;width: 25%;font-size: 9px;text-align:center">PRESIDENT</td>
-					<td style="border-top: 1px solid black;border-bottom:1px solid black;border-right: 1px solid black;width: 25%;font-size: 9px;text-align:center">ACCOUNTING</td>
-				</tr>';
+        $head2_signature = $cash_info['department_head'].'<br> Signed '.$cash_info['date_preapproved'];
+        if($cash_info['date_preapproved']=="" || $cash_info['date_preapproved']==null){
+            $head2_signature = "";
+        }
+        $pres_signature = $cash_info['president'].'<br> Signed '.$cash_info['date_approved'];
+        if($cash_info['president']=="" || $cash_info['president']==null){
+            $pres_signature = "";
+        }
+        $html .='<tr>
+                    <td colspan="2" style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['prepared_by'].'<br> Signed '.$cash_info['date_prepared'].'</td>
+                    <td style="border-left: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$head2_signature.'</td>
+                    <td style="width: 25%;font-size: 10px;text-align:center">'.$pres_signature.'</td>
+                    <td style="border-right: 1px solid black;width: 25%;font-size: 10px;text-align:center">'.$cash_info['accounting'].'</td>
+                </tr>
+                <tr>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">PRINT NAME & SIGN</td>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;border-left: 1px solid black;width: 25%;font-size: 9px;text-align:center">DEPARTMENT HEAD</td>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;width: 25%;font-size: 9px;text-align:center">PRESIDENT</td>
+                    <td style="border-top: 1px solid black;border-bottom:1px solid black;border-right: 1px solid black;width: 25%;font-size: 9px;text-align:center">ACCOUNTING</td>
+                </tr>';
 
  $html .= '</table>';
 
@@ -190,7 +224,7 @@ $pdf->Ln();
 $pdfname = 'Cash Advance/Check Issuance.pdf';
 $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
 
-	$badie = '<!DOCTYPE html>
+    $badie = '<!DOCTYPE html>
     <html>
     <head>
         <meta charset="utf-8">
@@ -307,7 +341,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td style="background-color:#FFFFFF;color:#000000;padding:30px;">
-                            <img src="https://pmc.ph/assets/logo.png" width="160" style="display: block; margin: auto" />
+                            <img src="https://inmed.com.ph/static/inmed_logo.png" width="160" style="display: block; margin: auto" />
                         </td>
                     </tr>
                 </table>
@@ -338,7 +372,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Susan T. Panugayan</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Suzanne C. Abilay</b>
                                                         </td>
                                                     </tr>';
 
@@ -347,7 +381,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                         $badie .= '<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Mary Ann Miranda</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Homer C. Lim</b>
                                                         </td>
                                                     </tr>';
 
@@ -377,7 +411,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                     
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
-                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #84ad22;">Click Here to Approve or Disapprove</span></a>
+                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #ff881a;">Click Here to Approve or Disapprove</span></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -388,7 +422,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td width="100%" style="min-width:100%;background-color:#58585A;color:#ffffff;padding:30px;">
-                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Progressive Medical Corporation</p>
+                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Inmed Corporation</p>
                         </td>
                     </tr>
                 </table>
@@ -401,12 +435,12 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
     </html>';
 
 
- 	$mail->Body = $badie;
+    $mail->Body = $badie;
     $mail->addStringAttachment($pdffile,$pdfname);
     $mail->isHTML(true);
 
     $mail->AddAddress($e_address);
-    $mail->AddAddress($e_address2);
+    // $mail->AddAddress($e_address2);
 
     foreach($rca_attachments as $k=>$v) {
 

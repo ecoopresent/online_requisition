@@ -33,7 +33,7 @@ class Pr extends DBHandler {
 
     public function getPRlist($full_name)
     {
-        $query = "SELECT id, department, date_prepared, date_needed, pr_no, purpose, requested_by, approved_by, pr_status, pr_type FROM pr WHERE pr_status = 'Submitted' AND requested_by = '$full_name' OR pr_status = 'Pending' AND requested_by = '$full_name'";
+        $query = "SELECT id, department, date_prepared, date_needed, pr_no, purpose, requested_by, approved_by, pr_status, pr_type FROM pr WHERE pr_status = 'Submitted' AND requested_by = '$full_name' OR pr_status = 'Pending' AND requested_by = '$full_name' OR pr_status = 'Pre-Approved' AND requested_by = '$full_name'";
         $stmt = $this->prepareQuery($this->conn, $query);
         return $this->fetchAssoc($stmt);
     }

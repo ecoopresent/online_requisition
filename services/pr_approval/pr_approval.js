@@ -37,15 +37,36 @@ function approve_PR(id){
   if(r==true){
     var c = post_Data('controller.pr_approval.php?mode=status',{
       id: id,
+      pr_status: "Pre-Approved",
+      remarks: $('#remarks').val(),
+      approver: $('#approver').val()
+      
+    });
+    // window.location.href="approvalPRHead.php?id="+id+"&approver=";  
+    toggleLoad();
+    var email_Approver = "kainankayalingnene@gmail.com";
+    // var email_Approver = "hcl@inmed.com.ph";
+    var name_Approver = "Homer C. Lim";
+    window.location.href="tcpdf/examples/pr_list_email_head.php?id="+id+"&e="+email_Approver+"&n="+name_Approver;
+  }
+  
+}
+
+function finalapprove_PR(id){
+
+  var r = confirm("Approve PR?");
+  if(r==true){
+    var c = post_Data('controller.pr_approval.php?mode=status',{
+      id: id,
       pr_status: "Approved",
       remarks: $('#remarks').val(),
       approver: $('#approver').val()
       
     });
-    alert("Approved");
     window.location.href="approvalPRHead.php?id="+id+"&approver=";  
   }
-  
+
+
 }
 
 function disapprove_PR(id){
@@ -67,15 +88,33 @@ function approve_Canvas(id){
   if(r==true){
     var c = post_Data('controller.canvasing.php?mode=UpdateCanvas',{
       id: id,
-      canvas_status: "Finished",
+      // canvas_status: "Finished",
+      canvas_status: "PreFinished",
       remarks: $('#remarks').val(),
       approver: $('#approver').val()
       
     });
     toggleLoad();
-    window.location.href="tcpdf/examples/pr_notif.php?id="+id; 
+    // window.location.href="tcpdf/examples/pr_notif.php?id="+id; 
+    window.location.href="tcpdf/examples/pr_list_email.php?id="+id+"&stat=";
   }
   
+}
+
+function finaleapprove_Canvas(id){
+  var r = confirm("Approve Canvas?");
+  if(r==true){
+    var c = post_Data('controller.canvasing.php?mode=UpdateCanvas',{
+      id: id,
+      canvas_status: "Finished",
+      remarks: $('#remarks').val(),
+      approver: $('#approver').val()
+      
+    });
+    window.location.href="approvalCanvas.php?id="+id+"&approver=";
+
+  }
+
 }
 
 function approve_CanvasIT(id){

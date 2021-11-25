@@ -1,10 +1,36 @@
 <?php 
 
-// error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';
-// $mail = new PHPMailer();$mail->Host = "smtp.pmc.ph";$mail->IsHTML(true);$mail->Username = "no-reply@pmc.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@pmc.ph", "");
+// error_reporting();
+// require 'Exception.php';
+// require 'PHPMailer.php';
+// require 'SMTP.php';
+// require 'PHPMailerAutoload.php';
 
-$e_address = "jericopresentacion08@gmail.com";
-// $e_address = "homer.lim@pmc.ph";
+// $mail = new PHPMailer();
+// $mail->IsSMTP();
+// $mail->SMTPDebug = 0;
+// $mail->SMTPAuth = true;
+// $mail->SMTPSecure = 'ssl';
+// $mail->Host = "mail.inmed.com.ph";
+// $mail->Port = 465;
+
+// $mail->SMTPOptions = array(
+//     'ssl' => array(
+//         'verify_peer' => false,
+//         'verify_peer_name' => false,
+//         'allow_self_signed' => true
+//     )
+// );
+
+// $mail->IsHTML(true);
+// $mail->Username = "no-reply@inmed.com.ph";
+// $mail->Password = "Aybkg9p5qclscbqsl";
+// $mail->SetFrom("no-reply@inmed.com.ph", "");
+            
+// $mail->isHTML(true);
+
+$e_address = "kainankayalingnene@gmail.com";
+// $e_address = "hcl@inmed.com.ph";
 
 require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
 $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
@@ -26,10 +52,19 @@ $canvas_info = $canvasing->getCanvasInfo($pr_id);
 $canvas_id = $canvas_info['canvas_id'];
 $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
-$name_Approver = "Homer C. Lim";
 
-// $button_link = "https://pmc.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+$stat = $_GET['stat'];
+
+$name_Approver = "Homer C. Lim";
+if($stat=="first"){
+	$name_Approver = "Suzanne C. Abilay";
+	// $e_address = "sca@inmed.com.ph";
+	$e_address = "jericopresentacion08@gmail.com";
+
+}
+
+// $button_link = "https://inmed.com.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.0.100/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
@@ -155,13 +190,13 @@ for($x=0;$x<$rows;$x++){
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>REQUESTED BY:</b></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">'.$pr_info['requested_by'].'<br>Signed '.$pr_info['date_prepared'].'</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>APPROVED BY:</b></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br>Signed '.$pr_info['date_approve'].'</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br> Signed '.$pr_info['date_approve'].'<br>'.$pr_info['f_approved_by'].'<br> Signed '.$pr_info['f_date_approved'].'</td>
 				</tr>
 				<tr>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">PRINT NAME-SIGN</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">DEPT HEAD</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">APPROVER</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -355,7 +390,16 @@ for($x=0;$x<$rows;$x++){
 
 }
 
+$approvedby = "";
+$preapprovedby = "";
+if($canvas_info['oi_date_approved'] != "" || $canvas_info['oi_date_approved'] != null){
 
+	$preapprovedby = $canvas_info['operation_incharge'].'<br> Signed '.$canvas_info['oi_date_approved'];
+}
+
+if($canvas_info['date_approved'] != "" || $canvas_info['date_approved'] != null){
+	$approvedby = $canvas_info['approved_by'].'<br> Signed '.$canvas_info['date_approved'];
+}
 	$html .= '<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="left"><b>REMARKS:</b></td>
 					<td style="width: 40%" align="center">'.$canvas_info['remarks'].'</td>
@@ -365,13 +409,13 @@ for($x=0;$x<$rows;$x++){
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
-					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center">'.$preapprovedby.'</td>
+					<td style="width: 23%;border-right: 1px solid #0d0d0d" align="center">'.$approvedby.'</td>
 				</tr>
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="center"></td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">GENERAL MANAGER</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">PRESIDENT</td>
 				</tr>
 				<tr>
@@ -512,7 +556,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td style="background-color:#FFFFFF;color:#000000;padding:30px;">
-                            <img src="https://pmc.ph/assets/logo.png" width="160" style="display: block; margin: auto" />
+                            <img src="https://inmed.com.ph/static/inmed_logo.png" width="160" style="display: block; margin: auto" />
                         </td>
                     </tr>
                 </table>
@@ -532,9 +576,31 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 16px; line-height:30px;text-align:center;">
                                             <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%; margin: auto">
-                                                <tbody>
+                                                <tbody>';
+
+                                    if($stat=="first"){
+
+                                    	$badie .='<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Suzanne C. Abilay
+                                                        </td>
+                                                    </tr>';
+
+                                    }else{
+
+                                    	$badie .='<tr>
+                                                        <td style="width: 33%;"></td>
+                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Suzanne C. Abilay</b>
+                                                        </td>
+                                                    </tr>';
+
+                                    }
                                                
-                                                    <tr>
+                                          
+
+                                          $badie .='<tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
                                                             <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
@@ -557,7 +623,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                     
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
-                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #84ad22;">Click Here to Approve or Disapprove</span></a>
+                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #ff881a;">Click Here to Approve or Disapprove</span></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -568,7 +634,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td width="100%" style="min-width:100%;background-color:#58585A;color:#ffffff;padding:30px;">
-                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Progressive Medical Corporation</p>
+                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Inmed Corporation</p>
                         </td>
                     </tr>
                 </table>
@@ -596,7 +662,12 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
     echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
     // echo "Email sent";
-    header('location:../../purchasing.php');
+    	if($stat=="first"){
+    		header('location:../../purchasing.php');
+    	}else{
+    		header('location:../../approvalCanvas.php?id='.$pr_id.'&approver=');
+    	}
+    
     }
 
 

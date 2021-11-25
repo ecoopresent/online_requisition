@@ -30,7 +30,13 @@ switch($mode) {
                 $pr[$k]['action'] = "<button class='btn btn-sm btn-primary' onclick='select_PR(".$v['id'].",\"".$v['pr_no']."\",\"".$v['pr_status']."\",\"".$v['purpose']."\",\"".$v['pr_type']."\")'><i class='fas fa-sm fa-mouse-pointer'></i> Open</button>
                                      <button class='btn btn-sm btn-success' onclick='edit_PR(".$v['id'].",\"".$v['department']."\",\"".$v['date_prepared']."\",\"".$v['date_needed']."\",\"".$v['pr_no']."\",\"".$v['purpose']."\",\"".$v['pr_type']."\")'><i class='fas fa-sm fa-edit'></i> Edit</button>
                                      <button class='btn btn-sm btn-danger' onclick='delete_PR(".$v['id'].")'><i class='fas fa-sm fa-trash'></i> Delete</button>";
-            }else{
+            }else if($v['pr_status']=='Pre-Approved'){
+
+                $pr[$k]['action'] = "<button class='btn btn-sm btn-primary' onclick='view_PRequest(".$v['id'].")'><i class='fas fa-sm fa-mouse-pointer'></i> Open</button>
+                                     <button class='btn btn-sm btn-success' onclick='resend_PR(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>";
+
+            }
+            else{
                 $pr[$k]['action'] = "<button class='btn btn-sm btn-primary' onclick='select_PR(".$v['id'].",\"".$v['pr_no']."\",\"".$v['pr_status']."\",\"".$v['purpose']."\",\"".$v['pr_type']."\")'><i class='fas fa-sm fa-mouse-pointer'></i> Open</button>
                                      <button class='btn btn-sm btn-success' disabled=''><i class='fas fa-sm fa-edit'></i> Edit</button>
                                      <button class='btn btn-sm btn-danger' disabled=''><i class='fas fa-sm fa-trash'></i> Delete</button>";

@@ -19,9 +19,9 @@ switch($mode) {
             $cash_status = $v['cash_status'];
             $cashstatus = "";
             if($cash_status =="Finished"){
+                // <button class='btn btn-info btn-sm' onclick='attach_RCA(".$v['id'].")'><i class='fas fa-sm fa-paperclip'></i> Attachments</button>
                 $approvedcash[$k]['action'] = "<button class='btn btn-primary btn-sm' onclick='open_Cash(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View</button>
                                               <button class='btn btn-success btn-sm' onclick='check_Cash(".$v['id'].")'><i class='fas fa-sm fa-check'></i> Finish Transaction</button>
-                                              <button class='btn btn-info btn-sm' onclick='attach_RCA(".$v['id'].")'><i class='fas fa-sm fa-paperclip'></i> Attachments</button>
                                               <button class='btn btn-danger btn-sm' onclick='decline_RCA(".$v['id'].")'><i class='fas fa-sm fa-times'></i> Decline</button>
                                               ";
                                               $cashstatus = "Approved Canvassed";

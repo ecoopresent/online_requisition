@@ -67,7 +67,7 @@ if($cash_info['date_preapproved']=="0000-00-00"){
 }else{
 	$cash_info['date_preapproved'] = "Signed ".$cash_info['date_preapproved'];
 }
-if($cash_info['date_approved']=="0000-00-00"){
+if($cash_info['date_approved']==""){
 	$cash_info['date_approved'] = "";
 }else{
 	$cash_info['date_approved'] = "Signed ".$cash_info['date_approved'];

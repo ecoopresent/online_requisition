@@ -122,12 +122,12 @@ require_once "component/header.php";
                             <h4>USER ACCOUNTS</h4><br>
                         </div>
 
-                        <div class="input-group mb-4 padded">
+                        <!-- <div class="input-group mb-4 padded">
                             <div class="input-group-prepend">
                                 <button class="btn btn-secondary" disabled="" type="button" data-toggle="modal" data-target="#userModal"><i class="fas fa-sm fa-search"></i> Search</button>
                             </div>
                             <input id="dataTableSearch" type="search" class="form-control rounded-0 search-field" placeholder="Search here">
-                        </div>
+                        </div> -->
 
                         <div class="responsive-table mt-2">
                             <table id="usersTable" class="table" width="100%">

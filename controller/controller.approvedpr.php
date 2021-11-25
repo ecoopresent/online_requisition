@@ -49,18 +49,16 @@ switch($mode) {
             }
 
             if($v['pr_status'] == 'Rejected'){
-                $approvedpr[$k]['action'] = "<button class='btn btn-primary btn-sm' disabled=''><i class='fas fa-sm fa-mouse-pointer'></i> Request Cash Advance</button>
-                                        <button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
+                $approvedpr[$k]['action'] = "<button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
 
             }else if($v['pr_status'] == 'PreFinished'){
                 $approvedpr[$k]['action'] = "<button class='btn btn-success btn-sm' onclick='resendCanvas(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>
                                         <button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
 
             }else if($v['pr_status'] == "Finished" && $v['cash_status'] == "Approved"){
-                $approvedpr[$k]['action'] = "<button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR</button> <button class='btn btn-primary btn-sm' onclick='view_RCA(".$v['idRCA'].")'><i class='fas fa-sm fa-eye'></i> View RCA</button> <button class='btn btn-success btn-sm' onclick='resendRCA(".$v['id'].")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>";
+                $approvedpr[$k]['action'] = "<button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR</button>";
             }else{
-                $approvedpr[$k]['action'] = "<button class='btn btn-primary btn-sm' onclick='open_PR(".$v['id'].",".$id.",\"".$department."\",\"".$payee."\",\"".$date_prepared."\",\"".$date_needed."\",\"".$particulars."\",\"".$amount."\",\"".$purpose."\",\"".$remarks."\",\"".$charge_to."\",\"".$budget."\",\"".$liquidated_on."\",\"".$label."\")'><i class='fas fa-sm fa-mouse-pointer'></i> Request Cash Advance</button>
-                                        <button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
+                $approvedpr[$k]['action'] = "<button class='btn btn-danger btn-sm' onclick='view_PR(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View PR & Canvassed</button>";
             }
             
             

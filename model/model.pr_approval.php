@@ -18,14 +18,28 @@ class Pr_approval extends DBHandler {
 
     public function UpdateStatus($id,$pr_status,$approver,$remarks)
     {   
-        $date_today = date('Y-m-d');
-        if($pr_status=="Disapproved" || $pr_status=="Submitted"){
-            $full_name = "";
-            $date_today = "";
+        
+
+        if($pr_status=="Approved"){
+
+            $date_today = date('Y-m-d');
+            $query = "UPDATE pr SET pr_status = '$pr_status', f_approved_by = '$approver', remarks = '$remarks', f_date_approved = '$date_today' WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
+
+        }else{
+
+            $date_today = date('Y-m-d');
+            if($pr_status=="Disapproved" || $pr_status=="Submitted"){
+                $full_name = "";
+                $date_today = "";
+            }
+
+            $query = "UPDATE pr SET pr_status = '$pr_status', approved_by = '$approver', remarks = '$remarks', date_approve = '$date_today' WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
         }
-        $query = "UPDATE pr SET pr_status = '$pr_status', approved_by = '$approver', remarks = '$remarks', date_approve = '$date_today' WHERE id = '$id'";
-        $stmt = $this->prepareQuery($this->conn, $query);
-        return $this->execute($stmt);
+        
     }
  
     public function addPRequest($department,$date_prepared,$date_needed,$pr_no,$purpose)

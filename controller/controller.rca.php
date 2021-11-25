@@ -14,10 +14,10 @@ switch($mode) {
 
 	case "table";
         $rca = $rca->getRCAList($user_dept);
+        // <button class='btn btn-success btn-sm' onclick='addAttach(".$v['id'].")'><i class='fas fa-sm fa-paperclip'></i> Attach</button>
         foreach($rca as $k=>$v) {
             $rca[$k]['action'] = "<button class='btn btn-primary btn-sm' onclick='editRCA(".$v['id'].",\"".$v['department']."\",\"".$v['payee']."\",\"".$v['date_prepared']."\",\"".$v['date_needed']."\",\"".$v['particulars']."\",\"".$v['amount']."\",\"".$v['purpose']."\",\"".$v['remarks']."\",\"".$v['charge_to']."\",\"".$v['budget']."\",\"".$v['liquidated_on']."\",\"".$v['prepared_by']."\")'><i class='fas fa-sm fa-pencil-alt'></i> Edit</button>
             <button class='btn btn-danger btn-sm' onclick='deleteRCA(".$v['id'].")'><i class='fas fa-sm fa-trash-alt'></i> Delete</button>
-            <button class='btn btn-success btn-sm' onclick='addAttach(".$v['id'].")'><i class='fas fa-sm fa-paperclip'></i> Attach</button>
             <button class='btn btn-warning btn-sm' onclick='sendRCA(".$v['id'].",\"".$v['prepared_by']."\")'><i class='fas fa-sm fa-paper-plane'></i> Send</button>";
             $pr_id = $v['pr_id'];
             $rca_txt = "RCAPR".date('Y').$pr_id;
@@ -42,18 +42,10 @@ switch($mode) {
                 $rca[$k]['action'] = "<button class='btn btn-primary btn-sm' onclick='viewRCA(".$v['id'].")'><i class='fas fa-sm fa-eye'></i> View</button> <button class='btn btn-success btn-sm' onclick='resendRCA(".$v['id'].",\"".$v['approver_type']."\")'><i class='fas fa-sm fa-paper-plane'></i> Resend</button>";
             }
             $approvers = "";
-            if($v['approver_type']=="one"){
-                $approvers = "STP";
-            }else if($v['approver_type']=="twoA"){
-                $approvers = "STP & MPM";
-            }else if($v['approver_type']=="twoB"){
-                $approvers = "NGC & HCL";
-            }else if($v['approver_type']=="twoC"){
-                $approvers = "MPM & HCL";
-            }else if($v['approver_type']=="three"){
-                $approvers = "STP & MPM & HCL";
+            if($v['approver_type']=="two"){
+                $approvers = "SCA & JFL";
             }else{
-                $approvers = "STP & HCL";
+                $approvers = "SCA & HCL & JFL";
             }
             $rca[$k]['approvers'] = $approvers;
             $pr_id = $v['pr_id'];

@@ -1,10 +1,36 @@
 <?php 
 
-// error_reporting(E_ALL);require 'Exception.php';require 'PHPMailer.php';require 'SMTP.php';require 'PHPMailerAutoload.php';
-// $mail = new PHPMailer();$mail->Host = "smtp.pmc.ph";$mail->IsHTML(true);$mail->Username = "no-reply@pmc.ph";$mail->Password = "Unimex123!";$mail->SetFrom("no-reply@pmc.ph", "");
+// error_reporting();
+// require 'Exception.php';
+// require 'PHPMailer.php';
+// require 'SMTP.php';
+// require 'PHPMailerAutoload.php';
 
-$e_address = "jericopresentacion08@gmail.com";
-// $e_address = "homer.lim@pmc.ph";
+// $mail = new PHPMailer();
+// $mail->IsSMTP();
+// $mail->SMTPDebug = 0;
+// $mail->SMTPAuth = true;
+// $mail->SMTPSecure = 'ssl';
+// $mail->Host = "mail.inmed.com.ph";
+// $mail->Port = 465;
+
+// $mail->SMTPOptions = array(
+//     'ssl' => array(
+//         'verify_peer' => false,
+//         'verify_peer_name' => false,
+//         'allow_self_signed' => true
+//     )
+// );
+
+// $mail->IsHTML(true);
+// $mail->Username = "no-reply@inmed.com.ph";
+// $mail->Password = "Aybkg9p5qclscbqsl";
+// $mail->SetFrom("no-reply@inmed.com.ph", "");
+            
+// $mail->isHTML(true);
+
+$e_address = "kainankayalingnene@gmail.com";
+// $e_address = "hcl@inmed.com.ph";
 
 require 'PHPMailer\src\Exception.php';require 'PHPMailer\src\PHPMailer.php';require 'PHPMailer\src\SMTP.php';require 'PHPMailer\src\PHPMailerAutoload.php';
 $mail = new PHPMailer();$mail->IsSMTP();$mail->SMTPDebug = 0;$mail->SMTPAuth = true;$mail->SMTPSecure = 'ssl';$mail->Host = "smtp.gmail.com";$mail->Port = 465;$mail->IsHTML(true);$mail->Username = "pmcmailchimp@gmail.com";$mail->Password = "1_pmcmailchimp@gmail.com";$mail->SetFrom("inquiry@inmed.com.ph", "");
@@ -28,8 +54,8 @@ $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
 $name_Approver = "Homer C. Lim";
 
-// $button_link = "https://pmc.ph/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvasFinal.php?id=$pr_id&approver=$name_Approver";
+// $button_link = "https://inmed.com.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.0.100/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
@@ -512,7 +538,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td style="background-color:#FFFFFF;color:#000000;padding:30px;">
-                            <img src="https://pmc.ph/assets/logo.png" width="160" style="display: block; margin: auto" />
+                            <img src="https://inmed.com.ph/static/inmed_logo.png" width="160" style="display: block; margin: auto" />
                         </td>
                     </tr>
                 </table>
@@ -537,14 +563,14 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Neil De Guzman</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Suzanne C. Abilay</b>
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Homer C. Lim</b>
+                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; Homer C. Lim
                                                         </td>
                                                     </tr>
 
@@ -564,7 +590,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                     
                                     <tr>
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
-                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #84ad22;">Click Here to Approve or Disapprove</span></a>
+                                            <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #ff881a;">Click Here to Approve or Disapprove</span></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -575,7 +601,7 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                 <table width="100%" cellpadding="0" cellspacing="0" style="min-width:100%;">
                     <tr>
                         <td width="100%" style="min-width:100%;background-color:#58585A;color:#ffffff;padding:30px;">
-                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Progressive Medical Corporation</p>
+                            <p style="font-size:12px;line-height:20px;font-family: Arial,sans-serif;text-align:center;">&copy;2021 Inmed Corporation</p>
                         </td>
                     </tr>
                 </table>

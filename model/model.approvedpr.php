@@ -208,25 +208,28 @@ class Approvedpr extends DBHandler {
 
     public function finalrespondTo($id,$remarks,$approver,$cash_status)
     {   
-        if($approver=="Mary Ann Miranda"){
+        if($cash_status=="Finished"){
 
-            if($cash_status=="PreApproveds"){
+            $date_today = date('Y-m-d');
+            $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '-', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
 
-                $date_today = date('Y-m-d');
-                $query = "UPDATE cashcheck SET cash_status = 'PreApproved', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
-                $stmt = $this->prepareQuery($this->conn, $query);
-                return $this->execute($stmt);
+        }else if($cash_status=="PreApproveds"){
 
-            }else{
+            $cash_status = "PreApproved";
+            $date_today = date('Y-m-d');
+            $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '$approver', date_approved = '$date_today', remarks = '$remarks'  WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
 
-                $date_today = date('Y-m-d');
-                $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '-', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
-                $stmt = $this->prepareQuery($this->conn, $query);
-                return $this->execute($stmt);
+        }else if($cash_status=="Finisheds"){
 
-            }
-
-            
+            $cash_status = "Finished";
+            $date_today = date('Y-m-d');
+            $query = "UPDATE cashcheck SET cash_status = '$cash_status', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
+            $stmt = $this->prepareQuery($this->conn, $query);
+            return $this->execute($stmt);
 
         }else{
 

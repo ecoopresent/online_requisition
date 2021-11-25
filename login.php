@@ -46,10 +46,10 @@ require_once "component/header.php";
              </div>
              <input type="hidden" id="usertype" name="">
 
-             <div class="form-group ml-3 mr-3">
+             <div class="form-group ml-3 mr-3 d-none">
                  <select class="form-control" id="system_type" aria-describedby="emailHelp" placeholder="Enter Username">
                      <option value="petty">Petty Cash Request</option>
-                     <option value="rca">Cash And Check Requisition</option>
+                     <option selected value="rca">Cash And Check Requisition</option>
                  </select>
              </div>
              <div class="ml-3 mr-3">

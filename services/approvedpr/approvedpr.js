@@ -49,6 +49,10 @@ $(document).ready(function(){
         load_Purchasing(canvas_status);
     });
 
+    $('#btn_reload').on('click',function(){
+      window.location.href="approvedPr.php";
+    });
+
     generateDepartmentSelect();
            
 });
@@ -133,8 +137,8 @@ function load_Purchasing(canvas_status){
     $('#Prequest_table').DataTable().destroy();
     dataTable_load('#Prequest_table','controller.approvedpr.php?mode=table&canvas_status='+canvas_status,[
        {"data":"action"},
-       {"data":"date_approved"},
-       {"data":"status"},
+       // {"data":"date_approved"},
+       // {"data":"status"},
        {"data":"department"},
        {"data":"date_prepared"},
        {"data":"date_needed"},
@@ -294,6 +298,22 @@ function F_approve_RCA(id){
        toggleLoad();
        window.location.href="tcpdf/examples/rca_final.php?id="+id+"&at="+apprver_type;
     }
+
+  }else if(apprver_type=="triple"){
+
+    var r = confirm("Are you sure you want to approve this?");
+    if(r==true){
+      var c = post_Data('controller.approvedpr.php?mode=finalrespond',{
+          id: id,
+          remarks: $('#remarks').val(),
+          approver: $('#approver').val(),
+          cash_status: "Finisheds"
+      });
+
+       toggleLoad();
+      window.location.href="tcpdf/examples/accounting_notifyfinal.php?id="+id;
+    }
+
 
   }else{
 

@@ -98,8 +98,8 @@ require_once "component/header.php";
                                 <thead>
                                     <th class="bg-header"></th>
                                     <th class="bg-header">Department Name</th>
-                                    <th class="bg-header">Department Head</th>
-                                    <th class="bg-header">Department Email</th>
+                                    <th class="bg-header">Approver</th>
+                                    <th class="bg-header">Approver's Email</th>
                                 </thead>
                             </table>
                         </div>

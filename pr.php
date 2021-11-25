@@ -137,14 +137,14 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 
                             <?php if ($user_type=="Purchaser"): ?>
 
-                                <div class="col col-md-12 mt-2">
+                                <div class="col col-md-12 mt-2" style="display: none;">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text label4group" id="inputGroup-sizing-sm"><b><span class="text-danger">*</span> PR TYPE</b></span>
                                         </div>
                                         <select class="form-control req" id="pr_type">
-                                            <option selected="" disabled="">-- Select Pr type --</option>
-                                            <option value="non">NON TRADE</option>
+                                            <option disabled="">-- Select Pr type --</option>
+                                            <option selected value="non">NON TRADE</option>
                                             <option value="local">TRADE LOCAL</option>
                                             <option value="import">TRADE IMPORT</option>
                                         </select>
@@ -153,14 +153,14 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 
                             <?php else: ?>
 
-                                <div class="col col-md-12 mt-2" style="display: block;">
+                                <div class="col col-md-12 mt-2" style="display: none;">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text label4group" id="inputGroup-sizing-sm"><b><span class="text-danger">*</span> PR TYPE</b></span>
                                         </div>
                                         <select class="form-control req" id="pr_type">
-                                            <option selected="" disabled="">-- Select Pr type --</option>
-                                            <option value="non">NON TRADE</option>
+                                            <option disabled="">-- Select Pr type --</option>
+                                            <option selected value="non">NON TRADE</option>
                                             <option value="local">TRADE</option>
                                             <!-- <option value="import">TRADE IMPORT</option> -->
                                         </select>
@@ -170,7 +170,7 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
                             <?php endif ?>
                             
 
-                            <div class="col col-md-12 mt-4">
+                            <div class="col col-md-12 mt-4 mb-5">
                                 <button type="button" class="btn btn-sm btn-secondary" id="savePR"><i class="fas fa-sm fa-save"></i> Save PR</button>
                             </div>
                             
@@ -422,14 +422,14 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 
                     <?php if ($user_type=="Purchaser"): ?>
 
-                        <div class="col col-md-12 mt-2">
+                        <div class="col col-md-12 mt-2" style="display: none;">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text label4group" id="inputGroup-sizing-sm"><b><span class="text-danger">*</span> PR TYPE</b></span>
                                 </div>
                                 <select class="form-control req2" id="pr_pr_type">
-                                    <option selected="" disabled="">-- Select Pr type --</option>
-                                    <option value="non">NON TRADE</option>
+                                    <option disabled="">-- Select Pr type --</option>
+                                    <option selected value="non">NON TRADE</option>
                                     <option value="local">TRADE LOCAL</option>
                                     <option value="import">TRADE IMPORT</option>
                                 </select>
@@ -438,14 +438,14 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
 
                     <?php else: ?>
 
-                        <div class="col col-md-12 mt-2" style="display: block;">
+                        <div class="col col-md-12 mt-2" style="display: none;">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text label4group" id="inputGroup-sizing-sm"><b><span class="text-danger">*</span> PR TYPE</b></span>
                                 </div>
                                 <select class="form-control req2" id="pr_pr_type">
-                                    <option selected="" disabled="">-- Select Pr type --</option>
-                                    <option value="non">NON TRADE</option>
+                                    <option disabled="">-- Select Pr type --</option>
+                                    <option selected value="non">NON TRADE</option>
                                     <option value="local">TRADE</option>
                                     <!-- <option value="import">TRADE IMPORT</option> -->
                                 </select>

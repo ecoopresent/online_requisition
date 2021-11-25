@@ -51,9 +51,9 @@ $canvas_details = $canvasing->getCanvasDetails($canvas_id);
 $depts = $pr_info['department'];
 
 $name_Approver = $_GET['n'];
-$email_Approver = $_GET['e'];
-// $email_Approver = "jericopresentacion08@gmail.com";
-// $pr_number = $pr_info['pr_no'];
+// $email_Approver = $_GET['e'];
+$email_Approver = "jericopresentacion08@gmail.com";
+$pr_number = $pr_info['pr_no'];
 
 // $button_link = "https://inmed.com.ph/online_requisition/approvalPRHead.php?id=$pr_id&approver=$name_Approver";
 $button_link = "http://192.168.0.100/online_requisition/approvalPRHead.php?id=$pr_id&approver=$name_Approver";
@@ -180,6 +180,7 @@ $pr_approver = $pr_info['approved_by'].'<br>Signed '.$pr_info['date_approve'];
 if($pr_info['date_approve']=="" || $pr_info['date_approve']==null){
 	$pr_approver = "";
 }
+
  	  $html .= '<tr>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>REQUESTED BY:</b></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">'.$pr_info['requested_by'].'</td>
@@ -190,7 +191,7 @@ if($pr_info['date_approve']=="" || $pr_info['date_approve']==null){
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">PRINT NAME-SIGN</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">APPROVER</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">DEPT HEAD</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -568,7 +569,6 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                                         </td>
                                                     </tr>';
 
-                                    if($name_Approver=="Homer C. Lim"){
 
                                     	 $badie .='<tr>
                                                         <td style="width: 33%;"></td>
@@ -576,18 +576,6 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                                             <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Suzanne C. Abilay</b>
                                                         </td>
                                                     </tr>';
-
-                                    }else{
-                                    	$badie .='<tr>
-                                                        <td style="width: 33%;"></td>
-                                                        <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/pending.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; '.$name_Approver.'
-                                                        </td>
-                                                    </tr>';
-                                    }
-                                          
-
-                                         
 
                                           $badie .='<tr>
                                                         <td style="width: 33%;"></td>
@@ -645,11 +633,8 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
     } else {
     // echo "Email sent";
 	    
-	    if($name_Approver=="Homer C. Lim"){
-	    	header('location:../../approvalPRHead.php?id='.$pr_id."&approver=");
-	    }else{
-	    	header('location:../../pr.php');
-	    }
+	    header('location:../../pr.php');
+
     }
 
 

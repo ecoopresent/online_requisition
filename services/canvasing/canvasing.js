@@ -131,17 +131,17 @@ function sendCanvas(){
 
 function sendCanvas_callback(){
     var pr_id = $('#pr_id').val();
-    var c = post_Data('controller.canvasing.php?mode=updateStatus',{
-        id: pr_id
-    });
+    // var c = post_Data('controller.canvasing.php?mode=updateStatus',{
+    //     id: pr_id
+    // });
 
-    if(c.department=="IT"){
+    // if(c.department=="IT"){
+    //     toggleLoad();
+    //     window.location.href="tcpdf/examples/pr_list_email_IT.php?id="+pr_id;
+    // }else{
         toggleLoad();
-        window.location.href="tcpdf/examples/pr_list_email_IT.php?id="+pr_id;
-    }else{
-        toggleLoad();
-        window.location.href="tcpdf/examples/pr_list_email.php?id="+pr_id;
-    }
+        window.location.href="tcpdf/examples/pr_list_email.php?id="+pr_id+"&stat=first";
+    // }
     
 }
 

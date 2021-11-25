@@ -121,6 +121,7 @@ function submitPR_callback(){
         pr_id: $('#pr_id').val()
     });
 
+
     var pr_id = $('#pr_id').val();
     var email_Approver = $('#email_Approver').val();
     var name_Approver = $('#name_Approver').val();
@@ -140,6 +141,20 @@ function save_editPR_callback(){
     });
     $.Toast("Successfully Saved", successToast);
     load_PRList();
+}
+
+function resend_PR(id){
+  var r = confirm("Do you really want to resend this PR?");
+  if(r==true){
+    toggleLoad();
+
+    var email_Approver = "kainankayalingnene@gmail.com";
+    // var email_Approver = "hcl@inmed.com.ph";
+    var name_Approver = "Homer C. Lim";
+    window.location.href="tcpdf/examples/resend_PR.php?id="+id+"&e="+email_Approver+"&n="+name_Approver;
+
+  }
+  
 }
 
 function savePR_callback(){

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <!-- <title><?= isset($meta_title) ? $meta_title : '404' ?></title> -->
         <meta name="format-detection" content="telephone=no">
-        <link rel="icon" type="image/png" href="lib/static/ico.png">
+        <link rel="icon" type="image/png" href="lib/static/icon.ico">
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="lib/toast/toast.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -41,7 +41,7 @@
         <div class="modal-content rounded-0">
             <div class="modal-body p-5">
 
-                <div class="card-panel p-4 border-0 mb-0 rounded-0 text-cente" data-dismiss="modal">
+                <div class="card-panel p-4 border-0 mb-0 rounded-0 text-center" data-dismiss="modal">
                     <div class="icon-lg-pop mb-4 text-center" id="icon_notif">
                         <i style="font-size: 30px" class="fas fa-lg fa-bell"></i>
                     </div>
@@ -63,7 +63,7 @@
 
 <div class="i-loader"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 
-<div class="content-header">
+<div class="content-header" style="border-bottom: 1px solid lightgray;">
 	<div class="row">
 		<div class="system-name">
 			<h1 class="text-white p-4 pl-5" style="letter-spacing: 0.3rem">Online Form Requisitions</h1>

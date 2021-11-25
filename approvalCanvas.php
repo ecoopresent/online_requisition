@@ -30,7 +30,7 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="x-apple-disable-message-reformatting">
     <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
-    <title>Progressive Medical Corporation</title>
+    <title>Inmed Corporation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -96,7 +96,7 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected"){
     <div class="wrapper d-block position-relative w-100 mx-auto p-5 my-5">
         <div class="row">
             <div class="col col-12">
-                <img src="https://pmc.ph/assets/logo.png" alt="Progressive Medical Corporation's Logo" width="180" class="d-block mx-auto mb-5" />
+                <img src="https://inmed.com.ph/static/inmed_logo.png" alt="Progressive Medical Corporation's Logo" width="180" class="d-block mx-auto mb-5" />
             </div>
 
             <!-- start timeline -->
@@ -107,15 +107,24 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected"){
                         <span class="fw-bold">Canvass Request</span>
                         <span class="float-end fw-normal text-secondary"><small>#<?php echo $pr_details[4] ?></small></span>
                     </h5>
-                    <?php if ($status=="") { ?>
+                    <?php if ($status=="" || $pr_status!="approved" && $approver=="Homer C. Lim") { ?>
                     <!-- -->
                     <ul class="timeline mt-5">
 
-                        <li class="done">
-                            <span class="fw-bold">Michelle E. Belches</span>
-                            <span class="float-end text-secondary">Signed</span>
-                            <p class="text-secondary">Purchaser</p>
-                        </li>
+                        <?php if ($approver=="Homer C. Lim"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Suzanne C. Abilay</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Approver</p>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <span class="fw-bold">Suzanne C. Abilay</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Approver</p>
+                            </li>
+                        <?php endif ?>
+                        
 
 <!--                         <li class="done">
                             <span class="fw-bold">Susan T. Panugayan</span>
@@ -126,12 +135,12 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected"){
                         <li>
                             <span class="fw-bold">Homer C. Lim</span>
                             <span class="float-end text-secondary">Pending</span>
-                            <p class="text-secondary">Chief Product Developer</p>
+                            <p class="text-secondary">Approver</p>
                         </li>
                     </ul>
                     <?php } ?>
                 </div>
-                <?php if ($status=="") { ?>
+                <?php if ($status=="" || $pr_status!="approved" && $approver=="Homer C. Lim") { ?>
                 
                 <div class="col col-12">
                     <div class="my-3">
@@ -143,7 +152,12 @@ if($pr_status=="Disapproved" || $pr_status=="Rejected"){
                     <div class="my-3 text-end">
 
                         <input type="hidden" id="approver" value="<?= $approver ?>" name />
-                        <button type="submit" class="btn btn-success mb-3" onclick="approve_Canvas(<?= $id ?>)">Approve</button>
+                        <?php if ($approver=="Homer C. Lim"): ?>
+                            <button type="submit" class="btn btn-success mb-3" onclick="finaleapprove_Canvas(<?= $id ?>)">Approve</button>
+                        <?php else: ?>
+                            <button type="submit" class="btn btn-success mb-3" onclick="approve_Canvas(<?= $id ?>)">Approve</button>
+                        <?php endif ?>
+                        
                         <button type="submit" class="btn btn-danger mb-3" onclick="disapprove_Canvas(<?= $id ?>)">Disapprove</button>
                     </div>
                 </div>

@@ -132,13 +132,13 @@ for($x=0;$x<$rows;$x++){
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>REQUESTED BY:</b></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">'.$pr_info['requested_by'].'<br> Signed '.$pr_info['date_prepared'].'</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d" align="left"><b>APPROVED BY:</b></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br> Signed '.$pr_info['date_approve'].'</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">'.$pr_info['approved_by'].'<br> Signed '.$pr_info['date_approve'].'<br>'.$pr_info['f_approved_by'].'<br> Signed '.$pr_info['f_date_approved'].'</td>
 				</tr>
 				<tr>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 29%;border-bottom: 1px solid #0d0d0d" align="center">PRINT NAME-SIGN</td>
 					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-bottom: 1px solid #0d0d0d" align="center"></td>
-					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">DEPT HEAD</td>
+					<td style="width: 29%;border-bottom: 1px solid #0d0d0d;border-right: 1px solid #0d0d0d" align="center">APPROVER</td>
 				</tr>
 				<tr>
 					<td></td>
@@ -336,12 +336,12 @@ for($x=0;$x<$rows;$x++){
 
 $approvedby = "";
 $preapprovedby = "";
-if($canvas_info['operation_incharge'] != "" || $canvas_info['operation_incharge'] != null){
+if($canvas_info['oi_date_approved'] != "" || $canvas_info['oi_date_approved'] != null){
 
 	$preapprovedby = $canvas_info['operation_incharge'].'<br> Signed '.$canvas_info['oi_date_approved'];
 }
 
-if($canvas_info['approved_by'] != "" || $canvas_info['approved_by'] != null){
+if($canvas_info['date_approved'] != "" || $canvas_info['date_approved'] != null){
 	$approvedby = $canvas_info['approved_by'].'<br> Signed '.$canvas_info['date_approved'];
 }
 	$html .= '<tr>
@@ -359,7 +359,7 @@ if($canvas_info['approved_by'] != "" || $canvas_info['approved_by'] != null){
 				<tr>
 					<td style="width: 16%;border-left: 1px solid #0d0d0d" align="center"></td>
 					<td style="width: 40%" align="center"></td>
-					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">DEPT. HEAD</td>
+					<td style="width: 21%;border-left: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">GENERAL MANAGER</td>
 					<td style="width: 23%;border-right: 1px solid #0d0d0d;border-top: 1px solid #0d0d0d" align="center">PRESIDENT</td>
 				</tr>
 				<tr>

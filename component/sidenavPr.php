@@ -76,7 +76,7 @@ if($rca_notifval_side > 0){
 		<a href="purchasing.php" id="tab_purchasing"><i class="fas fa-md fa-poll-h"></i> CANVASSING <span style="<?php echo $border_side; ?>"><?php echo $notifval_side; ?></span></a>
 		<a href="approvedPr.php" id="tab_approvedPR"><i class="fas fa-md fa-thumbs-up"></i> APPROVED CANVASSED <span style="<?php echo $c_border_side; ?>"><?php echo $c_notifval_side; ?></span></a>
 		<a href="rca.php" id="tab_rca"><i class="fas fa-md fa-money-check"></i> REQUEST CASH ADVANCE</a>
-		<a href="accounting.php" id="tab_accounting"><i class="fas fa-md fa-thumbs-up"></i> APPROVED RCA <span style="<?php echo $rca_border_side; ?>"><?php echo $rca_notifval_side; ?></span></a>
+		<!-- <a href="accounting.php" id="tab_accounting"><i class="fas fa-md fa-thumbs-up"></i> APPROVED RCA <span style="<?php echo $rca_border_side; ?>"><?php echo $rca_notifval_side; ?></span></a> -->
 	<?php endif ?>
 
 	<?php if ($user_type=="Accounting"): ?>
