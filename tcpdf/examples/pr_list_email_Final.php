@@ -566,8 +566,16 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
                                             <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #84ad22;">Click Here to Approve or Disapprove</span></a>
                                         </td>
-                                    </tr>
-                                </tbody>
+                                    </tr>';
+                    foreach($canvas_attachments as $k=>$v) {
+                        $link_name = "http://localhost/online_requisition/attachments/".$newFolder."/".$v['attachment']; 
+                         $badie .= '<tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:center;"><a href="'.$link_name.'">'.$v['attachment'].' (Click to open)</a></td>
+                                    </tr>';
+
+                    }
+
+                    $badie .= '</tbody>
                             </table>
                         </td>
                     </tr>
@@ -592,12 +600,12 @@ $pdffile = $pdf->Output('PR.pdf', 'S');
 
     $mail->AddAddress($e_address);
 
-    foreach($canvas_attachments as $k=>$v) {
+    // foreach($canvas_attachments as $k=>$v) {
 
-    $file_to_attach = '../../attachments/'.$newFolder.'/'.$v['attachment'];
-    $mail->AddAttachment( $file_to_attach , $v['attachment'] );
+    // $file_to_attach = '../../attachments/'.$newFolder.'/'.$v['attachment'];
+    // $mail->AddAttachment( $file_to_attach , $v['attachment'] );
 
-    }
+    // }
    
     if(!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
