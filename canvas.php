@@ -57,7 +57,7 @@ $pr_type = $canvasing->getPrtype($pr_id);
                             
                             <div class="col col-md-12 mb-3">
 
-                                <!-- <button class="btn btn-md btn-success" type="button" onclick="addAttach(<?= $pr_id ?>)"><i class="fas fa-sm fa-paperclip"></i> Attach</button> -->
+                                <button class="btn btn-md btn-success" type="button" onclick="addAttach(<?= $pr_id ?>)"><i class="fas fa-sm fa-paperclip"></i> Attach</button>
                                 <button class="btn btn-md btn-primary" type="button" onclick="viewCanvas(<?= $pr_id ?>)"><i class="fas fa-sm fa-eye"></i> View</button>
                                 <?php if ($pr_type=="non"): ?>
                                     <button class="btn btn-md btn-secondary" type="button" onclick="sendCanvas()"><i class="fas fa-sm fa-paper-plane"></i> Send</button>
