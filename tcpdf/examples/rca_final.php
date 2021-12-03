@@ -364,8 +364,16 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                         <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:60px;text-align:center;">
                                             <a href="'.$button_link.'" style="color: #fff; text-decoration: none;"><span class="btn" style="padding: 13px 17px; background-color: #0d3e7c;">Click Here to Approve or Disapprove</span></a>
                                         </td>
-                                    </tr>
-                                </tbody>
+                                    </tr>';
+                    foreach($rca_attachments as $k=>$v) {
+                        $link_name = "http://localhost/online_requisition/attachments/".$newFolder."/".$v['attachment']; 
+                         $badie .= '<tr>
+                                        <td style="padding:5px; font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:center;"><a href="'.$link_name.'">'.$v['attachment'].' (Click to open)</a></td>
+                                    </tr>';
+
+                    }
+
+                    $badie .= '</tbody>
                             </table>
                         </td>
                     </tr>
@@ -392,15 +400,15 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
 
     $mail->AddAddress($e_address);
 
-    foreach($rca_attachments as $k=>$v) {
+    // foreach($rca_attachments as $k=>$v) {
 
-    $file_to_attach = '../../attachments/'.$newFolder.'/'.$v['attachment'];
-    $fsize = filesize('../../attachments/'.$newFolder.'/'.$v['attachment'].'');
+    // $file_to_attach = '../../attachments/'.$newFolder.'/'.$v['attachment'];
+    // $fsize = filesize('../../attachments/'.$newFolder.'/'.$v['attachment'].'');
 
-        if($fsize <= 722328){
-            $mail->AddAttachment( $file_to_attach , $v['attachment'] );
-        }
-    }
+    //     if($fsize <= 722328){
+    //         $mail->AddAttachment( $file_to_attach , $v['attachment'] );
+    //     }
+    // }
    
     if(!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
