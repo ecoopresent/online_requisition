@@ -21,7 +21,7 @@ $cash_id = $_GET['id'];
 $approver = $_GET['at'];
 $department_name = "";
 $second_approver = "";
-
+$cash_info = $cash_approval->getCashadvanceById($cash_id);
 if($approver=="three"){
 
     $department_name = "Jasmine Padernal";
@@ -46,7 +46,6 @@ if($approver=="three"){
 $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
-$cash_info = $cash_approval->getCashadvanceById($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 
