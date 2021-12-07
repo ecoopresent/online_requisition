@@ -20,9 +20,10 @@ switch($mode) {
             <button class='btn btn-success btn-sm' onclick='addAttach(".$v['id'].")'><i class='fas fa-sm fa-paperclip'></i> Attach</button>
             <button class='btn btn-warning btn-sm' onclick='sendRCA(".$v['id'].",\"".$v['prepared_by']."\")'><i class='fas fa-sm fa-paper-plane'></i> Send</button>";
             $pr_id = $v['pr_id'];
-            $rca_txt = "RCAPR".date('Y').$pr_id;
+            $yearprepared = date('Y', strtotime($v['date_prepared']));
+            $rca_txt = "RCAPR".$yearprepared.$pr_id;
             if($pr_id==0){
-                $rca_txt = "RCA".date('Y').'-'.$v['id'];
+                $rca_txt = "RCA".$yearprepared.'-'.$v['id'];
             }
             $rca[$k]['rca_no'] = $rca_txt;
         }
@@ -57,9 +58,10 @@ switch($mode) {
             }
             $rca[$k]['approvers'] = $approvers;
             $pr_id = $v['pr_id'];
-            $rca_txt = "RCAPR".date('Y').$pr_id;
+            $yearprepared = date('Y', strtotime($v['date_prepared']));
+            $rca_txt = "RCAPR".$yearprepared.$pr_id;
             if($pr_id==0){
-                $rca_txt = "RCA".date('Y').'-'.$v['id'];
+                $rca_txt = "RCA".$yearprepared.'-'.$v['id'];
             }
             $rca[$k]['rca_no'] = $rca_txt;
             

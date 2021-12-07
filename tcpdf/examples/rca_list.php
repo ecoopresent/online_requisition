@@ -89,9 +89,10 @@ $html .= '<table width="100%" style="font-size: 11px">
 
 foreach($rca_list as $k=>$v) {
 	$pr_id = $v['pr_id'];
-    $voucher_id = "RCA".date('Y')."-".$v['id'];
+	$yearprepared = date('Y', strtotime($v['date_prepared']));
+    $voucher_id = "RCA".$yearprepared."-".$v['id'];
     if($pr_id==0){
-        $voucher_id = "RCAPR".date('Y')."-".$v['id'];
+        $voucher_id = "RCAPR".$yearprepared."-".$v['id'];
     }
 	$html .= '<tr>
 					<td style="width: 15%;border: 1px solid #0d0d0d" align="center">'.$voucher_id.'</td>

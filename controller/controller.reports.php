@@ -19,9 +19,10 @@ switch($mode) {
         foreach($reports as $k=>$v) {
             $cash_status = $v['cash_status'];
             $pr_id = $v['pr_id'];
-            $voucher_id = "RCA".date('Y')."-".$v['id'];
+            $yearprepared = date('Y', strtotime($v['date_prepared']));
+            $voucher_id = "RCA".$yearprepared."-".$v['id'];
             if($pr_id==0){
-                $voucher_id = "RCAPR".date('Y')."-".$v['id'];
+                $voucher_id = "RCAPR".$yearprepared."-".$v['id'];
             }
         
             $reports[$k]['voucher_id'] = $voucher_id;

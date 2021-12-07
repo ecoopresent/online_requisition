@@ -35,6 +35,7 @@ require_once "component/header.php";
                             <table id="Cashrequest_table" class="table">
                                 <thead>
                                     <th class="bg-header"></th>
+                                    <th class="bg-header">RCA No</th>
                                     <th class="bg-header">Department</th>
                                     <th class="bg-header">Payee</th>
                                     <th class="bg-header">Date Prepared</th>
