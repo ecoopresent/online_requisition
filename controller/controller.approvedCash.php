@@ -31,7 +31,17 @@ switch($mode) {
             }
 
             $approvedcash[$k]['cashstatus'] = $cashstatus;
-            $approvedcash[$k]['rca_id'] = $v['id'];
+
+
+            $pr_id = $v['pr_id'];
+            $yearprepared = date('Y', strtotime($v['date_prepared']));
+            $rca_txt = "RCAPR".$yearprepared.$v['id'];
+            if($pr_id==0){
+                $rca_txt = "RCA".$yearprepared.'-'.$v['id'];
+            }
+            $rca[$k]['rca_no'] = $rca_txt;
+
+            $approvedcash[$k]['rca_id'] = $rca_txt;
             
         }
         $response = array("data" => $approvedcash);
