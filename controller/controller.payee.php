@@ -27,17 +27,63 @@ switch($mode) {
         $response = array("data" => $payee);
     break;
 
+    case "tablePCadmin";
+        $payee = $payee->getPCadmin();
+        foreach($payee as $k=>$v) {
+
+                $vstatus = "";
+                if($v['pettycash_status']=="" || $v['pettycash_status']=="Pending"){
+                    $vstatus = "Pending";
+                }else{
+                    $vstatus = "Approved";
+                }
+
+                $payee[$k]['voucher_status'] = $vstatus;
+
+                $payee[$k]['action'] = "<button class='btn btn-sm btn-success' onclick='openPC(".$v['id'].")'><i class='fas fa-sm fa-eye'></i></button>
+                                        <button class='btn btn-sm btn-danger' onclick='deletePC(".$v['id'].")'><i class='fas fa-sm fa-trash'></i></button>";
+        }
+        $response = array("data" => $payee);
+    break;
+
+    case "tableRCAadmin";
+        $payee = $payee->getRCAadmin();
+        foreach($payee as $k=>$v) {
+
+
+                $payee[$k]['action'] = "<button class='btn btn-sm btn-success' onclick='openRCA(".$v['id'].")'><i class='fas fa-sm fa-eye'></i></button>
+                                        <button class='btn btn-sm btn-danger' onclick='deleteRCA(".$v['id'].")'><i class='fas fa-sm fa-trash'></i></button>";
+
+                $yearprepared = date('Y', strtotime($v['date_prepared']));
+                $payee[$k]['rca_no'] = 'RCA'.$yearprepared.'-'.$v['id'];
+        }
+        $response = array("data" => $payee);
+    break;
+
     case "add";
         $payee_name = Sanitizer::filter('payee_name', 'post');
         $payee_email = Sanitizer::filter('payee_email', 'post');
         $payee_dept = Sanitizer::filter('payee_dept', 'post');
         $payee->add_Payee($payee_name,$payee_email,$payee_dept);
         $response = array("code"=>1, "message"=>"Data Saved");
+
     break;
 
     case "delete";
         $id = Sanitizer::filter('id', 'post');
         $payee->deletePayee($id);
+        $response = array("code"=>1, "message"=>"Deleted");
+    break;
+
+    case "deletePCadmin";
+        $id = Sanitizer::filter('id', 'post');
+        $payee->deletePCadmin($id);
+        $response = array("code"=>1, "message"=>"Deleted");
+    break;
+
+    case "deleteRCAadmin";
+        $id = Sanitizer::filter('id', 'post');
+        $payee->deleteRCAadmin($id);
         $response = array("code"=>1, "message"=>"Deleted");
     break;
 

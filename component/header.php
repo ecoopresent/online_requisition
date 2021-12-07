@@ -30,7 +30,29 @@
         <link rel="stylesheet" type="text/css" href="lib/static/master/master.css?v=2">
         <script src="lib/static/master/master.js?v=2"></script>
 
+        <style type="text/css">
+            /* width */
+            ::-webkit-scrollbar {
+              width: 5px;
+            }
 
+            /* Track */
+            ::-webkit-scrollbar-track {
+              box-shadow: inset 0 0 1px grey; 
+              border-radius: 10px;
+            }
+             
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #060f3a; 
+              border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #060f3a; 
+            }
+        </style>
         
     </head>
     <body class="master">

@@ -20,6 +20,11 @@ require_once "component/header.php";
 
     <div class="dashboard_content">
     	<div class="dashboard_tabs">
+    		<h1>Welcome to Progressive Medical Corpotion's</h1>
+    		<h2>Online Requisition</h2>
+    	</div>
+    	<div class="dashboard_tabs" style="display: none;">
+
 
     		<div class="card_tabs" onclick="openPetty('\'<?php echo $user_type; ?>\'')">
 	        	<p class="card_tabs_content pt-5 pb-3">
