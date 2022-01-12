@@ -113,7 +113,7 @@ if($rca_status=="Disapproved"){
                     <!-- -->
                     <ul class="timeline mt-5">
 
-                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoE"  || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
+                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoCC" || $apprver_type=="twoE"  || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
                             <li class="done">
                                 <span class="fw-bold"><?php echo $rca_info[0]; ?></span>
                                 <span class="float-end text-secondary">Signed</span>
@@ -130,9 +130,9 @@ if($rca_status=="Disapproved"){
 
                         <?php elseif($apprver_type=="threeC"): ?>
 
-                            <li class="done">
+                            <li class="">
                                 <span class="fw-bold">Jerome T. Chua</span>
-                                <span class="float-end text-secondary">Signed</span>
+                                <span class="float-end text-secondary">Pending</span>
                                 <p class="text-secondary">Operation Incharge</p>
                             </li>
 
@@ -184,17 +184,25 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">Department Head</p>
                             </li>
 
+                        <?php elseif($apprver_type=="twoCC"): ?>
+
+                            <li class="done">
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
                         <?php else: ?>
                             <li class="done">
                                 <span class="fw-bold">Jovan D. Palma</span>
-                                <span class="float-end text-secondary">Pending</span>
+                                <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Logistic Manager</p>
                             </li>
                         <?php endif ?>
                         
                         
 
-                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoE" || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
+                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoCC" || $apprver_type=="twoE" || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
 
                             <li>
                                 <span class="fw-bold">Jerome T. Chua</span>
@@ -231,7 +239,7 @@ if($rca_status=="Disapproved"){
 
                         <input type="hidden" id="approver" value="<?php echo $approver ?>" name="">
                         <input type="hidden" id="apprver_type" value="<?php echo $apprver_type ?>" name="">
-                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoE" || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
+                        <?php if ($apprver_type=="twoC" || $apprver_type=="twoCC" || $apprver_type=="twoE" || $apprver_type=="twoEE" || $apprver_type=="twoF"): ?>
                             <button type="submit" class="btn btn-success mb-3" onclick="approve_RCAExtrafinal(<?= $id ?>)">Approve</button>
                         <?php else: ?>
                             <button type="submit" id="btn_appp" class="btn btn-success mb-3" data-approver="<?= $apprver_type ?>" onclick="approve_RCAExtra(<?= $id ?>)">Approve</button>

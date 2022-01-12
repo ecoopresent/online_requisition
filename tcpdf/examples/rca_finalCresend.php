@@ -18,9 +18,14 @@ require_once "../../model/model.cash_approval.php";
 
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
+$approver_type = $_GET['at'];
+$approver_name = "Jovan D. Palma";
+if($approver_type=="twoCC"){
+    $approver_name = "Mary Ann Miranda";
+}
 
-// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=twoC";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=twoC";
+// $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=$approver_type";
+$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=$approver_type";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
@@ -312,7 +317,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Jovan D. Palma</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$approver_name.'</b>
                                                         </td>
                                                     </tr>
                                                 

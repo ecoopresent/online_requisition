@@ -351,8 +351,8 @@ function approve_RCA(id){
       window.location.href="tcpdf/examples/accounting_notifyhead.php?id="+id;
     }else if(apprver_type=="two"){
       window.location.href="tcpdf/examples/rca_final.php?id="+id;
-    }else if(apprver_type=="twoC"){
-      window.location.href="tcpdf/examples/rca_finalC.php?id="+id;
+    }else if(apprver_type=="twoC" || apprver_type=="twoCC"){
+      window.location.href="tcpdf/examples/rca_finalC.php?id="+id+"&at="+apprver_type;
     }else if(apprver_type=="twoE" || apprver_type=="twoEE"){
       window.location.href="tcpdf/examples/rca_finalE.php?id="+id+"&at="+apprver_type;
     }else if(apprver_type=="twoF"){

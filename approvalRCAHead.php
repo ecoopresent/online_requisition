@@ -158,6 +158,15 @@ if($apprver_type=="threeC"){
                                 <span class="float-end text-secondary">Pending</span>
                                 <p class="text-secondary">Logistic Manager</p>
                             </li>
+
+                        <?php elseif($apprver_type=="twoCC"): ?>
+
+                            <li>
+                                <span class="fw-bold">Mary Ann Miranda</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Product Sourcing Specialist</p>
+                            </li>
+
                         <?php elseif($apprver_type=="twoD"): ?>
 
                             <li>

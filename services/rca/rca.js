@@ -218,8 +218,8 @@ function resendRCA_callback(rca){
         window.location.href="tcpdf/examples/rca_finalResend.php?id="+id;
     }
 
-    if(approver_type=="twoC"){
-        window.location.href="tcpdf/examples/rca_finalCresend.php?id="+id;
+    if(approver_type=="twoC" || approver_type=="twoCC"){
+        window.location.href="tcpdf/examples/rca_finalCresend.php?id="+id+"&at="+approver_type;
     }
     if(approver_type=="twoE" || approver_type=="twoEE"){
         window.location.href="tcpdf/examples/rca_finalEresend.php?id="+id+"&at="+approver_type;
