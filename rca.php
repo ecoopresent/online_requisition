@@ -429,6 +429,7 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
                               <option value="oneB">Susan T. Panugayan Only</option>
                               <option value="two">Jerome T. Chua & Homer C. Lim</option>
                               <option value="twoD2">Mary Ann Miranda & Homer C. Lim</option>
+                              <option value="twoD3">Neil T. Ngo & Homer C. Lim</option>
                               <option value="twoCC">Mary Ann Miranda & Jerome T. Chua</option>
                               <option value="threeC">Jerome T. Chua & Mary Ann Miranda & Homer C. Lim</option>
                             </optgroup>

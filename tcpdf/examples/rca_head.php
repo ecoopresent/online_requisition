@@ -83,8 +83,14 @@ if($approver=="twoD2"){
     // $e_address = "mpmiranda@pmcgroup.com";
 }
 
+if($approver=="twoD3"){
+    $nameApprover = "Neil T. Ngo";
+    $e_address = "jericopresentacion08@gmail.com";
+    // $e_address = "ntngo@pmcgroup.com";
+}
+
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document

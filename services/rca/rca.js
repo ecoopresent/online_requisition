@@ -211,7 +211,7 @@ function resendRCA_callback(rca){
     var approver_type = rca[1];
     var id = rca[0];
     toggleLoad();
-    if(approver_type=="twoD" || approver_type=="twoD2"){
+    if(approver_type=="twoD" || approver_type=="twoD2" || approver_type=="twoD3"){
         window.location.href="tcpdf/examples/rca_finalDresend.php?id="+id+"&at="+approver_type;
     }
     if(approver_type=="two"){

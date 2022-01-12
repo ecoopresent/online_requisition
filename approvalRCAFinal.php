@@ -151,6 +151,14 @@ if($rca_status=="Disapproved"){
                                 <span class="float-end text-secondary">Signed</span>
                                 <p class="text-secondary">Product Sourcing Specialist</p>
                             </li>
+
+                        <?php elseif($approver_type=="twoD3"): ?>
+                            <li class="done">
+                                <span class="fw-bold">Neil T. Ngo</span>
+                                <span class="float-end text-secondary">Signed</span>
+                                <p class="text-secondary">Supply Chain Asst. Manager</p>
+                            </li>
+
                         <?php elseif($approver_type=="threeC"): ?>
                             <li class="done">
                                 <span class="fw-bold">Mary Ann Miranda</span>
