@@ -135,6 +135,14 @@ if($rca_status=="Disapproved"){
                                 <p class="text-secondary">Product Sourcing Specialist</p>
                             </li>
 
+                        <?php elseif($apprver_type=="twoD"): ?>
+
+                            <li>
+                                <span class="fw-bold">Neil T. Ngo</span>
+                                <span class="float-end text-secondary">Pending</span>
+                                <p class="text-secondary">Supply Chain Asst. Manager</p>
+                            </li>
+
                         <?php else: ?>
 
                             <li>

@@ -266,7 +266,7 @@ function approve_RCA(id){
     toggleLoad();
     if(apprver_type=="one"){
       window.location.href="tcpdf/examples/accounting_notifyhead.php?id="+id;
-    }else if(apprver_type=="twoB" || apprver_type=="twoC" || apprver_type=="three"){
+    }else if(apprver_type=="twoB" || apprver_type=="twoC" || apprver_type=="twoD" || apprver_type=="three"){
       window.location.href="tcpdf/examples/rca_finalB.php?id="+id+"&at="+apprver_type;
     }else{
       window.location.href="tcpdf/examples/rca_final.php?id="+id+"&at="+apprver_type;

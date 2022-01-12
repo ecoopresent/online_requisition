@@ -27,6 +27,10 @@ if($approver_type=="twoB"){
     $nameApprover = "Nancy G. Cortez";
 }
 
+if($approver_type=="twoD"){
+    $nameApprover = "Neil T. Ngo";
+}
+
 if($approver_type=="twoC"){
     $nameApprover = "Mary Ann Miranda";
 }

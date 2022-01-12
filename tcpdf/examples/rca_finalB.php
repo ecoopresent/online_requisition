@@ -34,6 +34,9 @@ $depts = $cash_info['department'];
 $approver_name = "";
 if($approver=="twoB"){
     $approver_name = "Nancy G. Cortez";
+}
+else if($approver=="twoD"){
+    $approver_name = "Neil T. Ngo";
 }else if($approver=="three"){
     $approver_name = "Susan T. Panugayan";
 }else{
