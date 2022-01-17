@@ -52,7 +52,7 @@ if($approver=="twoA"){
 }
 
 // $button_link = "https://pmc.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document

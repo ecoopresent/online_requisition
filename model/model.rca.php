@@ -101,7 +101,7 @@ class Rca extends DBHandler {
     public function submitRCA($id,$approver)
     {   
         $cash_status = "Submitted";
-        $query = "UPDATE cashcheck SET cash_status = '$cash_status', approver_type = '$approver' WHERE id = '$id' ";
+        $query = "UPDATE cashcheck SET cash_status = '$cash_status', approver_type = '$approver', department_head = '', date_preapproved = '0000-00-00' WHERE id = '$id' ";
         $stmt = $this->prepareQuery($this->conn, $query);
         return $this->execute($stmt);
     }

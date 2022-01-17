@@ -29,7 +29,7 @@ $Routedetails = $pettycash->getliquidationdetails($liquidation_id);
 
 
 // $button_link = "https://pmc.ph/online_requisition/approvalPettyFinal.php?id=$id";
-$button_link = "http://192.168.101.89/online_requisition/approvalPettyFinal.php?id=$id";
+$button_link = "http://192.168.101.41/online_requisition/approvalPettyFinal.php?id=$id";
 
 $petty_approval = new PettycashApproval();
 $voucher_id = $_GET['id'];

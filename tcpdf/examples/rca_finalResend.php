@@ -35,13 +35,22 @@ if($approver_type=="twoC"){
     $nameApprover = "Mary Ann Miranda";
 }
 
+$finalapprover = "Homer C. Lim";
+if($approver=="twoA"){
+    $finalapprover = "Mary Ann Miranda";
+    $e_address = "jericopresentacion8@gmail.com";
+    $e_address2 = "nullacount@gmail.com";
+    // $e_address = "mpmiranda@pmcgroup.com";     
+    // $e_address2 = "nullacount@gmail.com";
+}
+
 
 if($approver_type=="three"){
-    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
+    $button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
     // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=triple";
 }else{
-    $button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
-    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver_type";
+    $button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver_type";
+    // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver_type";
 }
 
 $newFolder = "RCA".date('Y')."-".$cash_id;
@@ -50,10 +59,6 @@ $rca_attachments = $cash_approval->getAttachments($cash_id);
 $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 
-$finalapprover = "Homer C. Lim";
-if($approver_type=="twoA"){
-    $finalapprover = "Mary Ann Miranda";
-}
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
@@ -412,7 +417,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
     $mail->isHTML(true);
 
     $mail->AddAddress($e_address);
-    $mail->AddAddress($e_address2);
+    $mail->addBCC($e_address2);
 
     // foreach($rca_attachments as $k=>$v) {
 

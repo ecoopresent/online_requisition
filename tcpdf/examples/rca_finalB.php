@@ -24,7 +24,7 @@ $cash_id = $_GET['id'];
 $approver = $_GET['at'];
 
 // $button_link = "https://pmc.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $rca_attachments = $cash_approval->getAttachments($cash_id);
@@ -39,8 +39,13 @@ else if($approver=="twoD"){
     $approver_name = "Neil T. Ngo";
 }else if($approver=="three"){
     $approver_name = "Susan T. Panugayan";
+
+    $e_address = "mpmiranda@pmcgroup.com";
+    $e_address2 = "nullacount@gmail.com";
+    // $e_address = "jericopresentacion8@gmail.com";
+    // $e_address2 = "nullacount@gmail.com";
 }else{
-    $approver_name = "Mary Ann Miranda";
+     $approver_name = "Mary Ann Miranda";
 }
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
@@ -399,7 +404,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
     $mail->isHTML(true);
 
     $mail->AddAddress($e_address);
-    $mail->AddAddress($e_address2);
+    $mail->addBCC($e_address2);
 
     // foreach($rca_attachments as $k=>$v) {
 

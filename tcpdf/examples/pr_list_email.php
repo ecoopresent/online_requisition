@@ -29,7 +29,7 @@ $depts = $pr_info['department'];
 $name_Approver = "Homer C. Lim";
 
 // $button_link = "https://pmc.ph/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalCanvas.php?id=$pr_id&approver=$name_Approver";
 $newFolder = "CANVAS".date('Y')."(".$pr_id.")";
 $canvas_attachments = $canvasing->getAttachments($pr_id);
 $pr_number = $pr_info['pr_no'];
@@ -393,7 +393,7 @@ $pdfname = 'Purchase Request.pdf';
 // exit();
 $pdffile = $pdf->Output('PR.pdf', 'S');
 
-	// $badie = "<br><a href='http://192.168.101.89/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Approve&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: green;color: white;border-radius: 5px;'>Approve</a> <a href='http://192.168.101.89/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Disapprove&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: red;color: white;border-radius: 5px;'>Disapprove</a><br>";
+	// $badie = "<br><a href='http://192.168.101.41/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Approve&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: green;color: white;border-radius: 5px;'>Approve</a> <a href='http://192.168.101.41/online_requisition/controller/controller.canvasing.php?mode=UpdateCanvas&type=Disapprove&pr_id=$pr_id' style='text-decoration: none;padding: 10px;font-size: 20px;background-color: red;color: white;border-radius: 5px;'>Disapprove</a><br>";
 
 	$badie = '<!DOCTYPE html>
     <html>

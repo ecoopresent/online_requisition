@@ -23,7 +23,7 @@ $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 
 // $button_link = "https://pmc.ph/online_requisition/approvalCashCheckFinal.php?id=$pr_id&approver=Homer C. Lim";
-$button_link = "http://192.168.101.89/online_requisition/approvalCashCheckFinal.php?id=$pr_id&approver=Homer C. Lim";
+$button_link = "http://192.168.101.41/online_requisition/approvalCashCheckFinal.php?id=$pr_id&approver=Homer C. Lim";
 
 $mail->Subject = "Dept: ".$depts."- Cash Advance/Check Issuance ( RCAPR".date('Y')."-".$pr_id." )";
 // create new PDF document

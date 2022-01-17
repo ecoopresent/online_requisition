@@ -20,7 +20,7 @@ $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=twoE";
-$button_link = "http://192.168.101.89:8080/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=twoE";
+$button_link = "http://192.168.101.41:8080/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=twoE";
 
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
 $pr_id = $cash_info['pr_id'];
