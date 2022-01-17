@@ -348,8 +348,8 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                     <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
                                         <tr>
                                             <td style="border-radius: 4px; font-size: 12px;">
-                                                <a href="http://192.168.101.89/online_requisition/controller/controller.accounting.php?mode=UpdateCashadvance&type=Approve&cash_id=$cash_id" style="margin: 0; color: #fff; font-family: sans-serif;"><span style="padding: 13px 17px; background-color: #0d3e7c;">Approved</span></a> 
-                                                <a href="http://192.168.101.89/online_requisition/controller/controller.accounting.php?mode=UpdateCashadvance&type=Disapprove&cash_id=$cash_id"  style="margin: 0; color: #fff; font-family: sans-serif;"><span style="padding: 13px 17px; background-color: #ff4d4d; border: 1px solid #ddd;">Disapproved</span></a>
+                                                <a href="http://192.168.101.41/online_requisition/controller/controller.accounting.php?mode=UpdateCashadvance&type=Approve&cash_id=$cash_id" style="margin: 0; color: #fff; font-family: sans-serif;"><span style="padding: 13px 17px; background-color: #0d3e7c;">Approved</span></a> 
+                                                <a href="http://192.168.101.41/online_requisition/controller/controller.accounting.php?mode=UpdateCashadvance&type=Disapprove&cash_id=$cash_id"  style="margin: 0; color: #fff; font-family: sans-serif;"><span style="padding: 13px 17px; background-color: #ff4d4d; border: 1px solid #ddd;">Disapproved</span></a>
                                             </td>
                                         </tr>
                                         <tr>

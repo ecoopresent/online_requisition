@@ -45,7 +45,7 @@ if($approver=="three"){
 }
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=Homer C. Lim&at=$approver";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 

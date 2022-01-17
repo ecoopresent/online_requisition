@@ -28,7 +28,7 @@ $email_Approver = $_GET['e'];
 $pr_number = $pr_info['pr_no'];
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalPRHead.php?id=$pr_id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalPRHead.php?id=$pr_id&approver=$name_Approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalPRHead.php?id=$pr_id&approver=$name_Approver";
 
 	$mail->Subject = "Dept: ".$depts."- Purchase Requisition - ( ".$pr_number." )";
 

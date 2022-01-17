@@ -25,7 +25,7 @@ $name_Approver = "Jerome T. Chua";
 $email_Approver = "jericopresentacion08@gmail.com";
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalPettycashFinal.php?id=$id&approver=$name_Approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalPettycashFinal.php?id=$id&approver=$name_Approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalPettycashFinal.php?id=$id&approver=$name_Approver";
 
 $petty_approval = new PettycashApproval();
 $voucher_id = $_GET['id'];

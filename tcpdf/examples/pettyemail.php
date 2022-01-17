@@ -16,7 +16,7 @@ $voucher_id = $_GET['id'];
 $petty_info = $petty_approval->getPettyInfo($voucher_id);
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalPettycashHead.php?id=$voucher_id&approver=Jerome T. Chua";
-$button_link = "http://192.168.101.89/online_requisition/approvalPettycashHead.php?id=$voucher_id&approver=Jerome T. Chua";
+$button_link = "http://192.168.101.41/online_requisition/approvalPettycashHead.php?id=$voucher_id&approver=Jerome T. Chua";
 
 // create new PDF document
 // $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

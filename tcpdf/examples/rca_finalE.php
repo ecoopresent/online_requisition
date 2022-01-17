@@ -27,7 +27,7 @@ if($approver_type=="twoE"){
 }
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=$approver_type";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=$approver_type";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=Jerome T. Chua&at=$approver_type";
 $newFolder = "RCA".date('Y')."-".$cash_id;
 $rca_attachments = $cash_approval->getAttachments($cash_id);
 $cash_info = $cash_approval->getCashadvanceById($cash_id);

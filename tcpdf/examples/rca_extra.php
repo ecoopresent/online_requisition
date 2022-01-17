@@ -46,7 +46,7 @@ if($approver=="three"){
 
 
 // $button_link = "https://panamed.com.ph/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=$department_name&at=$approver";
-$button_link = "http://192.168.101.89/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=$department_name&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAExtra.php?id=$cash_id&approver=$department_name&at=$approver";
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document
