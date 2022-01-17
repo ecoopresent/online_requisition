@@ -37,7 +37,7 @@ if($approver=="twoB"){
 if($approver=="twoC"){
     $nameApprover = "Mary Ann Miranda";
     $e_address = "jericopresentacion08@gmail.com";
-    // $e_address = "npmiranda@pmcgroup.com";
+    // $e_address = "mpmiranda@pmcgroup.com";
 }
 
 if($approver=="twoD"){
