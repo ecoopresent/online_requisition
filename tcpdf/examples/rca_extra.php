@@ -40,8 +40,8 @@ if($approver=="three"){
 }else{
     $department_name = "Jerome T. Chua";
     $second_approver = "Mary Ann Miranda";
-    $e_address = "jericopresentacion08@gmail.com";
-    // $e_address = "mpmiranda@pmcgroup.com";
+    $e_address = "jericopresentacion8@gmail.com";
+    // $e_address = "jtchua@pmcgroup.com";
 }
 
 
