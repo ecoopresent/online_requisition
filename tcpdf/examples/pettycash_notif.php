@@ -19,7 +19,7 @@ if(!$mail->Send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
     // echo "Email sent";
-    header('location:../../approvalPettyFinal.php?id='.$id);
+    header('location:../../approvalPettyHead.php?id='.$id.'&approver=');
 }
 
 
