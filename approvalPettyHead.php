@@ -146,7 +146,7 @@ if($v_status=="Disapproved" || $v_status=="Disapproved1"){
                         <input type="hidden" id="approver" value="<?php echo $approver ?>" name="">
                         <input type="hidden" id="apprver_type" value="<?php echo $apprver_type ?>" name="">
                         <?php if ($approver=="Neil De Guzman"): ?>
-                            <button type="submit" class="btn btn-success mb-3" onclick="ITapprove_Petty(<?= $id ?>)">Approve</button>
+                            <button type="submit" class="btn btn-success mb-3" onclick="approve_Petty(<?= $id ?>)">Approve</button>
                         <?php else: ?>
                             <button type="submit" class="btn btn-success mb-3" onclick="approve_Petty(<?= $id ?>)">Approve</button>
                         <?php endif ?>
