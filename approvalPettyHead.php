@@ -1,4 +1,5 @@
-<?php 
+
+ <?php 
 
 date_default_timezone_set("Asia/Manila");
 $meta_title = 'Petty Cash Request';
