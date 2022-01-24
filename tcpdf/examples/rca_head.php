@@ -55,10 +55,17 @@ $pr_id = $cash_info['pr_id'];
 $depts = $cash_info['department'];
 $nameApprover = "Suzanne C. Abilay";
 $finalapprover = "Jerry F. Lim";
+if($approver=="twoA"){
+    $nameApprover = "Nancy G. Cortez";
+    $finalapprover = "Homer C. Lim";
+
+    $e_address = "jericopresentacion8@gmail.com";
+    // $e_address = "ngcortez@pmcgroup.com";
+}
 
 
 // $button_link = "https://inmed.com.ph/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
-$button_link = "http://192.168.0.100/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
+$button_link = "http://192.168.101.41/online_requisition/approvalRCAHead.php?id=$cash_id&approver=$nameApprover&at=$approver";
 
 $mail->Subject = "Dept: ".$depts."- Request Cash Advance ( RCA".date('Y')."-".$cash_id." )";
 // create new PDF document

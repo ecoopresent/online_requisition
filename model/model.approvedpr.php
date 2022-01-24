@@ -210,10 +210,21 @@ class Approvedpr extends DBHandler {
     {   
         if($cash_status=="Finished"){
 
-            $date_today = date('Y-m-d');
-            $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '-', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
-            $stmt = $this->prepareQuery($this->conn, $query);
-            return $this->execute($stmt);
+            if($approver=="Homer C. Lim"){
+
+                $date_today = date('Y-m-d');
+                $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '$approver', remarks = '$remarks', head_approver='-', date_approved = '$date_today'  WHERE id = '$id'";
+                $stmt = $this->prepareQuery($this->conn, $query);
+                return $this->execute($stmt);
+
+            }else{
+                $date_today = date('Y-m-d');
+                $query = "UPDATE cashcheck SET cash_status = '$cash_status', president = '-', remarks = '$remarks', head_approver='$approver', date_headapproved = '$date_today'  WHERE id = '$id'";
+                $stmt = $this->prepareQuery($this->conn, $query);
+                return $this->execute($stmt);
+            }
+
+            
 
         }else if($cash_status=="PreApproveds"){
 

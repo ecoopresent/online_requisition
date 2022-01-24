@@ -426,6 +426,7 @@ $borderdisapproved = "background-color: #00334d;color: white;padding-left: 5px;p
                         <select id="approver" class="form-control">
                             <optgroup label="Admin">
                               <option value="two">Suzanne C. Abilay & Jerry Lim</option>
+                              <option value="twoA">Nancy G. Cortez & Homer Lim</option>
                               <option value="three">SuzanneC. Abilay & Homer Lim & Jerry Lim</option>
                             </optgroup>
                         </select>

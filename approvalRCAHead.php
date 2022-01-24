@@ -119,12 +119,25 @@ if($rca_status=="Disapproved"){
                             <p class="text-secondary">Requestor</p>
                         </li>
 
+                    <?php if ($apprver_type=="twoA"): ?>
 
+                        <li>
+                            <span class="fw-bold">Nancy G. Cortez</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+                        
+                    <?php else: ?>
+                        
                         <li>
                             <span class="fw-bold">Suzanne C. Abilay</span>
                             <span class="float-end text-secondary">Pending</span>
                             <p class="text-secondary">Approver</p>
                         </li>
+
+                    <?php endif ?>
+
+                        
                             
 
                         <?php if ($apprver_type =="three"): ?>
@@ -136,12 +149,26 @@ if($rca_status=="Disapproved"){
                         <?php endif ?>
                         
 
+                    <?php if ($apprver_type=="twoA"): ?>
+
+                        <li>
+                            <span class="fw-bold">Homer C. Lim</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+
+                    <?php else: ?>
 
                         <li>
                             <span class="fw-bold">Jerry F. Lim</span>
                             <span class="float-end text-secondary">Pending</span>
                             <p class="text-secondary">Approver</p>
                         </li>
+
+                    <?php endif ?>
+
+
+                        
 
 
 

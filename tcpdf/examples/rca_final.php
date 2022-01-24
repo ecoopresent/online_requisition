@@ -49,12 +49,20 @@ $cash_id = $_GET['id'];
 $approver = $_GET['at'];
 $finalapprover = "Jerry F. Lim";
 
+$name_Approver = "Suzanne C. Abilay";
+if($approver=="twoA"){
+    $name_Approver = "Nancy G. Cortez";
+    $finalapprover = "Homer C. Lim";
+
+    $e_address = "kainankayalingnene@gmail.com";
+    // $e_address = "hcl@inmed.com.ph";
+}
 
 if($approver=="three"){
-    $button_link = "http://192.168.0.100/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=triple";
+    $button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=triple";
     // $button_link = "https://inmed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=triple";
 }else{
-    $button_link = "http://192.168.0.100/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver";
+    $button_link = "http://192.168.101.41/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver";
     // $button_link = "https://inmed.com.ph/online_requisition/approvalRCAFinal.php?id=$cash_id&approver=$finalapprover&at=$approver";
 }
 
@@ -372,7 +380,7 @@ $pdffile = $pdf->Output('CashAdvance.pdf', 'S');
                                                     <tr>
                                                         <td style="width: 33%;"></td>
                                                         <td style="padding:5px;font-family: Arial,sans-serif; font-size: 14px; line-height:20px;text-align:left;">
-                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>Suzanne C. Abilay</b>
+                                                            <img src="https://pmc.ph/email_assets/done.png" width="25" style="vertical-align: middle;" /> &nbsp; &nbsp; <b>'.$name_Approver.'</b>
                                                         </td>
                                                     </tr>';
 

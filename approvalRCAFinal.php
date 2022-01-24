@@ -123,12 +123,25 @@ if($rca_status=="Disapproved"){
                             <p class="text-secondary">Requestor</p>
                         </li>
 
+                    <?php if ($approver_type=="twoA"): ?>
+
+                        <li class="done">
+                            <span class="fw-bold">Nancy G. Cortez</span>
+                            <span class="float-end text-secondary">Signed</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+                    
+                    <?php else: ?>
 
                         <li class="done">
                             <span class="fw-bold">Suzanne C. Abilay</span>
                             <span class="float-end text-secondary">Signed</span>
                             <p class="text-secondary">Approver</p>
                         </li>
+
+                    <?php endif ?>
+
+                        
 
                         <?php if ($approver_type=="triple"): ?>
 
@@ -152,11 +165,26 @@ if($rca_status=="Disapproved"){
                             
                         <?php endif ?>
 
-                            <li>
-                                <span class="fw-bold">Jerry F. Lim</span>
-                                <span class="float-end text-secondary">Pending</span>
-                                <p class="text-secondary">Approver</p>
-                            </li>
+
+                    <?php if ($approver_type=="twoA"): ?>
+
+                        <li>
+                            <span class="fw-bold">Homer C. Lim</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+
+                    <?php else: ?>
+
+                        <li>
+                            <span class="fw-bold">Jerry F. Lim</span>
+                            <span class="float-end text-secondary">Pending</span>
+                            <p class="text-secondary">Approver</p>
+                        </li>
+                        
+                    <?php endif ?>
+
+                            
 
                         
                         
