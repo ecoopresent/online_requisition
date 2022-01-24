@@ -46,7 +46,10 @@ switch($mode) {
             $approvers = "";
             if($v['approver_type']=="two"){
                 $approvers = "SCA & JFL";
-            }else{
+            }else if($v['approver_type']=="twoA"){
+                $approvers = "NGC & HCL";
+            }
+            else{
                 $approvers = "SCA & HCL & JFL";
             }
             $rca[$k]['approvers'] = $approvers;
