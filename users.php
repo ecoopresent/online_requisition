@@ -94,11 +94,11 @@ require_once "component/header.php";
                                 <select class="form-control" id="user_type" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                     <option disabled="" selected="">-- Select User Type --</option>
                                     <option value="Administrator" >Administrator</option>
-                                    <option value="Approver" >Approver</option>
+                                    <!-- <option value="Approver" >Approver</option> -->
                                     <option value="Enduser" >End-User</option>
                                     <option value="Accounting" >Accounting</option>
                                     <option value="Purchaser" >Purchaser</option>
-                                    <option value="Logistics" >Logistics</option>
+                                    <!-- <option value="Logistics" >Logistics</option> -->
                                 </select>
                             </div>
                         </div>
@@ -218,11 +218,11 @@ require_once "component/header.php";
                         <select class="form-control" id="euser_type" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             <option disabled="" selected="">-- Select User Type --</option>
                             <option value="Administrator" >Administrator</option>
-                            <option value="Approver" >Approver</option>
+                            <!-- <option value="Approver" >Approver</option> -->
                             <option value="Enduser" >End-User</option>
                             <option value="Accounting" >Accounting</option>
                             <option value="Purchaser" >Purchaser</option>
-                            <option value="Logistics" >Logistics</option>
+                            <!-- <option value="Logistics" >Logistics</option> -->
                         </select>
                     </div>
                 </div>
