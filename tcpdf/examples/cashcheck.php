@@ -6,6 +6,9 @@ require_once "../../model/model.cash_approval.php";
 $cash_approval = new Cash_approval();
 $cash_id = $_GET['id'];
 $cash_info = $cash_approval->getCashadvanceById($cash_id);
+if($cash_info['remarks']=="" || $cash_info['remarks']==null){
+	$cash_info['remarks'] = $cash_info['r_emarks'];
+}
 // create new PDF document
 // $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $thermalSize = array(139, 202);
@@ -44,6 +47,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // ---------------------------------------------------------
 // set a barcode on the page footer
 $pdf->setBarcode(date('Y-m-d H:i:s'));
+
 // set font
 $pdf->SetFont('dejavusans', '', 11);
 // add a page

@@ -49,7 +49,7 @@ class Rca extends DBHandler {
 
     public function addRCA($department,$payee,$date_prepared,$date_needed,$particulars,$amount,$purpose,$remarks,$charge_to,$budget,$liquidated_on,$prepared_by)
     {
-        $query = "INSERT INTO cashcheck SET department = '$department', payee = '$payee', date_prepared = '$date_prepared', date_needed = '$date_needed', particulars = '$particulars', amount = '$amount', purpose = '$purpose', remarks = '$remarks', charge_to = '$charge_to', budget = '$budget', liquidated_on = '$liquidated_on', prepared_by = '$prepared_by'";
+        $query = "INSERT INTO cashcheck SET department = '$department', payee = '$payee', date_prepared = '$date_prepared', date_needed = '$date_needed', particulars = '$particulars', amount = '$amount', purpose = '$purpose', r_emarks = '$remarks', remarks = '$remarks', charge_to = '$charge_to', budget = '$budget', liquidated_on = '$liquidated_on', prepared_by = '$prepared_by'";
         $stmt = $this->prepareQuery($this->conn, $query);
         return $this->execute($stmt);
 
